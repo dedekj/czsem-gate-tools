@@ -1,0 +1,1324 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<GateDocument>
+<!-- The document's features-->
+
+<GateDocumentFeatures>
+<Feature>
+  <Name className="java.lang.String">gate.SourceURL</Name>
+  <Value className="java.lang.String">created from String</Value>
+</Feature>
+</GateDocumentFeatures>
+<!-- The document content area with serialized nodes -->
+
+<TextWithNodes><Node id="0" />Jan<Node id="3" /> <Node id="4" />se<Node id="6" /> <Node id="7" />narodil<Node id="14" /> <Node id="15" />v<Node id="16" /> <Node id="17" />Dolní<Node id="22" /> <Node id="23" />Kalné<Node id="28" /> <Node id="29" />a<Node id="30" /> <Node id="31" />zná<Node id="34" /> <Node id="35" />to<Node id="37" /> <Node id="38" />tam<Node id="41" /> <Node id="42" />dobře<Node id="47" />.<Node id="48" /> <Node id="49" />On<Node id="51" /> <Node id="52" />je<Node id="54" /> <Node id="55" />totiž<Node id="60" /> <Node id="61" />kalenský<Node id="69" /> <Node id="70" />patriont<Node id="78" />.<Node id="79" /> </TextWithNodes>
+<!-- The default annotation set -->
+
+<AnnotationSet>
+</AnnotationSet>
+
+<!-- Named annotation set -->
+
+<AnnotationSet Name="treex">
+<Annotation Id="0" Type="Sentence" StartNode="0" EndNode="48">
+<Feature>
+  <Name className="java.lang.String">selector</Name>
+  <Value className="java.lang.String"></Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">sentence</Name>
+  <Value className="java.lang.String">Jan se narodil v Dolní Kalné a zná to tam dobře.</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">language</Name>
+  <Value className="java.lang.String">cs</Value>
+</Feature>
+</Annotation>
+<Annotation Id="1" Type="Token" StartNode="0" EndNode="3">
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">Jan_;Y</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Sb</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">Jan</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">NNMS1-----A----</Value>
+</Feature>
+</Annotation>
+<Annotation Id="2" Type="Token" StartNode="4" EndNode="6">
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">se_^(zvr._zájmeno/částice)</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">AuxT</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_auxiliary</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">se</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">P7-X4----------</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">2</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">edge_to_collapse</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+</Annotation>
+<Annotation Id="3" Type="Token" StartNode="7" EndNode="14">
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">narodit_:W</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Pred</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">narodil</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_member</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">VpYS---XR-AA---</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">3</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+</Annotation>
+<Annotation Id="4" Type="Token" StartNode="15" EndNode="16">
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">v-1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">AuxP</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_auxiliary</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">v</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">RR--6----------</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">4</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+</Annotation>
+<Annotation Id="5" Type="Token" StartNode="17" EndNode="22">
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">5</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">dolní</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Atr</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">Dolní</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">AAFS6----1A----</Value>
+</Feature>
+</Annotation>
+<Annotation Id="6" Type="Token" StartNode="23" EndNode="28">
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">kalný</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Adv</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">Kalné</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">AAFS6----1A----</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">6</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">edge_to_collapse</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+</Annotation>
+<Annotation Id="7" Type="Token" StartNode="29" EndNode="30">
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">7</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">a-1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Coord</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">a</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">J^-------------</Value>
+</Feature>
+</Annotation>
+<Annotation Id="8" Type="Token" StartNode="31" EndNode="34">
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">znát</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Pred</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">zná</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_member</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">VB-S---3P-AA---</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">8</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+</Annotation>
+<Annotation Id="9" Type="Token" StartNode="35" EndNode="37">
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">9</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">ten</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Sb</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">to</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">PDNS1----------</Value>
+</Feature>
+</Annotation>
+<Annotation Id="10" Type="Token" StartNode="38" EndNode="41">
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">10</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">tam</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Adv</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">tam</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">Db-------------</Value>
+</Feature>
+</Annotation>
+<Annotation Id="11" Type="Token" StartNode="42" EndNode="47">
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">dobře</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Adv</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">dobře</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">Dg-------1A----</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">11</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">no_space_after</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+</Annotation>
+<Annotation Id="12" Type="Token" StartNode="47" EndNode="48">
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">.</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">AuxK</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_auxiliary</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">.</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">Z:-------------</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">12</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">edge_to_collapse</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">no_space_after</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+</Annotation>
+<Annotation Id="13" Type="aDependency" StartNode="0" EndNode="30">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">7;1</Value>
+</Feature>
+</Annotation>
+<Annotation Id="14" Type="aDependency" StartNode="7" EndNode="30">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">7;3</Value>
+</Feature>
+</Annotation>
+<Annotation Id="15" Type="aDependency" StartNode="4" EndNode="14">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">3;2</Value>
+</Feature>
+</Annotation>
+<Annotation Id="17" Type="aDependency" StartNode="15" EndNode="28">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">4;6</Value>
+</Feature>
+</Annotation>
+<Annotation Id="16" Type="aDependency" StartNode="7" EndNode="16">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">3;4</Value>
+</Feature>
+</Annotation>
+<Annotation Id="19" Type="aDependency" StartNode="29" EndNode="34">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">7;8</Value>
+</Feature>
+</Annotation>
+<Annotation Id="18" Type="aDependency" StartNode="17" EndNode="28">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">6;5</Value>
+</Feature>
+</Annotation>
+<Annotation Id="21" Type="aDependency" StartNode="31" EndNode="41">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">8;10</Value>
+</Feature>
+</Annotation>
+<Annotation Id="20" Type="aDependency" StartNode="31" EndNode="37">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">8;9</Value>
+</Feature>
+</Annotation>
+<Annotation Id="23" Type="t-node" StartNode="29" EndNode="30">
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">6</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">coap</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">CONJ</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">a-1</Value>
+</Feature>
+</Annotation>
+<Annotation Id="22" Type="aDependency" StartNode="31" EndNode="47">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">8;11</Value>
+</Feature>
+</Annotation>
+<Annotation Id="25" Type="t-node" StartNode="0" EndNode="3">
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">PAT</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">Jan_;Y</Value>
+</Feature>
+</Annotation>
+<Annotation Id="24" Type="a/lex.rf" StartNode="29" EndNode="30">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">7;23</Value>
+</Feature>
+</Annotation>
+<Annotation Id="27" Type="a/lex.rf" StartNode="0" EndNode="3">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">1;25</Value>
+</Feature>
+</Annotation>
+<Annotation Id="26" Type="tDependency" StartNode="0" EndNode="30">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">23;25</Value>
+</Feature>
+</Annotation>
+<Annotation Id="29" Type="tDependency" StartNode="7" EndNode="30">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">23;28</Value>
+</Feature>
+</Annotation>
+<Annotation Id="28" Type="t-node" StartNode="7" EndNode="14">
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_member</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">narodit_:W</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_clause_head</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/diathesis</Name>
+  <Value className="java.lang.String">act</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">3</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">PRED</Value>
+</Feature>
+</Annotation>
+<Annotation Id="31" Type="a/aux.rf" StartNode="4" EndNode="14">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">2;28</Value>
+</Feature>
+</Annotation>
+<Annotation Id="30" Type="a/lex.rf" StartNode="7" EndNode="14">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">3;28</Value>
+</Feature>
+</Annotation>
+<Annotation Id="34" Type="a/lex.rf" StartNode="23" EndNode="28">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">6;32</Value>
+</Feature>
+</Annotation>
+<Annotation Id="35" Type="a/aux.rf" StartNode="15" EndNode="28">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">4;32</Value>
+</Feature>
+</Annotation>
+<Annotation Id="32" Type="t-node" StartNode="23" EndNode="28">
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">5</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">RSTR</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">kalný</Value>
+</Feature>
+</Annotation>
+<Annotation Id="33" Type="tDependency" StartNode="7" EndNode="28">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">28;32</Value>
+</Feature>
+</Annotation>
+<Annotation Id="38" Type="a/lex.rf" StartNode="17" EndNode="22">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">5;36</Value>
+</Feature>
+</Annotation>
+<Annotation Id="39" Type="t-node_" StartNode="0" EndNode="48">
+<Feature>
+  <Name className="java.lang.String">gram/person</Name>
+  <Value className="java.lang.String">3</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/gender</Name>
+  <Value className="java.lang.String">anim</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/number</Name>
+  <Value className="java.lang.String">sg</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">#PersPron</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">2</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_generated</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">formeme</Name>
+  <Value className="java.lang.String">drop</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">ACT</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/sempos</Name>
+  <Value className="java.lang.String">n.pron.def.pers</Value>
+</Feature>
+</Annotation>
+<Annotation Id="36" Type="t-node" StartNode="17" EndNode="22">
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">4</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">RSTR</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">dolní</Value>
+</Feature>
+</Annotation>
+<Annotation Id="37" Type="tDependency" StartNode="17" EndNode="28">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">32;36</Value>
+</Feature>
+</Annotation>
+<Annotation Id="42" Type="tDependency" StartNode="29" EndNode="34">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">23;41</Value>
+</Feature>
+</Annotation>
+<Annotation Id="43" Type="a/lex.rf" StartNode="31" EndNode="34">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">8;41</Value>
+</Feature>
+</Annotation>
+<Annotation Id="40" Type="tDependency" StartNode="0" EndNode="48">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">28;39</Value>
+</Feature>
+</Annotation>
+<Annotation Id="41" Type="t-node" StartNode="31" EndNode="34">
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">znát</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_member</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_clause_head</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/diathesis</Name>
+  <Value className="java.lang.String">act</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">8</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">PRED</Value>
+</Feature>
+</Annotation>
+<Annotation Id="46" Type="a/lex.rf" StartNode="35" EndNode="37">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">9;44</Value>
+</Feature>
+</Annotation>
+<Annotation Id="47" Type="t-node" StartNode="38" EndNode="41">
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">10</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">TWHEN</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">tam</Value>
+</Feature>
+</Annotation>
+<Annotation Id="44" Type="t-node" StartNode="35" EndNode="37">
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">9</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">RSTR</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">ten</Value>
+</Feature>
+</Annotation>
+<Annotation Id="45" Type="tDependency" StartNode="31" EndNode="37">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">41;44</Value>
+</Feature>
+</Annotation>
+<Annotation Id="51" Type="tDependency" StartNode="31" EndNode="47">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">41;50</Value>
+</Feature>
+</Annotation>
+<Annotation Id="50" Type="t-node" StartNode="42" EndNode="47">
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">11</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">MANN</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">dobře</Value>
+</Feature>
+</Annotation>
+<Annotation Id="49" Type="a/lex.rf" StartNode="38" EndNode="41">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">10;47</Value>
+</Feature>
+</Annotation>
+<Annotation Id="48" Type="tDependency" StartNode="31" EndNode="41">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">41;47</Value>
+</Feature>
+</Annotation>
+<Annotation Id="55" Type="Sentence" StartNode="49" EndNode="79">
+<Feature>
+  <Name className="java.lang.String">selector</Name>
+  <Value className="java.lang.String"></Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">sentence</Name>
+  <Value className="java.lang.String">On je totiž kalenský patriont.</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">language</Name>
+  <Value className="java.lang.String">cs</Value>
+</Feature>
+</Annotation>
+<Annotation Id="54" Type="tDependency" StartNode="0" EndNode="48">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">41;53</Value>
+</Feature>
+</Annotation>
+<Annotation Id="53" Type="t-node_" StartNode="0" EndNode="48">
+<Feature>
+  <Name className="java.lang.String">gram/person</Name>
+  <Value className="java.lang.String">3</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/gender</Name>
+  <Value className="java.lang.String">anim</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/number</Name>
+  <Value className="java.lang.String">sg</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">#PersPron</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">7</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_generated</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">formeme</Name>
+  <Value className="java.lang.String">drop</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">ACT</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/sempos</Name>
+  <Value className="java.lang.String">n.pron.def.pers</Value>
+</Feature>
+</Annotation>
+<Annotation Id="52" Type="a/lex.rf" StartNode="42" EndNode="47">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">11;50</Value>
+</Feature>
+</Annotation>
+<Annotation Id="59" Type="Token" StartNode="61" EndNode="69">
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">4</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">kalenský</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Pnom</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">kalenský</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">X@-------------</Value>
+</Feature>
+</Annotation>
+<Annotation Id="58" Type="Token" StartNode="55" EndNode="60">
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">3</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">totiž</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">AuxY</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">totiž</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">Db-------------</Value>
+</Feature>
+</Annotation>
+<Annotation Id="57" Type="Token" StartNode="52" EndNode="54">
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">2</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">být</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Pred</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">je</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">VB-S---3P-AA---</Value>
+</Feature>
+</Annotation>
+<Annotation Id="56" Type="Token" StartNode="49" EndNode="51">
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">on-1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Sb</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">On</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">PPYS1--3-------</Value>
+</Feature>
+</Annotation>
+<Annotation Id="63" Type="aDependency" StartNode="52" EndNode="60">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">57;58</Value>
+</Feature>
+</Annotation>
+<Annotation Id="62" Type="aDependency" StartNode="49" EndNode="54">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">57;56</Value>
+</Feature>
+</Annotation>
+<Annotation Id="61" Type="Token" StartNode="78" EndNode="79">
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">.</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">AuxK</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_auxiliary</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">.</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">Z:-------------</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">6</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">edge_to_collapse</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">no_space_after</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+</Annotation>
+<Annotation Id="60" Type="Token" StartNode="70" EndNode="78">
+<Feature>
+  <Name className="java.lang.String">lemma</Name>
+  <Value className="java.lang.String">patriont</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">afun</Name>
+  <Value className="java.lang.String">Pnom</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">form</Name>
+  <Value className="java.lang.String">patriont</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">tag</Name>
+  <Value className="java.lang.String">X@-------------</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">5</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">a-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">no_space_after</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+</Annotation>
+<Annotation Id="68" Type="t-node" StartNode="49" EndNode="51">
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">PAT</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">on-1</Value>
+</Feature>
+</Annotation>
+<Annotation Id="69" Type="tDependency" StartNode="49" EndNode="54">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">66;68</Value>
+</Feature>
+</Annotation>
+<Annotation Id="70" Type="a/lex.rf" StartNode="49" EndNode="51">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">56;68</Value>
+</Feature>
+</Annotation>
+<Annotation Id="71" Type="t-node" StartNode="55" EndNode="60">
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">4</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">TWHEN</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">totiž</Value>
+</Feature>
+</Annotation>
+<Annotation Id="64" Type="aDependency" StartNode="52" EndNode="69">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">57;59</Value>
+</Feature>
+</Annotation>
+<Annotation Id="65" Type="aDependency" StartNode="52" EndNode="78">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">57;60</Value>
+</Feature>
+</Annotation>
+<Annotation Id="66" Type="t-node" StartNode="52" EndNode="54">
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">být</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_clause_head</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/diathesis</Name>
+  <Value className="java.lang.String">act</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">3</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">PRED</Value>
+</Feature>
+</Annotation>
+<Annotation Id="67" Type="a/lex.rf" StartNode="52" EndNode="54">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">57;66</Value>
+</Feature>
+</Annotation>
+<Annotation Id="76" Type="a/lex.rf" StartNode="61" EndNode="69">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">59;74</Value>
+</Feature>
+</Annotation>
+<Annotation Id="77" Type="t-node" StartNode="70" EndNode="78">
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">6</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">fphr</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">FPHR</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">patriont</Value>
+</Feature>
+</Annotation>
+<Annotation Id="78" Type="tDependency" StartNode="52" EndNode="78">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">66;77</Value>
+</Feature>
+</Annotation>
+<Annotation Id="79" Type="a/lex.rf" StartNode="70" EndNode="78">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">60;77</Value>
+</Feature>
+</Annotation>
+<Annotation Id="72" Type="tDependency" StartNode="52" EndNode="60">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">66;71</Value>
+</Feature>
+</Annotation>
+<Annotation Id="73" Type="a/lex.rf" StartNode="55" EndNode="60">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">58;71</Value>
+</Feature>
+</Annotation>
+<Annotation Id="74" Type="t-node" StartNode="61" EndNode="69">
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">5</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">fphr</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">FPHR</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">kalenský</Value>
+</Feature>
+</Annotation>
+<Annotation Id="75" Type="tDependency" StartNode="52" EndNode="69">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">66;74</Value>
+</Feature>
+</Annotation>
+<Annotation Id="81" Type="tDependency" StartNode="49" EndNode="79">
+<Feature>
+  <Name className="java.lang.String">args</Name>
+  <Value className="java.util.ArrayList" itemClassName="java.lang.Integer">66;80</Value>
+</Feature>
+</Annotation>
+<Annotation Id="80" Type="t-node_" StartNode="49" EndNode="79">
+<Feature>
+  <Name className="java.lang.String">gram/person</Name>
+  <Value className="java.lang.String">3</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/gender</Name>
+  <Value className="java.lang.String">anim</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">nodetype</Name>
+  <Value className="java.lang.String">complex</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/number</Name>
+  <Value className="java.lang.String">sg</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">t_lemma</Name>
+  <Value className="java.lang.String">#PersPron</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">ord</Name>
+  <Value className="java.lang.String">2</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">pml_type_name</Name>
+  <Value className="java.lang.String">t-node.type</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">is_generated</Name>
+  <Value className="java.lang.String">1</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">formeme</Name>
+  <Value className="java.lang.String">drop</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">functor</Name>
+  <Value className="java.lang.String">ACT</Value>
+</Feature>
+<Feature>
+  <Name className="java.lang.String">gram/sempos</Name>
+  <Value className="java.lang.String">n.pron.def.pers</Value>
+</Feature>
+</Annotation>
+</AnnotationSet>
+
+</GateDocument>

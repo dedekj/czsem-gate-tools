@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<treex_document xmlns="http://ufal.mff.cuni.cz/pdt/pml/">
+  <head>
+    <schema href="treex_schema.xml" />
+  </head>
+  <meta>
+    <zones>
+      <zone language="cs">
+        <text>Jan se narodil v Dolní Kalné a zná to tam dobře. On je totiž kalenský patriont.</text>
+      </zone>
+    </zones>
+  </meta>
+  <bundles>
+    <LM id="s1">
+      <zones>
+        <zone language="cs">
+          <sentence>Jan se narodil v Dolní Kalné a zná to tam dobře.</sentence>
+          <trees>
+            <a_tree id="a_tree-cs-s1-root">
+              <ord>0</ord>
+              <children>
+                <LM id="a_tree-cs-s1-n7">
+                  <children>
+                    <LM id="a_tree-cs-s1-n1">
+                      <form>Jan</form>
+                      <lemma>Jan_;Y</lemma>
+                      <tag>NNMS1-----A----</tag>
+                      <no_space_after>0</no_space_after>
+                      <ord>1</ord>
+                      <afun>Sb</afun>
+                      <edge_to_collapse>0</edge_to_collapse>
+                      <is_auxiliary>0</is_auxiliary>
+                      <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                    </LM>
+                    <LM id="a_tree-cs-s1-n3">
+                      <children>
+                        <LM id="a_tree-cs-s1-n2">
+                          <form>se</form>
+                          <lemma>se_^(zvr._zájmeno/částice)</lemma>
+                          <tag>P7-X4----------</tag>
+                          <no_space_after>0</no_space_after>
+                          <ord>2</ord>
+                          <afun>AuxT</afun>
+                          <edge_to_collapse>1</edge_to_collapse>
+                          <is_auxiliary>1</is_auxiliary>
+                          <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                        </LM>
+                        <LM id="a_tree-cs-s1-n4">
+                          <children id="a_tree-cs-s1-n6">
+                            <children id="a_tree-cs-s1-n5">
+                              <form>Dolní</form>
+                              <lemma>dolní</lemma>
+                              <tag>AAFS6----1A----</tag>
+                              <no_space_after>0</no_space_after>
+                              <ord>5</ord>
+                              <afun>Atr</afun>
+                              <edge_to_collapse>0</edge_to_collapse>
+                              <is_auxiliary>0</is_auxiliary>
+                              <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                            </children>
+                            <form>Kalné</form>
+                            <lemma>kalný</lemma>
+                            <tag>AAFS6----1A----</tag>
+                            <no_space_after>0</no_space_after>
+                            <ord>6</ord>
+                            <afun>Adv</afun>
+                            <edge_to_collapse>1</edge_to_collapse>
+                            <is_auxiliary>0</is_auxiliary>
+                            <wild_dump>$VAR1 = {
+          'lex_adepts' => 1
+        };
+</wild_dump>
+                          </children>
+                          <form>v</form>
+                          <lemma>v-1</lemma>
+                          <tag>RR--6----------</tag>
+                          <no_space_after>0</no_space_after>
+                          <ord>4</ord>
+                          <afun>AuxP</afun>
+                          <edge_to_collapse>0</edge_to_collapse>
+                          <is_auxiliary>1</is_auxiliary>
+                          <wild_dump>$VAR1 = {
+          'lex_adepts' => 1
+        };
+</wild_dump>
+                        </LM>
+                      </children>
+                      <form>narodil</form>
+                      <lemma>narodit_:W</lemma>
+                      <tag>VpYS---XR-AA---</tag>
+                      <no_space_after>0</no_space_after>
+                      <ord>3</ord>
+                      <afun>Pred</afun>
+                      <is_member>1</is_member>
+                      <edge_to_collapse>0</edge_to_collapse>
+                      <is_auxiliary>0</is_auxiliary>
+                      <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                    </LM>
+                    <LM id="a_tree-cs-s1-n8">
+                      <children>
+                        <LM id="a_tree-cs-s1-n9">
+                          <form>to</form>
+                          <lemma>ten</lemma>
+                          <tag>PDNS1----------</tag>
+                          <no_space_after>0</no_space_after>
+                          <ord>9</ord>
+                          <afun>Sb</afun>
+                          <edge_to_collapse>0</edge_to_collapse>
+                          <is_auxiliary>0</is_auxiliary>
+                          <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                        </LM>
+                        <LM id="a_tree-cs-s1-n10">
+                          <form>tam</form>
+                          <lemma>tam</lemma>
+                          <tag>Db-------------</tag>
+                          <no_space_after>0</no_space_after>
+                          <ord>10</ord>
+                          <afun>Adv</afun>
+                          <edge_to_collapse>0</edge_to_collapse>
+                          <is_auxiliary>0</is_auxiliary>
+                          <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                        </LM>
+                        <LM id="a_tree-cs-s1-n11">
+                          <form>dobře</form>
+                          <lemma>dobře</lemma>
+                          <tag>Dg-------1A----</tag>
+                          <no_space_after>1</no_space_after>
+                          <ord>11</ord>
+                          <afun>Adv</afun>
+                          <edge_to_collapse>0</edge_to_collapse>
+                          <is_auxiliary>0</is_auxiliary>
+                          <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                        </LM>
+                      </children>
+                      <form>zná</form>
+                      <lemma>znát</lemma>
+                      <tag>VB-S---3P-AA---</tag>
+                      <no_space_after>0</no_space_after>
+                      <ord>8</ord>
+                      <afun>Pred</afun>
+                      <is_member>1</is_member>
+                      <edge_to_collapse>0</edge_to_collapse>
+                      <is_auxiliary>0</is_auxiliary>
+                      <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                    </LM>
+                  </children>
+                  <form>a</form>
+                  <lemma>a-1</lemma>
+                  <tag>J^-------------</tag>
+                  <no_space_after>0</no_space_after>
+                  <ord>7</ord>
+                  <afun>Coord</afun>
+                  <edge_to_collapse>0</edge_to_collapse>
+                  <is_auxiliary>0</is_auxiliary>
+                  <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                </LM>
+                <LM id="a_tree-cs-s1-n12">
+                  <form>.</form>
+                  <lemma>.</lemma>
+                  <tag>Z:-------------</tag>
+                  <no_space_after>1</no_space_after>
+                  <ord>12</ord>
+                  <afun>AuxK</afun>
+                  <edge_to_collapse>1</edge_to_collapse>
+                  <is_auxiliary>1</is_auxiliary>
+                  <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                </LM>
+              </children>
+            </a_tree>
+            <t_tree id="t_tree-cs-s1-root">
+              <atree.rf>a_tree-cs-s1-root</atree.rf>
+              <ord>0</ord>
+              <children id="t_tree-cs-s1-n19">
+                <children>
+                  <LM id="t_tree-cs-s1-n20">
+                    <nodetype>complex</nodetype>
+                    <ord>1</ord>
+                    <t_lemma>Jan_;Y</t_lemma>
+                    <functor>PAT</functor>
+                    <a>
+                      <lex.rf>a_tree-cs-s1-n1</lex.rf>
+                    </a>
+                  </LM>
+                  <LM id="t_tree-cs-s1-n21">
+                    <children>
+                      <LM id="t_tree-cs-s1-n22">
+                        <children id="t_tree-cs-s1-n23">
+                          <nodetype>complex</nodetype>
+                          <ord>4</ord>
+                          <t_lemma>dolní</t_lemma>
+                          <functor>RSTR</functor>
+                          <a>
+                            <lex.rf>a_tree-cs-s1-n5</lex.rf>
+                          </a>
+                        </children>
+                        <nodetype>complex</nodetype>
+                        <ord>5</ord>
+                        <t_lemma>kalný</t_lemma>
+                        <functor>RSTR</functor>
+                        <a>
+                          <lex.rf>a_tree-cs-s1-n6</lex.rf>
+                          <aux.rf>a_tree-cs-s1-n4</aux.rf>
+                        </a>
+                      </LM>
+                      <LM id="t_tree-cs-s1-n33">
+                        <nodetype>complex</nodetype>
+                        <ord>2</ord>
+                        <t_lemma>#PersPron</t_lemma>
+                        <functor>ACT</functor>
+                        <formeme>drop</formeme>
+                        <gram>
+                          <sempos>n.pron.def.pers</sempos>
+                          <gender>anim</gender>
+                          <number>sg</number>
+                          <person>3</person>
+                        </gram>
+                        <is_generated>1</is_generated>
+                        <wild_dump>$VAR1 = {
+          'aux_gram/gender' => 'anim/inan'
+        };
+</wild_dump>
+                      </LM>
+                    </children>
+                    <nodetype>complex</nodetype>
+                    <ord>3</ord>
+                    <t_lemma>narodit_:W</t_lemma>
+                    <functor>PRED</functor>
+                    <is_member>1</is_member>
+                    <is_clause_head>1</is_clause_head>
+                    <a>
+                      <lex.rf>a_tree-cs-s1-n3</lex.rf>
+                      <aux.rf>a_tree-cs-s1-n2</aux.rf>
+                    </a>
+                    <gram>
+                      <diathesis>act</diathesis>
+                    </gram>
+                  </LM>
+                  <LM id="t_tree-cs-s1-n24">
+                    <children>
+                      <LM id="t_tree-cs-s1-n25">
+                        <nodetype>complex</nodetype>
+                        <ord>9</ord>
+                        <t_lemma>ten</t_lemma>
+                        <functor>RSTR</functor>
+                        <a>
+                          <lex.rf>a_tree-cs-s1-n9</lex.rf>
+                        </a>
+                      </LM>
+                      <LM id="t_tree-cs-s1-n26">
+                        <nodetype>complex</nodetype>
+                        <ord>10</ord>
+                        <t_lemma>tam</t_lemma>
+                        <functor>TWHEN</functor>
+                        <a>
+                          <lex.rf>a_tree-cs-s1-n10</lex.rf>
+                        </a>
+                      </LM>
+                      <LM id="t_tree-cs-s1-n27">
+                        <nodetype>complex</nodetype>
+                        <ord>11</ord>
+                        <t_lemma>dobře</t_lemma>
+                        <functor>MANN</functor>
+                        <a>
+                          <lex.rf>a_tree-cs-s1-n11</lex.rf>
+                        </a>
+                      </LM>
+                      <LM id="t_tree-cs-s1-n34">
+                        <nodetype>complex</nodetype>
+                        <ord>7</ord>
+                        <t_lemma>#PersPron</t_lemma>
+                        <functor>ACT</functor>
+                        <formeme>drop</formeme>
+                        <gram>
+                          <sempos>n.pron.def.pers</sempos>
+                          <gender>anim</gender>
+                          <number>sg</number>
+                          <person>3</person>
+                        </gram>
+                        <is_generated>1</is_generated>
+                        <wild_dump>$VAR1 = {
+          'aux_gram/gender' => 'anim/inan/fem/neut'
+        };
+</wild_dump>
+                      </LM>
+                    </children>
+                    <nodetype>complex</nodetype>
+                    <ord>8</ord>
+                    <t_lemma>znát</t_lemma>
+                    <functor>PRED</functor>
+                    <is_member>1</is_member>
+                    <is_clause_head>1</is_clause_head>
+                    <a>
+                      <lex.rf>a_tree-cs-s1-n8</lex.rf>
+                    </a>
+                    <gram>
+                      <diathesis>act</diathesis>
+                    </gram>
+                  </LM>
+                </children>
+                <nodetype>coap</nodetype>
+                <ord>6</ord>
+                <t_lemma>a-1</t_lemma>
+                <functor>CONJ</functor>
+                <a>
+                  <lex.rf>a_tree-cs-s1-n7</lex.rf>
+                </a>
+              </children>
+            </t_tree>
+          </trees>
+        </zone>
+      </zones>
+    </LM>
+    <LM id="s2">
+      <zones>
+        <zone language="cs">
+          <sentence>On je totiž kalenský patriont.</sentence>
+          <trees>
+            <a_tree id="a_tree-cs-s2-root">
+              <ord>0</ord>
+              <children>
+                <LM id="a_tree-cs-s2-n14">
+                  <children>
+                    <LM id="a_tree-cs-s2-n13">
+                      <form>On</form>
+                      <lemma>on-1</lemma>
+                      <tag>PPYS1--3-------</tag>
+                      <no_space_after>0</no_space_after>
+                      <ord>1</ord>
+                      <afun>Sb</afun>
+                      <edge_to_collapse>0</edge_to_collapse>
+                      <is_auxiliary>0</is_auxiliary>
+                      <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                    </LM>
+                    <LM id="a_tree-cs-s2-n15">
+                      <form>totiž</form>
+                      <lemma>totiž</lemma>
+                      <tag>Db-------------</tag>
+                      <no_space_after>0</no_space_after>
+                      <ord>3</ord>
+                      <afun>AuxY</afun>
+                      <edge_to_collapse>0</edge_to_collapse>
+                      <is_auxiliary>0</is_auxiliary>
+                      <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                    </LM>
+                    <LM id="a_tree-cs-s2-n16">
+                      <form>kalenský</form>
+                      <lemma>kalenský</lemma>
+                      <tag>X@-------------</tag>
+                      <no_space_after>0</no_space_after>
+                      <ord>4</ord>
+                      <afun>Pnom</afun>
+                      <edge_to_collapse>0</edge_to_collapse>
+                      <is_auxiliary>0</is_auxiliary>
+                      <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                    </LM>
+                    <LM id="a_tree-cs-s2-n17">
+                      <form>patriont</form>
+                      <lemma>patriont</lemma>
+                      <tag>X@-------------</tag>
+                      <no_space_after>1</no_space_after>
+                      <ord>5</ord>
+                      <afun>Pnom</afun>
+                      <edge_to_collapse>0</edge_to_collapse>
+                      <is_auxiliary>0</is_auxiliary>
+                      <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                    </LM>
+                  </children>
+                  <form>je</form>
+                  <lemma>být</lemma>
+                  <tag>VB-S---3P-AA---</tag>
+                  <no_space_after>0</no_space_after>
+                  <ord>2</ord>
+                  <afun>Pred</afun>
+                  <edge_to_collapse>0</edge_to_collapse>
+                  <is_auxiliary>0</is_auxiliary>
+                  <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                </LM>
+                <LM id="a_tree-cs-s2-n18">
+                  <form>.</form>
+                  <lemma>.</lemma>
+                  <tag>Z:-------------</tag>
+                  <no_space_after>1</no_space_after>
+                  <ord>6</ord>
+                  <afun>AuxK</afun>
+                  <edge_to_collapse>1</edge_to_collapse>
+                  <is_auxiliary>1</is_auxiliary>
+                  <wild_dump>$VAR1 = {
+          'lex_adepts' => 0
+        };
+</wild_dump>
+                </LM>
+              </children>
+            </a_tree>
+            <t_tree id="t_tree-cs-s2-root">
+              <atree.rf>a_tree-cs-s2-root</atree.rf>
+              <ord>0</ord>
+              <children id="t_tree-cs-s2-n28">
+                <children>
+                  <LM id="t_tree-cs-s2-n29">
+                    <nodetype>complex</nodetype>
+                    <ord>1</ord>
+                    <t_lemma>on-1</t_lemma>
+                    <functor>PAT</functor>
+                    <a>
+                      <lex.rf>a_tree-cs-s2-n13</lex.rf>
+                    </a>
+                  </LM>
+                  <LM id="t_tree-cs-s2-n30">
+                    <nodetype>complex</nodetype>
+                    <ord>4</ord>
+                    <t_lemma>totiž</t_lemma>
+                    <functor>TWHEN</functor>
+                    <a>
+                      <lex.rf>a_tree-cs-s2-n15</lex.rf>
+                    </a>
+                  </LM>
+                  <LM id="t_tree-cs-s2-n31">
+                    <nodetype>fphr</nodetype>
+                    <ord>5</ord>
+                    <t_lemma>kalenský</t_lemma>
+                    <functor>FPHR</functor>
+                    <a>
+                      <lex.rf>a_tree-cs-s2-n16</lex.rf>
+                    </a>
+                  </LM>
+                  <LM id="t_tree-cs-s2-n32">
+                    <nodetype>fphr</nodetype>
+                    <ord>6</ord>
+                    <t_lemma>patriont</t_lemma>
+                    <functor>FPHR</functor>
+                    <a>
+                      <lex.rf>a_tree-cs-s2-n17</lex.rf>
+                    </a>
+                  </LM>
+                  <LM id="t_tree-cs-s2-n35">
+                    <nodetype>complex</nodetype>
+                    <ord>2</ord>
+                    <t_lemma>#PersPron</t_lemma>
+                    <functor>ACT</functor>
+                    <formeme>drop</formeme>
+                    <gram>
+                      <sempos>n.pron.def.pers</sempos>
+                      <gender>anim</gender>
+                      <number>sg</number>
+                      <person>3</person>
+                    </gram>
+                    <is_generated>1</is_generated>
+                    <wild_dump>$VAR1 = {
+          'aux_gram/gender' => 'anim/inan/fem/neut'
+        };
+</wild_dump>
+                  </LM>
+                </children>
+                <nodetype>complex</nodetype>
+                <ord>3</ord>
+                <t_lemma>být</t_lemma>
+                <functor>PRED</functor>
+                <is_clause_head>1</is_clause_head>
+                <a>
+                  <lex.rf>a_tree-cs-s2-n14</lex.rf>
+                </a>
+                <gram>
+                  <diathesis>act</diathesis>
+                </gram>
+              </children>
+            </t_tree>
+          </trees>
+        </zone>
+      </zones>
+    </LM>
+  </bundles>
+</treex_document>

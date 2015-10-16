@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ML-CONFIG>
+	<DATASET>
+		<INSTANCE-TYPE>Token</INSTANCE-TYPE>
+
+		<ATTRIBUTE>
+			<CLASS />
+			<NAME>Mention</NAME>
+			<TYPE>Mention</TYPE>
+			<FEATURE>class</FEATURE>
+			<POSITION>0</POSITION>
+			<SEMTYPE>NOMINAL</SEMTYPE>
+		</ATTRIBUTE>
+
+		<ATTRIBUTE>
+			<NAME>id</NAME>
+			<TYPE>Token</TYPE>
+			<FEATURE>ann_id</FEATURE>
+			<POSITION>0</POSITION>
+			<SEMTYPE>NOMINAL</SEMTYPE>
+		</ATTRIBUTE>
+
+		<ATTRIBUTE>
+			<NAME>last</NAME>
+			<TYPE>Token</TYPE>
+			<POSITION>1</POSITION>
+			<SEMTYPE>NOMINAL</SEMTYPE>
+		</ATTRIBUTE>
+	</DATASET>
+
+	<ENGINE>
+		<WRAPPER>czsem.gate.learning.ILPWrapper</WRAPPER>
+		<BATCH-MODE-CLASSIFICATION />
+		<OPTIONS>
+			<ilp>
+				<learning_settings>
+					:- set(verbosity,1).
+					:- set(verbosity,0).
+					:- set(noise,0).
+					:- set(depth,300).
+					:- set(clauselength,100).
+					:- set(i,40).
+					:- set(samplesize,0).
+            </learning_settings>
+			</ilp>
+
+			<serializer>
+				<tokens>
+					<token typename="Token">
+						<features>
+							<feature>string</feature>
+						</features>
+					</token>
+				</tokens>
+				<tree_dependecies>
+					<dependecy typename="Dependency" parent_typename="Token"
+						child_typename="Token" />
+				</tree_dependecies>
+				<!-- 
+				<one2one_dependecies> 
+					<dependecy typename="lex.rf" parent_typename="tToken"child_typename="Token"/>
+				</one2one_dependecies>
+				<overlap_dependecies>
+					<dependecy	parent_typename="Lookup" child_typename="tToken"/>
+				</overlap_dependecies>
+				 -->
+			</serializer>
+		</OPTIONS>
+	</ENGINE>
+</ML-CONFIG>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>  
+<CREOLE-DIRECTORY>
+  <JAR SCAN="false">../bin/czsem-common-${dependency.czsem.czsem-common.version}.jar</JAR>  
+  <JAR SCAN="false">../bin/commons-lang3-${dependency.org.apache.commons.commons-lang3.version}.jar</JAR>  
+  <JAR SCAN="true">../bin/${project.artifactId}-${project.version}.${project.packaging}</JAR>
+</CREOLE-DIRECTORY> 
