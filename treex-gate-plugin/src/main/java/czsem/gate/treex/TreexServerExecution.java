@@ -11,7 +11,6 @@ import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 
 import czsem.Utils;
-import czsem.gate.utils.Config;
 import czsem.utils.EnvMapHelper;
 import czsem.utils.FirstOfTwoTasksKillsTheSecond;
 import czsem.utils.FirstOfTwoTasksKillsTheSecond.HandShakeResult;
@@ -167,7 +166,7 @@ public class TreexServerExecution {
 	public void startWithoutHandshake() throws IOException {
 		String[] cmdarray = {
 				"perl", 
-				Config.getConfig().getCzsemResourcesDir()+"/Treex/treex_online.pl",
+				TreexConfig.getConfig().getTreexOnlineDir()+"/treex_online.pl",
 				Integer.toString(getPortNumber()),
 				handshakeCode};
 		
@@ -184,7 +183,7 @@ public class TreexServerExecution {
 		
 		String path_sep = System.getProperty( "path.separator" );
 		
-		Config cfg = Config.getConfig();
+		TreexConfig cfg = TreexConfig.getConfig();
 		
 
 /*		
@@ -206,7 +205,7 @@ public class TreexServerExecution {
 		File treexDir = new File(cfg.getTreexDir());
 		pb.directory(treexDir);
 		EnvMapHelper eh = new EnvMapHelper(pb.environment());
-		eh.append("PERL5LIB", path_sep + cfg.getCzsemResourcesDir()+"/Treex"); 
+		eh.append("PERL5LIB", path_sep + cfg.getTreexOnlineDir()); 
 		eh.append("PERL5LIB", path_sep + cfg.getTreexDir() + "/lib"); 
 		eh.append("PERL5LIB", path_sep + cfg.getTreexDir() + "/oldlib");
 		eh.append("PERL5LIB", path_sep + cfg.getTmtRoot() + "/libs/other");

@@ -47,8 +47,6 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.reflections.Reflections;
 
-import czsem.utils.AbstractConfig.ConfigLoadException;
-
 
 public class GateUtils
 {
@@ -231,7 +229,7 @@ public class GateUtils
 
 	public static void registerCzsemPlugin() throws GateException, URISyntaxException, IOException
 	{
-		registerPluginDirectory(new File(Config.getConfig().getCzsemPluginDir()));		
+		registerAllCzsemPrs();		
 	}
 
 	public static void registerPluginDirectory(File pluginDirectory) throws MalformedURLException, GateException
@@ -357,10 +355,10 @@ public class GateUtils
 		initGate(Level.OFF);
 	}
 
-	public static void initGateKeepLog() throws GateException, ConfigLoadException {
+	public static void initGateKeepLog() throws GateException {
 		if (Gate.isInitialised()) return;
 		
-		Config.getConfig().setGateHome();
+		CzsemConfig.getConfig().setGateHome();
 
 		Gate.init();						
 		

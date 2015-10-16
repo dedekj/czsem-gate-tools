@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import czsem.Utils;
+import czsem.gate.utils.CzsemConfig;
 
 public class RunClassWithGateCP {
 	
 	public static class Launcher
 	{
 		protected String pSep = System.getProperty( "path.separator" );
-		protected String gHome = Config.getConfig().getGateHome();
+		protected String gHome = CzsemConfig.getConfig().getGateHome();
 		
 		public Launcher() throws IOException, URISyntaxException
 		{}

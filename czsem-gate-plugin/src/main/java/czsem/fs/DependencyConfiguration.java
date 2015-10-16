@@ -1,16 +1,9 @@
 package czsem.fs;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
 import czsem.fs.FSSentenceWriter.TokenDependecy;
-import czsem.gate.utils.Config;
-import czsem.utils.AbstractConfig.ConfigLoadException;
-import czsem.utils.Config.DependencyConfig;
-import czsem.utils.Config.DependencyConfig.DependencySetting;
 
 public class DependencyConfiguration {
 	private Collection<String> dependencyNames;
@@ -34,6 +27,7 @@ public class DependencyConfiguration {
 						"aDependency", "nDependency", "a/aux.rf", "auxRfDependency", "a.rf", "coref_gram.rf" }), 
 				Arrays.asList(new TokenDependecy [0]));
 	
+	/*
 	public void putToConfig(DependencySetting setting) {
 		setting.clear();
 		
@@ -66,7 +60,10 @@ public class DependencyConfiguration {
 		return depsCfg;
 	}
 
+	*/
+
 	public static DependencyConfiguration getSelectedConfigurationFromConfigOrDefault() {
+		/*
 		DependencyConfig depsCfg = getDependencyConfig();
 		List<TokenDependecy> tokenDepDefs = new ArrayList<FSSentenceWriter.TokenDependecy>(depsCfg.getSelected().getTokenDependencies().size());
 		
@@ -76,6 +73,8 @@ public class DependencyConfiguration {
 			tokenDepDefs.add(new TokenDependecy(split[0], split[1]));
 		}
 		return new DependencyConfiguration(depsCfg.getSelected().getDependencyTypes(), tokenDepDefs);
+		*/
+		return defaultConfigSelected;
 	}
 
 	public Collection<String> getDependencyNames() {

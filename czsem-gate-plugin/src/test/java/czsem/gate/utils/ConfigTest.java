@@ -1,17 +1,8 @@
 package czsem.gate.utils;
 
-import gate.Gate;
-
-import java.io.File;
-import java.io.FileWriter;
-
-import org.junit.rules.TemporaryFolder;
-import org.testng.annotations.Test;
-
-import czsem.utils.AbstractConfig.ConfigLoadException;
 
 public class ConfigTest {
-
+/*
 	@Test(groups = { "excludeByMaven" }, expectedExceptions=ConfigLoadException.class)
 	public void getConfigExcept() throws Exception {
 		// Run from dir where czsem_config is not reachable 
@@ -45,4 +36,5 @@ public class ConfigTest {
 			throw e;
 		}
 	}
+	*/
 }

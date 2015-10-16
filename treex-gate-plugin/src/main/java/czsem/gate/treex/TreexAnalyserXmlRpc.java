@@ -4,7 +4,6 @@ import java.io.File;
 
 import org.apache.xmlrpc.XmlRpcException;
 
-import czsem.gate.utils.Config;
 import czsem.utils.AbstractConfig.ConfigLoadException;
 
 @SuppressWarnings("serial")
@@ -39,7 +38,7 @@ public abstract class TreexAnalyserXmlRpc extends TreexAnalyserBase {
 	public static String constructLogPathPrefix(String handshakeCode) {
 		String prefix; 
 		try {
-			prefix = Config.getConfig().getLogFileDirectoryPathExisting() + "/";
+			prefix = TreexConfig.getConfig().getLogFileDirectoryPathExisting() + "/";
 		} catch (ConfigLoadException e) {
 			prefix = ""; 
 		}

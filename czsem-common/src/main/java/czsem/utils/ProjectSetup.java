@@ -2,14 +2,10 @@ package czsem.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
-import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
-import czsem.utils.Config;
 
 public class ProjectSetup implements Serializable {
 
@@ -20,11 +16,6 @@ public class ProjectSetup implements Serializable {
 	public String current_project_dir = null;
 	public String project_name = "serialized_exp";
 //	private Serializer ser_bkg;		
-	
-	public ProjectSetup() throws URISyntaxException, IOException
-	{
-		dir_for_projects = Config.getConfig().getIlpProjestsPath()+'/';
-	}
 	
 	public static String makeTimeStamp()
 	{

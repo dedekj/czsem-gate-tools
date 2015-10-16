@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 
 import czsem.Utils;
 import czsem.gate.treex.TreexServerExecution.RedirectionType;
-import czsem.gate.utils.Config;
 
 public class TreexProfilerTest {
 
@@ -32,7 +31,7 @@ public class TreexProfilerTest {
 		String[] cmdarray = {
 				"perl", 
 //				"-d:NYTProf",
-				Config.getConfig().getCzsemResourcesDir()+"/Treex/treex_online.pl",
+				TreexConfig.getConfig().getTreexOnlineDir()+"/treex_online.pl",
 				Integer.toString(tse.getPortNumber()),
 				tse.getHandshakeCode()};
 

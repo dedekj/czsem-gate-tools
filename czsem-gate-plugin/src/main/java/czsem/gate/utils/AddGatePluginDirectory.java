@@ -16,9 +16,7 @@ public class AddGatePluginDirectory {
 			return;
 		}
 		
-		Config.getConfig().setGateHome();
-
-		Gate.init();
+		GateUtils.initGateKeepLog();
 		Gate.addKnownPlugin(new File(args[0]).toURI().toURL());
 		
 		Gate.writeUserConfig();

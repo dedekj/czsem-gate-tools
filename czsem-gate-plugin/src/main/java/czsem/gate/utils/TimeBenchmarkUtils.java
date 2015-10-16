@@ -71,7 +71,7 @@ public class TimeBenchmarkUtils {
 
 	public static String getTimeBenchmarkLogFileName() throws URISyntaxException, IOException
 	{
-		return Config.getConfig().getLogFileDirectoryPathExisting()+"/benchmark.txt";
+		return /*Config.getConfig().getLogFileDirectoryPathExisting()+*/"benchmark.txt";
 	}
 
 	public static void deleteGateTimeBenchmarkFile() throws URISyntaxException, IOException
@@ -106,7 +106,7 @@ public class TimeBenchmarkUtils {
 		doGateTimeBenchmarkReport(
 				reporter,
 				getTimeBenchmarkLogFileName(),
-				Config.getConfig().getLogFileDirectoryPathExisting()+"/benchmark_report.txt",
+				/*Config.getConfig().getLogFileDirectoryPathExisting()+*/"benchmark_report.txt",
 				PRTimeReporter.MEDIA_TEXT,
 				PRTimeReporter.SORT_EXEC_ORDER
 				);		

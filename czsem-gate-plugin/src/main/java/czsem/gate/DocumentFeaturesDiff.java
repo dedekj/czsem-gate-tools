@@ -6,7 +6,6 @@ import gate.Corpus;
 import gate.Document;
 import gate.Factory;
 import gate.FeatureMap;
-import gate.Gate;
 import gate.ProcessingResource;
 import gate.creole.SerialAnalyserController;
 import gate.util.AnnotationDiffer;
@@ -23,7 +22,6 @@ import org.apache.log4j.Logger;
 
 import czsem.Utils;
 import czsem.gate.plugins.LearningEvaluator;
-import czsem.gate.utils.Config;
 import czsem.gate.utils.GateUtils;
 import czsem.gate.utils.PRSetup;
 
@@ -59,9 +57,7 @@ public class DocumentFeaturesDiff
 	{
 		Logger.getLogger(DocumentFeaturesDiff.class).setLevel(Level.ALL);
 
-		Config cfg = Config.getConfig();
-		cfg.setGateHome();
-		Gate.init();
+		GateUtils.initGateKeepLog();
 		GateUtils.registerCzsemPlugin();
 		
 		ProcessingResource eval = 

@@ -14,9 +14,7 @@ import org.apache.commons.io.filefilter.DirectoryFileFilter;
 public class RegisterGatePluginDirectories {
 	
 	public static void main(String[] args) throws IOException, URISyntaxException, GateException {
-		Config.getConfig().setGateHome();
-
-		Gate.init();
+		GateUtils.initGateKeepLog();
 		
 		//work in current directory
 		if (args.length > 0)

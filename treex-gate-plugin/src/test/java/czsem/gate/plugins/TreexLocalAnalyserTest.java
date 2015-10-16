@@ -10,7 +10,6 @@ import gate.ProcessingResource;
 import gate.Utils;
 import gate.creole.SerialAnalyserController;
 
-import java.io.File;
 import java.util.List;
 
 import org.apache.log4j.Level;
@@ -19,7 +18,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import czsem.gate.treex.TreexServerExecution.RedirectionType;
-import czsem.gate.utils.Config;
 import czsem.gate.utils.GateUtils;
 import czsem.gate.utils.PRSetup;
 import czsem.gate.utils.PRSetup.SinglePRSetup;
@@ -215,8 +213,7 @@ public class TreexLocalAnalyserTest {
 	@Test(groups = { "slow" })
 	public static void inintFromPluginDirTest() throws Exception {
 		GateUtils.initGate();
-		GateUtils.registerPluginDirectory(new File(Config.getConfig().getCzsemPluginDir()
-				.replaceFirst("/czsem-gate-plugin/.*$", "/treex-gate-plugin/target/prepared-installer-files/treex-gate-plugin")));		
+		GateUtils.registerAllCzsemPrs();
 		
 		ProcessingResource pr = new SinglePRSetup(TreexLocalAnalyser.class)
 			.putFeature("serverPortNumber", 9991)	
