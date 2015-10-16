@@ -208,18 +208,18 @@ public class TreexServerExecution {
 		eh.append("PERL5LIB", path_sep + cfg.getTreexOnlineDir()); 
 		eh.append("PERL5LIB", path_sep + cfg.getTreexDir() + "/lib"); 
 		eh.append("PERL5LIB", path_sep + cfg.getTreexDir() + "/oldlib");
-		eh.append("PERL5LIB", path_sep + cfg.getTmtRoot() + "/libs/other");
+		//eh.append("PERL5LIB", path_sep + cfg.getTmtRoot() + "/libs/other");
 		eh.append("PERL5LIB", path_sep + System.getProperty("user.home") + "/perl5/lib/perl5");
 		eh.append("PERL5LIB", path_sep + System.getProperty("user.home") + "/perl5/lib/site_perl");
 		//The architecture specific directories are being searched by perl automatically
 		
-		String tmt = cfg.getTmtRoot();
-		if (! new File(tmt).exists()) {
-			if (new File(System.getProperty("user.home")+"/.treex").exists())
-				tmt = System.getProperty("user.home")+"/.treex";
-			else
-				tmt = treexDir.getParent();				
-		}
+		//String tmt = cfg.getTmtRoot();
+		String tmt;
+		if (new File(System.getProperty("user.home")+"/.treex").exists())
+			tmt = System.getProperty("user.home")+"/.treex";
+		else
+			tmt = treexDir.getParent();				
+
 		eh.setIfEmpty("TMT_ROOT", tmt);
 		eh.setIfEmpty("JAVA_HOME", System.getProperty("java.home"));
 		

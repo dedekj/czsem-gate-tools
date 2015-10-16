@@ -3,13 +3,17 @@
  ******************************************************************************/
 package czsem.gate.treex;
 
-import czsem.utils.AbstractConfig.ConfigLoadException;
+import czsem.utils.AbstractConfig;
 
-public class TreexConfig {
+public class TreexConfig extends AbstractConfig {
 
 	public static TreexConfig getConfig() throws ConfigLoadException {
-		// TODO Auto-generated method stub
-		return null;
+		return getSingleton(new TreexConfig());
+	}
+
+	@Override
+	public String getConfigKey() {
+		return "TREEX_GATE_PLUGIN_CONFIG";
 	}
 	
 	public String getTreexOnlineDir() {
@@ -28,14 +32,8 @@ public class TreexConfig {
 		return null;
 	}
 
-	public String getTmtRoot() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public String getTreexConfigDir() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
