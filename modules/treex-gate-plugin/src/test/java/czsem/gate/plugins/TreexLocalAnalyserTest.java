@@ -12,7 +12,6 @@ import gate.creole.SerialAnalyserController;
 
 import java.util.List;
 
-import org.apache.log4j.Level;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -26,7 +25,7 @@ public class TreexLocalAnalyserTest {
 	
 	@BeforeClass
 	public static void initGate() throws Exception {
-		GateUtils.initGateInSandBox(Level.INFO);
+		GateUtils.initGateKeepLog();
 		GateUtils.registerComponentIfNot(TreexLocalAnalyser.class);
 	}
 	

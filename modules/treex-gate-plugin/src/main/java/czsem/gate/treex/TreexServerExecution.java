@@ -7,8 +7,9 @@ import java.net.MalformedURLException;
 import java.util.Map.Entry;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import czsem.Utils;
 import czsem.utils.EnvMapHelper;
@@ -19,7 +20,8 @@ import czsem.utils.ProcessExec;
 
 public class TreexServerExecution {
 	
-	static Logger logger = Logger.getLogger(TreexServerExecution.class);
+	private static final Logger logger = LoggerFactory.getLogger(TreexServerExecution.class);
+	
 	
 	public static enum RedirectionType { LOG_FILES_APPEND, LOG_FILES_REPLACE, COPY_TO_STD, INHERIT_IO };
 	

@@ -5,11 +5,15 @@ import gate.*;
 import java.util.Random;
 
 import org.apache.log4j.Level;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
 public class GateUtilsTest {
+	private static final Logger logger = LoggerFactory.getLogger(GateUtilsTest.class);
+	
 	
 	@BeforeClass
 	public static void intiGate() throws Exception{
@@ -40,7 +44,7 @@ public class GateUtilsTest {
 			/**/
 			
 			if (i % logLine == 0) {
-				System.err.println(i);
+				logger.info("Gate leakyTest after {} documents...", i+1);
 			}
 		}
 		

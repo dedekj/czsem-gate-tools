@@ -8,7 +8,6 @@ import gate.FeatureMap;
 import java.net.URL;
 import java.util.List;
 
-import org.apache.log4j.Level;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
@@ -21,7 +20,8 @@ public class TreexPreprocessingTest {
 
 	public TreexPreprocessingTest() throws Exception
 	{
-		GateUtils.loggerSetup(Level.ALL);
+		//TODO
+		//GateUtils.loggerSetup(Level.ALL);
 		
 		TreexServerExecution tse = new TreexServerExecution();
 		tse.setPortNumber(9097);

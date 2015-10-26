@@ -1,25 +1,39 @@
 package czsem.gate.utils;
 
-import java.io.File;
-
 import gate.Gate;
 
-public class CzsemConfig
+import java.io.File;
+
+import czsem.utils.AbstractConfig;
+
+public class CzsemConfig extends AbstractConfig
 {
 	
-	private static CzsemConfig inst = new CzsemConfig();
-
-	public static CzsemConfig getConfig() {
-		return inst;
+	public static CzsemConfig getConfig() throws ConfigLoadException {
+		return new CzsemConfig().getSingleton();
 	}
 
 	public String getGateHome() {
-		return "C:/Program Files/GATE_Developer_8.1";
+		return get("gateHome");
 	}
 	
 	public void setGateHome()
 	{
 		if (Gate.getGateHome() == null)
 			Gate.setGateHome(new File(getGateHome()));
+	}
+
+	@Override
+	public String getConfigKey() {
+		return "czsem_config";
+	}
+
+	@Override
+	public void loadConfig() throws ConfigLoadException {
+		if (Gate.isInitialised()) {
+			loadConfig(Gate.getClassLoader());
+		} else {
+			super.loadConfig();
+		}
 	}
 }

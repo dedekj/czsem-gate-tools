@@ -3,24 +3,23 @@ package czsem.gate.treex;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import czsem.Utils;
 import czsem.gate.treex.TreexServerExecution.RedirectionType;
-import czsem.gate.utils.GateUtils;
 
 public class TreexAnalysisTest {
-	
-	static Logger logger = Logger.getLogger(TreexAnalysisTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(TreexAnalysisTest.class);
 	
 	@BeforeClass
 	public static void initLogger()
 	{
-		GateUtils.loggerSetup(Level.ALL);
+		//TODO
+		//GateUtils.loggerSetup(Level.ALL);
 		
 	}
 	

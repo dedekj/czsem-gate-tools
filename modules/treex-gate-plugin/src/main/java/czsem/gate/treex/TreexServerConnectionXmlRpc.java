@@ -7,16 +7,17 @@ import java.util.Map;
 import java.util.Vector;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 import org.apache.xmlrpc.serializer.XmlWriterFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import czsem.gate.treex.xmlwriter.TreexXmlWriterFactory;
 
 public class TreexServerConnectionXmlRpc implements TreexServerConnection {
-	static Logger logger = Logger.getLogger(TreexServerConnectionXmlRpc.class); 
+	private static final Logger logger = LoggerFactory.getLogger(TreexServerConnectionXmlRpc.class);
 
 	XmlRpcClient rpcClient;
 

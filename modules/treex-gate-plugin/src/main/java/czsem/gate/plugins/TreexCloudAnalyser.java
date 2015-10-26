@@ -7,7 +7,8 @@ import gate.gui.MainFrame;
 
 import javax.swing.SwingUtilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import czsem.gate.treex.TreexAnalyserBase;
 import czsem.gate.treex.TreexException;
@@ -17,8 +18,9 @@ import czsem.gate.utils.GateUtils;
 
 @CreoleResource(name = "czsem TreexCloudAnalyser", comment = "Analyzes givem corpus by arbitrary Treex server.", 
 	helpURL="https://czsem-suite.atlassian.net/wiki/display/DOC/Treex+GATE+Plugin")
-public class TreexCloudAnalyser extends TreexAnalyserBase {	
-	private static final Logger logger = Logger.getLogger(TreexCloudAnalyser.class);
+public class TreexCloudAnalyser extends TreexAnalyserBase {
+	
+	private static final Logger logger = LoggerFactory.getLogger(TreexCloudAnalyser.class);
 	
 	private static final long serialVersionUID = 497874336110323651L;
 

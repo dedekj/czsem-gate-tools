@@ -47,6 +47,8 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.reflections.Reflections;
 
+import czsem.utils.AbstractConfig.ConfigLoadException;
+
 
 public class GateUtils
 {
@@ -355,7 +357,7 @@ public class GateUtils
 		initGate(Level.OFF);
 	}
 
-	public static void initGateKeepLog() throws GateException {
+	public static void initGateKeepLog() throws GateException, ConfigLoadException {
 		if (Gate.isInitialised()) return;
 		
 		CzsemConfig.getConfig().setGateHome();
@@ -364,6 +366,7 @@ public class GateUtils
 		
 	}
 	
+	/*
 	public static void loggerSetup(Level logLevel)
 	{
 		Logger logger = Logger.getRootLogger();
@@ -371,11 +374,13 @@ public class GateUtils
 	    logger.removeAllAppenders();
 		BasicConfigurator.configure();		
 	}
+	*/
 
 	public static void initGate(Level logLevel) throws GateException, IOException, URISyntaxException {
 		if (Gate.isInitialised()) return;
 		
-		loggerSetup(logLevel);
+		//TODO
+		//loggerSetup(logLevel);
 		
 		initGateKeepLog();		
 	}

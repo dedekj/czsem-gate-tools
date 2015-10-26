@@ -15,8 +15,6 @@ import gate.creole.metadata.CreoleResource;
 
 import java.net.URL;
 
-import org.apache.log4j.Level;
-
 import czsem.gate.treex.TreexAnalyserXmlRpc;
 import czsem.gate.treex.TreexException;
 import czsem.gate.treex.TreexServerConnectionXmlRpc;
@@ -127,7 +125,7 @@ public class TreexLocalAnalyser extends TreexAnalyserXmlRpc {
 	
 	public static void main (String [] args) throws Exception {
 		System.err.println("--- Treex TreexLocalAnalyser Test ---");
-		GateUtils.initGate(Level.INFO);
+		GateUtils.initGateKeepLog();
 		GateUtils.registerComponentIfNot(TreexLocalAnalyser.class);
 		
 		SerialAnalyserController analysis = PRSetup.buildGatePipeline(		

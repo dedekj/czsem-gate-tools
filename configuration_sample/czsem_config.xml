@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.7.0_45" class="java.beans.XMLDecoder">
+ <object class="java.util.HashMap">
+  <void method="put">
+   <string>gateHome</string>
+   <string>C:\Program Files\GATE_Developer_8.1</string>
+  </void>
+ </object>
+</java>
