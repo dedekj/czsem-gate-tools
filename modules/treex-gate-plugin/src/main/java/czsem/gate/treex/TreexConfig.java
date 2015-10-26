@@ -3,12 +3,14 @@
  ******************************************************************************/
 package czsem.gate.treex;
 
+import java.io.File;
+
 import czsem.utils.AbstractConfig;
 
 public class TreexConfig extends AbstractConfig {
 
 	public static TreexConfig getConfig() throws ConfigLoadException {
-		return getSingleton(new TreexConfig());
+		return new TreexConfig().getSingleton();
 	}
 
 	@Override
@@ -17,23 +19,29 @@ public class TreexConfig extends AbstractConfig {
 	}
 	
 	public String getTreexOnlineDir() {
-		// TODO Auto-generated method stub
-		return null;
+		String ret = get("treexOnlineDir");
+		//TODO try guess
+		return ret;
 	}
 
 
 	public String getLogFileDirectoryPathExisting() {
-		// TODO Auto-generated method stub
-		return null;
+		String path = get("treexLogDir");
+		
+		if (path != null)
+			new File(path).mkdirs();
+		else {
+			//TODO try create temp
+		}
+		
+		return path;
 	}
 
 	public String getTreexDir() {
-		// TODO Auto-generated method stub
-		return null;
+		return get("treexDir");
 	}
 
 	public String getTreexConfigDir() {
-		// TODO Auto-generated method stub
-		return null;
+		return get("treexConfigDir");
 	}
 }

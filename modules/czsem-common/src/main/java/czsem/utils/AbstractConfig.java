@@ -80,7 +80,7 @@ public abstract class AbstractConfig {
 	{
 		setMap(loadFromFile(filename, classLoader));
 		
-		setLoadedFrom(filename);
+		setLoadedFrom(new File(filename).getAbsolutePath());
 		
 		logger.info("Config '"+getConfigKey()+"' loaded from: "+new File(filename).getAbsolutePath());
 	}
@@ -195,12 +195,15 @@ public abstract class AbstractConfig {
 
 	protected String get(String key)
 	{
-		return (String) getMap().get(key);
+		return (String) getObj(key);
 	}
 
 	protected Object getObj(String key)
 	{
-		return getMap().get(key);
+		Object ret = getMap().get(key);
+		if (ret == null)
+			logger.warn("Config property not set {} in {}, returning null...", key, getLoadedFrom());
+		return ret;
 	}
 		
 
