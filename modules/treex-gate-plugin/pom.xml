@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.sourceforge.czsem</groupId>
+		<groupId>net.sf.czsem</groupId>
 		<artifactId>czsem</artifactId>
 		<version>3.0-SNAPSHOT</version>
 		<relativePath>../_parent-pom</relativePath>
