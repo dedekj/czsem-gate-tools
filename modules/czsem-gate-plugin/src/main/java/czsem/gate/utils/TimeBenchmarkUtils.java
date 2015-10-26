@@ -11,11 +11,6 @@ import java.io.PrintStream;
 import java.net.URISyntaxException;
 import java.util.Map;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
-import org.apache.log4j.RollingFileAppender;
-
 public class TimeBenchmarkUtils {
 
 	private static class TimeBenchmarkPrintMapSimple implements TimeBenchmarkReporter

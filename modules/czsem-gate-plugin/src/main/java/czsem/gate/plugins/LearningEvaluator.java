@@ -22,7 +22,8 @@ import java.util.Map;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import czsem.gate.DocumentFeaturesDiff;
 import czsem.utils.MultiSet;
@@ -34,7 +35,9 @@ import czsem.utils.MultiSet;
  */
 @CreoleResource(name = "czsem LearningEvaluator", comment = "Measures performance between two AS, similar to QualityAssurancePR")
 public class LearningEvaluator extends AbstractLanguageAnalyser
-{		
+{
+	private static final Logger logger = LoggerFactory.getLogger(LearningEvaluator.class);
+	
 	 /** A temporary (not persistent) repository that stores results of all LearningEvaluators that were executed so far.*/	 
 	public static class CentralResultsRepository
 	{
@@ -79,7 +82,7 @@ public class LearningEvaluator extends AbstractLanguageAnalyser
 
 		public void logAll()
 		{
-			Logger.getLogger(getClass()).info("---complete repository statistics---");
+			logger.info("---complete repository statistics---");
 			for (LearningEvaluator eval : repository_map.keySet())
 			{
 				eval.logStatistics(repository_map.get(eval));				
@@ -293,8 +296,6 @@ public class LearningEvaluator extends AbstractLanguageAnalyser
 	protected void logStatistics(List<DocumentDiff> docDifs)
 	{								
 		AnnotationDiffer overall_differ = countOverallDiffer(docDifs, new AllDiffsCondition());
-		
-		Logger logger = Logger.getLogger(getClass());
 		
 //ILP_config_NE_roots_subtree
 		logger.info(String.format("%28s overall: %s", responseASName, getStatisticsStr(overall_differ)));

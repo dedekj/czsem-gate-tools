@@ -1,12 +1,14 @@
 package czsem.gate.externalannotator;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import gate.Document;
 
 public class SequenceAnnotator
 {
-	static Logger logger = Logger.getLogger(SequenceAnnotator.class);
+	private static final Logger logger = LoggerFactory.getLogger(SequenceAnnotator.class);
+
 	private String string_content;
 	private int last_start_index;
 	private int last_length=0;

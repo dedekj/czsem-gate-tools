@@ -17,9 +17,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-
 import czsem.Utils;
 import czsem.gate.plugins.LearningEvaluator;
 import czsem.gate.utils.GateUtils;
@@ -55,7 +52,7 @@ public class DocumentFeaturesDiff
 	
 	public static void main(String [] args) throws Exception
 	{
-		Logger.getLogger(DocumentFeaturesDiff.class).setLevel(Level.ALL);
+		//Logger.getLogger(DocumentFeaturesDiff.class).setLevel(Level.ALL);
 
 		GateUtils.initGateKeepLog();
 		GateUtils.registerCzsemPlugin();

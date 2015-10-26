@@ -24,8 +24,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import czsem.Utils;
 import czsem.gate.utils.GateUtils;
@@ -34,7 +34,7 @@ import czsem.gate.utils.GateUtils;
 public class CrossValidation extends AbstractProcessingResource
 {	
 	private static final long serialVersionUID = 3407156606160786711L;
-	static Logger logger = Logger.getLogger(CrossValidation.class);
+	private static final Logger logger = LoggerFactory.getLogger(CrossValidation.class);
 
 	protected LanguageAnalyser trainingPR;
 	protected LanguageAnalyser testingPR;
@@ -276,9 +276,7 @@ public class CrossValidation extends AbstractProcessingResource
 	
 	public static void main(String[] args) throws Exception
 	{
-		BasicConfigurator.configure();
-
-		Gate.init();
+		GateUtils.initGateKeepLog();
 	    Gate.getCreoleRegister().registerDirectories(new File("GATE_plugins").toURI().toURL());
 	    Gate.getCreoleRegister().registerDirectories( 
     		    new File(Gate.getPluginsHome(), "Machine_Learning").toURI().toURL());

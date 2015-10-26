@@ -13,7 +13,7 @@ public class TreexConfig extends AbstractConfig {
 
 	@Override
 	public String getConfigKey() {
-		return "TREEX_GATE_PLUGIN_CONFIG";
+		return "treex_gate_plugin_config";
 	}
 	
 	public String getTreexOnlineDir() {

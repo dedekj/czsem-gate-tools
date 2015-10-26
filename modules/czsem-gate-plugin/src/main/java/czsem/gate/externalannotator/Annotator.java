@@ -8,14 +8,15 @@ import gate.util.InvalidOffsetException;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import czsem.gate.externalannotator.RecursiveEntityAnnotator.SecondaryEntity;
 import czsem.gate.externalannotator.SequenceAnnotator.CannotAnnotateCharacterSequence;
 import czsem.gate.utils.GateUtils;
 
 public class Annotator implements AnnotatorInterface {
-	private static Logger logger = Logger.getLogger(Annotator.class);
+	private static Logger logger = LoggerFactory.getLogger(Annotator.class);
 
 	public static interface Annotable {
 		public String getAnnotationType();
@@ -154,8 +155,7 @@ public class Annotator implements AnnotatorInterface {
 			annotateSeq(seqAnn);
 			return true;
 		} catch (CannotAnnotateCharacterSequence e) {
-			logger.error(String.format("SeqAnnotation error in document: %s", as.getDocument().getName()));
-			logger.error(this, e);
+			logger.error("SeqAnnotation error in document: {}\n{}", as.getDocument().getName(), this, e);
 			return false;
 		}
 	}

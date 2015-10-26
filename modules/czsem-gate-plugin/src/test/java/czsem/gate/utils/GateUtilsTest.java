@@ -4,7 +4,6 @@ import gate.*;
 
 import java.util.Random;
 
-import org.apache.log4j.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeClass;
@@ -17,7 +16,7 @@ public class GateUtilsTest {
 	
 	@BeforeClass
 	public static void intiGate() throws Exception{
-		GateUtils.initGate(Level.INFO);
+		GateUtils.initGateKeepLog();
 	}
 	
 	public static String createRandomString(int length) {

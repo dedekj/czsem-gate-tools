@@ -42,17 +42,16 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.reflections.Reflections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import czsem.utils.AbstractConfig.ConfigLoadException;
 
 
 public class GateUtils
 {
-	private static Logger logger = Logger.getLogger(GateUtils.class);
+	private static final Logger logger = LoggerFactory.getLogger(GateUtils.class);
 
 	/** Removing accents (and diacritics) */
 	public static String removeDiacritics(String orig) {  
@@ -280,9 +279,8 @@ public class GateUtils
 				new FileOutputStream(filename)), "utf8");
 		out.write(doc.toXml());
 		out.close();
-		Logger l = Logger.getLogger(GateUtils.class);
-		l.debug(String.format("saveGateDocumentToXML done: %s", filename));
-
+		
+		logger.debug(String.format("saveGateDocumentToXML done: %s", filename));
 	}
 
 	
@@ -354,7 +352,9 @@ public class GateUtils
 	}
 
 	public static void initGate() throws GateException, IOException, URISyntaxException {
-		initGate(Level.OFF);
+		//initGate(Level.OFF);
+		//TODO
+		initGateKeepLog();
 	}
 
 	public static void initGateKeepLog() throws GateException, ConfigLoadException {
@@ -374,7 +374,6 @@ public class GateUtils
 	    logger.removeAllAppenders();
 		BasicConfigurator.configure();		
 	}
-	*/
 
 	public static void initGate(Level logLevel) throws GateException, IOException, URISyntaxException {
 		if (Gate.isInitialised()) return;
@@ -399,6 +398,7 @@ public class GateUtils
 		Gate.runInSandbox(true);
 		Gate.init();				
 	}
+	*/
 
 	public static void initGateInSandBoxKeepLog() throws GateException {
 		if (Gate.isInitialised()) return;

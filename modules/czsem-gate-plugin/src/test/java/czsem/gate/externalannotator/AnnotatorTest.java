@@ -10,8 +10,6 @@ import gate.util.InvalidOffsetException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -79,7 +77,7 @@ public class AnnotatorTest {
 
 	@Test(expectedExceptions = CannotAnnotateCharacterSequence.class)
 	public static void safeAnnotateIterableSeq() throws Exception {
-		Logger.getLogger(Annotator.class).setLevel(Level.OFF);
+		setLogLevelOff();
 		
 		String docStr = "aaa bbb";
 		
@@ -105,7 +103,7 @@ public class AnnotatorTest {
 
 	@Test
 	public static void annotateTokensWhenSentencesWrong() throws Exception {
-		Logger.getLogger(Annotator.class).setLevel(Level.OFF);
+		setLogLevelOff();
 		
 		String docStr = "aaa bbb aaa ddd aaa";
 		
@@ -162,7 +160,7 @@ public class AnnotatorTest {
 	
 	@Test
 	public static void annotateSentencesWhenTokensWrong() throws Exception {
-		Logger.getLogger(Annotator.class).setLevel(Level.OFF);
+		setLogLevelOff();
 		
 		String docStr = "aaa bbb aaa bbb aaa";
 		
@@ -211,7 +209,7 @@ public class AnnotatorTest {
 
 	@Test
 	public static void safeAnnotateIterableSeqDot() throws Exception {
-		Logger.getLogger(Annotator.class).setLevel(Level.ERROR);
+		setLogLevelErr();
 		
 		String docStr = ". konec";
 		
@@ -236,5 +234,15 @@ public class AnnotatorTest {
 		a.setSeqAnot(new SequenceAnnotator(doc));
 //		a.safeAnnotateIterableSeq(sa);
 		a.annotateIterableSeq(sa);
+	}
+
+	public static void setLogLevelErr() {
+		//TODO
+		//Logger.getLogger(Annotator.class).setLevel(Level.ERROR);		
+	}
+
+	public static void setLogLevelOff() {
+		//TODO
+		//Logger.getLogger(Annotator.class).setLevel(Level.OFF);		
 	}
 }

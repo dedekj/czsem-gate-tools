@@ -14,8 +14,6 @@ import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
-
 import czsem.Utils;
 import czsem.gate.AbstractAnnotationDependencyMarker;
 
@@ -23,8 +21,6 @@ import czsem.gate.AbstractAnnotationDependencyMarker;
 public class AnnotationDependencyRootMarker extends AbstractAnnotationDependencyMarker
 {
 	private static final long serialVersionUID = 8357007815773883611L;
-	static Logger logger = Logger.getLogger(AnnotationDependencyRootMarker.class);
-	
 	
 	protected static class DependencyBFSnode
 	{

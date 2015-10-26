@@ -22,10 +22,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class HtmlExport {
-	private static Logger logger = Logger.getLogger(HtmlExport.class);
+	private static final Logger logger = LoggerFactory.getLogger(HtmlExport.class);
 	
 	
 	protected String annotationSetName;
@@ -55,7 +57,7 @@ public class HtmlExport {
 	}
 
 	public static void main(String[] args) throws Exception {
-		GateUtils.initGateInSandBox();
+		GateUtils.initGateKeepLog();
 		Gate.getCreoleRegister().registerComponent(DumpingPR.class);
 		
 		//GateUtils.registerPluginDirectory("Tools");
