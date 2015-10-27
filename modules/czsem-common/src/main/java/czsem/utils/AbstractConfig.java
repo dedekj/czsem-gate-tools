@@ -225,7 +225,7 @@ public abstract class AbstractConfig {
 	protected void setDefaultVal(String key, Object defaultValue)
 	{
 		if (! hasKey(key)) {
-			logger.info("Config property '{}' not set, setting to default: '{}'.\nConfig file: {}", key, defaultValue, getLoadedFrom());
+			logger.info("Config property '{}' not set, setting to default: '{}'.\n ...config file was: {}", key, defaultValue, getLoadedFrom());
 			set(key, defaultValue);
 		}
 	}

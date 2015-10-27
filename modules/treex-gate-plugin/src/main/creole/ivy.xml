@@ -5,6 +5,8 @@
 	
 	<info organisation="czsem" module="treex-gate-plugin" />
 	<dependencies>
+		<dependency rev="${dependency.org.slf4j.slf4j-log4j12.version}" name="slf4j-log4j12" org="org.slf4j"/>
+		
 		<dependency rev="${dependency.org.apache.xmlrpc.xmlrpc-client.version}" name="xmlrpc-client" org="org.apache.xmlrpc">
 			<exclude name="junit" org="junit"/>
 			<exclude name="log4j" org="log4j"/>
