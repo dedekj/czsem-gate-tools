@@ -8,8 +8,21 @@
 	<packaging>pom</packaging>
 
 	<name>Czsem Mining Suite</name>
-	<url>http://czsem.sourceforge.net/</url>
+	<description>Utility functions for text processing.</description>
+	<url>http://czsem.sourceforge.net</url>
 
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	<scm>
+		<url>https://github.com/dedekj/czsem-gate-tools.git</url>
+	</scm>
+ 	
 	<issueManagement>
 		<url>http://github.com/dedekj/czsem-gate-tools/issues</url>
 	</issueManagement>
