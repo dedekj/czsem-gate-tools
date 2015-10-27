@@ -1,5 +1,7 @@
 # czsem-gate-tools
 
+Utility functions for text processing.
+
 ## Modules
 
 ### treex-gate-plugin
