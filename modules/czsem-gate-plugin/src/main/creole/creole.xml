@@ -1,6 +1,10 @@
 <?xml version="1.0"?>  
-<CREOLE-DIRECTORY>
-  <JAR SCAN="false">../bin/czsem-common-${dependency.czsem.czsem-common.version}.jar</JAR>  
-  <JAR SCAN="false">../bin/commons-lang3-${dependency.org.apache.commons.commons-lang3.version}.jar</JAR>  
-  <JAR SCAN="true">../bin/${project.artifactId}-${project.version}.${project.packaging}</JAR>
+<CREOLE-DIRECTORY ID="${project.groupId}.${project.artifactId}" VERSION="${project.version}" >
+  <JAR SCAN="true">lib/${project.artifactId}-${project.version}.${project.packaging}</JAR>
+
+  <JAR SCAN="false">lib/czsem-common-${dependency.net.sf.czsem.czsem-common.version}.jar</JAR>  
+  
+  <JAR SCAN="false">lib/commons-lang3-${dependency.org.apache.commons.commons-lang3.version}.jar</JAR>  
+  <JAR SCAN="false">lib/slf4j-api-${dependency.org.slf4j.slf4j-api.version}.jar</JAR>
+  <JAR SCAN="false">lib/slf4j-log4j12-${dependency.org.slf4j.slf4j-log4j12.version}.jar</JAR>
 </CREOLE-DIRECTORY> 
