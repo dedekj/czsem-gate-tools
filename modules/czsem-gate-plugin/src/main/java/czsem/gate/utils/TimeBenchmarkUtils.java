@@ -11,6 +11,11 @@ import java.io.PrintStream;
 import java.net.URISyntaxException;
 import java.util.Map;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
+import org.apache.log4j.RollingFileAppender;
+
 public class TimeBenchmarkUtils {
 
 	private static class TimeBenchmarkPrintMapSimple implements TimeBenchmarkReporter
@@ -76,8 +81,6 @@ public class TimeBenchmarkUtils {
 
 	public static void enableGateTimeBenchmark() throws URISyntaxException, IOException
 	{
-		//TODO
-		/*
 		RollingFileAppender appender = new RollingFileAppender();
 		appender.setThreshold(Level.DEBUG);
 		appender.setFile(getTimeBenchmarkLogFileName());
@@ -93,7 +96,6 @@ public class TimeBenchmarkUtils {
 		bl.addAppender(appender);
 		bl.setAdditivity(false);
 		bl.setLevel(Level.DEBUG);
-		*/
 		
 		Benchmark.setBenchmarkingEnabled(true);
 	}

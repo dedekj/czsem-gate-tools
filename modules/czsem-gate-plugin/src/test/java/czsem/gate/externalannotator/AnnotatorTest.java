@@ -10,6 +10,8 @@ import gate.util.InvalidOffsetException;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -237,12 +239,10 @@ public class AnnotatorTest {
 	}
 
 	public static void setLogLevelErr() {
-		//TODO
-		//Logger.getLogger(Annotator.class).setLevel(Level.ERROR);		
+		Logger.getLogger(Annotator.class).setLevel(Level.ERROR);		
 	}
 
 	public static void setLogLevelOff() {
-		//TODO
-		//Logger.getLogger(Annotator.class).setLevel(Level.OFF);		
+		Logger.getLogger(Annotator.class).setLevel(Level.OFF);		
 	}
 }
