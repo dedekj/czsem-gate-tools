@@ -24,10 +24,11 @@ public abstract class AbstractConfig {
 	public static final String CONFIG_DIR_ENVP = "CZSEM_CONFIG_DIR";
 	public static final String CONFIG_DIR = "configuration";
 
-	
 	private static final Map<String,AbstractConfig> all_config_singletons = new HashMap<String, AbstractConfig>();
 
 	public abstract String getConfigKey();
+	protected abstract void updateDefaults();
+
 	
 	private Map<String, Object> map;
 	private String loadedFrom;
@@ -59,6 +60,7 @@ public abstract class AbstractConfig {
 	public void loadConfig() throws ConfigLoadException 
 	{
 		loadConfig(null);
+		updateDefaults();
 	}
 
 	public String getEnvOrSysProperty(String name) {
@@ -198,12 +200,30 @@ public abstract class AbstractConfig {
 		return (String) getObj(key);
 	}
 
-	protected Object getObj(String key)
+	protected Object getObj(String key) {
+		return getMap().get(key);
+	}
+	
+	public boolean hasKey(String key) {
+		return getMap().containsKey(key);
+	}
+	
+	public static interface  DefaultValueGetter {
+		Object getDefaultValue();
+	}
+	
+	protected void setDefaultFun(String key, DefaultValueGetter defaultValue) {
+		if (! hasKey(key)) {
+			setDefaultVal(key, defaultValue.getDefaultValue());
+		}
+	}
+	
+	protected void setDefaultVal(String key, Object defaultValue)
 	{
-		Object ret = getMap().get(key);
-		if (ret == null)
-			logger.warn("Config property not set {} in {}, returning null...", key, getLoadedFrom());
-		return ret;
+		if (! hasKey(key)) {
+			logger.info("Config property '{}' not set, setting to default: '{}'.\nConfig file: {}", key, defaultValue, getLoadedFrom());
+			set(key, defaultValue);
+		}
 	}
 		
 

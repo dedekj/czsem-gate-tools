@@ -17,6 +17,12 @@ public class CzsemConfig extends AbstractConfig
 		return get("gateHome");
 	}
 	
+	@Override
+	protected void updateDefaults() {
+		setDefaultVal("gateHome", null);
+	}
+
+	
 	public void setGateHome()
 	{
 		if (Gate.getGateHome() == null)

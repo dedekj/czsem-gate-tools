@@ -145,4 +145,13 @@ public abstract class TreexAnalyserBase extends AbstractLanguageAnalyserWithInpu
 	public void setScenarioString(String scenarioString) {
 		this.scenarioString = scenarioString;
 	}
+	
+	public URL getTreexOnlineDir() {
+		return TreexConfig.getTreexOnlineDirFromPlugin();
+	}
+
+	@CreoleParameter(defaultValue=TreexConfig.TREEX_ONLINE)
+	public void setTreexOnlineDir(URL treexOnlineDir) {
+		TreexConfig.setTreexOnlineDirFromPlugin(treexOnlineDir);
+	}
 }

@@ -4,10 +4,23 @@
 package czsem.gate.treex;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Files;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import czsem.Utils;
 import czsem.utils.AbstractConfig;
 
 public class TreexConfig extends AbstractConfig {
+	private static final Logger logger = LoggerFactory.getLogger(TreexConfig.class);
+	
+	public static final String TREEX_ONLINE = "treex_online";
+	
+	private static volatile URL treexOnlineDirFromPlugin = null;
 
 	public static TreexConfig getConfig() throws ConfigLoadException {
 		return new TreexConfig().getSingleton();
@@ -17,31 +30,58 @@ public class TreexConfig extends AbstractConfig {
 	public String getConfigKey() {
 		return "treex_gate_plugin_config";
 	}
+
+	public String getTreexOnlineDir() { 				return get("treexOnlineDir"); }
+	public String getLogFileDirectoryPathExisting() { 	return get("treexLogDir"); }
+	public String getTreexDir() { 						return get("treexDir"); }
+	public String getTreexConfigDir() {					return get("treexConfigDir"); }
+
+	@Override
+	protected void updateDefaults() {
+		setDefaultVal("treexConfigDir", 	null);
+		setDefaultVal("treexDir", 			null);
+		setDefaultFun("treexOnlineDir", 	this::findTreexOnlineDir);
+		setDefaultFun("treexLogDir", 		this::unsureLogFileDirectoryPathExisting);
+	}
+
 	
-	public String getTreexOnlineDir() {
-		String ret = get("treexOnlineDir");
-		//TODO try guess
-		return ret;
+	public String findTreexOnlineDir() {
+		File f = new File(TREEX_ONLINE);
+		if (f.exists())
+			return f.getAbsolutePath();
+
+		URL url = getTreexOnlineDirFromPlugin();
+		if (url != null)
+			try {
+				return Utils.URLToFile(url).getAbsolutePath();
+			} catch (IOException | IllegalArgumentException | URISyntaxException e) {
+				logger.warn("Failed to get abs path from URL: {}\n{}", url, e.getMessage());
+			}
+		
+		return null;
 	}
 
 
-	public String getLogFileDirectoryPathExisting() {
+	public String unsureLogFileDirectoryPathExisting() {
 		String path = get("treexLogDir");
 		
 		if (path != null)
 			new File(path).mkdirs();
 		else {
-			//TODO try create temp
+			try {
+				path = Files.createTempDirectory("czsem_treex_logs_").toAbsolutePath().toString();
+			} catch (IOException e) {
+				throw new RuntimeException("Failed to create a temporary directory...", e);
+			}
 		}
-		
 		return path;
 	}
 
-	public String getTreexDir() {
-		return get("treexDir");
+	public static URL getTreexOnlineDirFromPlugin() {
+		return treexOnlineDirFromPlugin;
 	}
 
-	public String getTreexConfigDir() {
-		return get("treexConfigDir");
+	public static void setTreexOnlineDirFromPlugin(URL treexOnlineDirFromPlugin) {
+		TreexConfig.treexOnlineDirFromPlugin = treexOnlineDirFromPlugin;
 	}
 }
