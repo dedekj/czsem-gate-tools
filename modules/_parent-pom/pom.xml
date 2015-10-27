@@ -35,6 +35,7 @@
 		<module>../custom-properties-maven-plugin</module>
 		
 		<module>../czsem-common</module>
+		<module>../fs-query</module>
 		<module>../czsem-gate-plugin</module>
 		<module>../treex-gate-plugin</module>
 	</modules>
