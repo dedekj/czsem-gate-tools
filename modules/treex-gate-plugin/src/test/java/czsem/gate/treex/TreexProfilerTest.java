@@ -24,7 +24,8 @@ public class TreexProfilerTest {
 	@Test(timeOut = 30000)
 	public void profilingTest() throws Exception {
 		TreexServerExecution tse = new TreexServerExecution();
-		tse.setRedirectionType(RedirectionType.INHERIT_IO);
+		//tse.setRedirectionType(RedirectionType.INHERIT_IO); //this is much more slower
+		tse.setRedirectionType(RedirectionType.LOG_FILES_REPLACE);
 		tse.setHandshakeCode("profilingTest");
 		
 		
