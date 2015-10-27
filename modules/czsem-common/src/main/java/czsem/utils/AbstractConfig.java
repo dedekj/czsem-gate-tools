@@ -23,6 +23,7 @@ public abstract class AbstractConfig {
 
 	public static final String CONFIG_DIR_ENVP = "CZSEM_CONFIG_DIR";
 	public static final String CONFIG_DIR = "configuration";
+	public static final String TOOLS_DIR = "czsem-gate-tools";
 
 	private static final Map<String,AbstractConfig> all_config_singletons = new HashMap<String, AbstractConfig>();
 
@@ -111,25 +112,23 @@ public abstract class AbstractConfig {
 			return;
 		}
 		catch (Exception e)	{fe.add(e);}
-
-		//third: try default loc
-		try {
-			loadConfig(getDefaultLoc(), classLoader);				
-			return;
-		} catch (Exception e) {fe.add(e);}
-
-		//fourth: try ../default loc
-		try {
-			loadConfig("../" +getDefaultLoc(), classLoader);			
-			return;
-		} catch (Exception e) {fe.add(e);}
-
-		//fifth: try ../../default loc
-		try {
-			loadConfig("../../" +getDefaultLoc(), classLoader);			
-			return;
-		} catch (Exception e) {fe.add(e);}
 		
+		String [] tryPaths = { 
+			"",
+			"../",
+			"../"+TOOLS_DIR+"/"+CONFIG_DIR+"/",
+			"../../",
+			"../../"+TOOLS_DIR+"/"+CONFIG_DIR+"/",
+		};
+		
+		for (String tryPath : tryPaths) {
+			try {
+				loadConfig(tryPath + getDefaultLoc(), classLoader);				
+				return;
+			} catch (Exception e) {fe.add(e);}
+			
+		}
+
 		throw fe;
 	}
 	
