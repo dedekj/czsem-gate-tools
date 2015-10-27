@@ -32,6 +32,8 @@
 	</properties>
 
 	<modules>
+		<module>../custom-properties-maven-plugin</module>
+		
 		<module>../czsem-common</module>
 		<module>../czsem-gate-plugin</module>
 		<module>../treex-gate-plugin</module>
