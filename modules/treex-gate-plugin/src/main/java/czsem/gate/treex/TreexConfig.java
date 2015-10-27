@@ -40,8 +40,12 @@ public class TreexConfig extends AbstractConfig {
 	protected void updateDefaults() {
 		setDefaultVal("treexConfigDir", 	null);
 		setDefaultVal("treexDir", 			null);
+		
+		//call only if not found
 		setDefaultFun("treexOnlineDir", 	this::findTreexOnlineDir);
-		setDefaultFun("treexLogDir", 		this::unsureLogFileDirectoryPathExisting);
+		
+		//call always
+		setDefaultVal("treexLogDir", 		unsureLogFileDirectoryPathExisting());
 	}
 
 	

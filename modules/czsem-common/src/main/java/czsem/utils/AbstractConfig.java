@@ -214,8 +214,12 @@ public abstract class AbstractConfig {
 	
 	protected void setDefaultFun(String key, DefaultValueGetter defaultValue) {
 		if (! hasKey(key)) {
-			setDefaultVal(key, defaultValue.getDefaultValue());
+			forceDefault(key, defaultValue);
 		}
+	}
+
+	protected void forceDefault(String key, DefaultValueGetter defaultValue) {
+		setDefaultVal(key, defaultValue.getDefaultValue());
 	}
 	
 	protected void setDefaultVal(String key, Object defaultValue)
