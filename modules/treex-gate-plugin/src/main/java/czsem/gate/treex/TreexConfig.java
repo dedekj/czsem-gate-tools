@@ -55,12 +55,13 @@ public class TreexConfig extends AbstractConfig {
 			return f.getAbsolutePath();
 
 		URL url = getTreexOnlineDirFromPlugin();
-		if (url != null)
+		if (url != null) {
 			try {
 				return Utils.URLToFile(url).getAbsolutePath();
 			} catch (IOException | IllegalArgumentException | URISyntaxException e) {
 				logger.warn("Failed to get abs path from URL: {}\n{}", url, e.getMessage());
 			}
+		}
 		
 		return null;
 	}
@@ -87,5 +88,22 @@ public class TreexConfig extends AbstractConfig {
 
 	public static void setTreexOnlineDirFromPlugin(URL treexOnlineDirFromPlugin) {
 		TreexConfig.treexOnlineDirFromPlugin = treexOnlineDirFromPlugin;
+	}
+
+	@Override
+	public String getDefaultLoc() {
+		URL tolUrl = getTreexOnlineDirFromPlugin();
+		if (tolUrl != null) {
+			try {
+				File tolFile = Utils.URLToFile(tolUrl);
+				File cfgFile = new File(tolFile.getParentFile(), getConfigKey() + ".xml");
+				if (cfgFile.exists())
+					return cfgFile.getAbsolutePath();
+			} catch (IOException | IllegalArgumentException | URISyntaxException e) {
+				return super.getDefaultLoc();
+			}
+		}
+
+		return super.getDefaultLoc();
 	}
 }
