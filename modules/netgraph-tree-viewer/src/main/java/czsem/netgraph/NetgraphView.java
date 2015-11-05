@@ -6,12 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Stack;
-import java.util.stream.IntStream;
 
 import javax.swing.JComponent;
 
@@ -45,67 +40,33 @@ public class NetgraphView<E> extends JComponent {
 		public E node;
 		public int depth;
 		public int nodeIndex;
+		public int parentIndex;
+		public int numDescendants = 0;
 
-		public Depth(E node, int depth, int nodeIndex) {
+		public Depth(E node, int depth, int nodeIndex, int parentIndex) {
 			this.node = node;
 			this.depth = depth;
 			this.nodeIndex = nodeIndex;
+			this.parentIndex = parentIndex;
 		}
 	}
 	
 	protected void computePaintData() {
-		List<Integer> edges = new ArrayList<>();
-		List<Depth<E>> list = new ArrayList<>();
-		Stack<Depth<E>> stack = new Stack<>();
-		E root = treeSource.getRoot();
-
-		int index = 0;
-
-		stack.push(new Depth<>(root, 0, index));
-		list.add(stack.peek());
+		TreeComputation<E> cmp = new TreeComputation<>(treeSource);
+		cmp.compute();
 		
-		while (! stack.isEmpty()) {
-			Depth<E> pop = stack.pop();
-			
-			List<E> children = treeSource.getChildren(pop.node);
-			
-			for (E ch : children) {
-				index++;
-				stack.push(new Depth<E>(ch, pop.depth+1, index));
-				list.add(stack.peek());
-				
-				edges.add(pop.nodeIndex);
-				edges.add(index);
-			}
-		}
+		this.edges = cmp.collectEdges();
+		this.nodes = cmp.collectNodes();
 		
-		this.edges = edges.stream().mapToInt(Integer::intValue).toArray();
-		
-		//copy nodes
-		@SuppressWarnings("unchecked")
-		E[] tmp = (E[]) new Object[list.size()];
-		this.nodes = tmp;
-		for (int j = 0; j < tmp.length; j++) {
-			this.nodes[j] = list.get(j).node;
-		}
-
-		//sort nodes
-		Comparator<E> cmp = treeSource.getOrderComparator();
-		Integer [] sortOrder = IntStream.range(0, tmp.length).boxed().toArray(Integer[]::new);
-		Arrays.sort(sortOrder, (a, b) -> cmp.compare(this.nodes[a], this.nodes[b]));
-		int [] nodeOrder =  new int[tmp.length];
-		for (int r = 0; r < nodeOrder.length; r++) {
-			nodeOrder[sortOrder[r]] = r;
-		}
-		
+		int [] nodeOrder = cmp.contNodeOrder();
 
 		//compute coordinates
-		this.x = new int[tmp.length];
-		this.y = new int[tmp.length];
+		this.x = new int[nodes.length];
+		this.y = new int[nodes.length];
 		
-		for (int j = 0; j < tmp.length; j++) {
-			Depth<E> jNodeDepth = list.get(j);
-			this.y[j] = Sizing.BORDER+Sizing.NODE_DIAM/2  +  jNodeDepth.depth * Sizing.NODE_V_SPACE;
+		for (int j = 0; j < nodes.length; j++) {
+			//Depth<E> jNodeDepth = list.get(j);
+			this.y[j] = Sizing.BORDER+Sizing.NODE_DIAM/2  +  cmp.getDepth(j) * Sizing.NODE_V_SPACE;
 			this.x[j] = Sizing.BORDER+Sizing.NODE_DIAM/2  +  nodeOrder[j] * Sizing.NODE_H_SPACE;
 		}
 	}

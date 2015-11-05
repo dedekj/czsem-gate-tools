@@ -42,7 +42,8 @@ public class NetgraphFrame {
 
 		@Override
 		public Comparator<Integer> getOrderComparator() {
-			return Integer::compare;
+			return null;
+			//return Integer::compare;
 		}
 		
 	}
