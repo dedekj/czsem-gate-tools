@@ -133,6 +133,8 @@ public class NetgraphView<E> extends JComponent {
 		g.drawRect(Sizing.BORDER, Sizing.BORDER, pref.width-Sizing.BORDER*2, pref.height-Sizing.BORDER*2);
 
 		g.setStroke(new BasicStroke(2));
+
+		g.setColor(Color.GRAY);
 		
 		//edges
 		for (int i = 0; i < edges.length; i+=2) {
@@ -140,13 +142,15 @@ public class NetgraphView<E> extends JComponent {
 			int b = edges[i+1];
 			g.drawLine(x[a], y[a], x[b], y[b]);
 		}
+
+		g.setColor(Color.BLACK);
 		
 		//nodes
 		for (int i = 0; i < nodes.length; i++) {
 			int nodeX = x[i];
 			int nodeY = y[i];
 			
-			drowNodeCyrcle(g, nodeX, nodeY, Color.GRAY, Color.LIGHT_GRAY);
+			drowNodeCyrcle(g, nodeX, nodeY, Color.DARK_GRAY, Color.LIGHT_GRAY);
 			
 			List<NodeLabel> labels = treeSource.getLabels(this.nodes[i]);
 			for (int l = 0; l < labels.size(); l++) {
