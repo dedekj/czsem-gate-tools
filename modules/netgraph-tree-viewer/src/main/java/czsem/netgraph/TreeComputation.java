@@ -10,6 +10,8 @@ public class TreeComputation<E> {
 	private final TreeSource<E> treeSource;
 	private final List<NodeInfo<E>> nodes = new ArrayList<>();
 	private List<Integer> balacedOrder;
+	private int maxDepth = -1;
+	private List<Integer>[] nodesByDepth;
 
 	public TreeComputation(TreeSource<E> treeSource) {
 		this.treeSource = treeSource;
@@ -39,11 +41,26 @@ public class TreeComputation<E> {
 	
 	public void compute() {
 		addNodeAndCountDescendants(treeSource.getRoot(), 0, -1);
-	
+		
+		findNodesByDepth();
+	}
+
+
+	protected void findNodesByDepth() {
+		nodesByDepth = newArray(maxDepth+1);
+		for (int i = 0; i < nodesByDepth.length; i++) {
+			nodesByDepth[i] = new ArrayList<>();
+		}
+		
+		for (NodeInfo<E> node : nodes) {
+			nodesByDepth[node.depth].add(node.nodeIndex);
+		}
 	}
 
 
 	protected int addNodeAndCountDescendants(E parent, int depth, int parentIndex) {
+		if (depth > maxDepth) maxDepth = depth;
+		
 		int index = nodes.size();
 
 		if (parentIndex != -1) {
@@ -81,9 +98,7 @@ public class TreeComputation<E> {
 
 
 	public E[] collectNodes() {
-		
-		@SuppressWarnings("unchecked")
-		E[] ret = (E[]) new Object[nodes.size()];
+		E[] ret = newArray(nodes.size());
 		
 		int index = 0;
 		for (NodeInfo<E> i : nodes) {
@@ -164,6 +179,14 @@ public class TreeComputation<E> {
 
 	public int getDepth(int j) {
 		return nodes.get(j).depth;
+	}
+	
+	
+	
+	@SafeVarargs
+	public static <E> E[] newArray(int length, E... array)
+	{
+	    return Arrays.copyOf(array, length);
 	}
 	
 }
