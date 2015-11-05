@@ -23,9 +23,9 @@ public class NetgraphView<E> extends JComponent {
 	public static class Sizing {
 
 		public static final int BORDER = 20;
-		public static final int NODE_V_SPACE = 60;
-		public static final int NODE_H_SPACE = 40;
-		public static final int NODE_DIAM = 30; 
+		public static final int NODE_V_SPACE = 80;
+		public static final int NODE_H_SPACE = 80;
+		public static final int NODE_DIAM = 20; 
 		
 	}
 	
