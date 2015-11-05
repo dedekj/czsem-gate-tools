@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -113,6 +114,14 @@ public class NetgraphView<E> extends JComponent {
 	protected void paintComponent(Graphics gParam) {
 		Graphics2D g = (Graphics2D) gParam;
 		
+		g.setRenderingHint(	RenderingHints.KEY_TEXT_ANTIALIASING,
+							RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		g.setRenderingHint(	RenderingHints.KEY_ANTIALIASING,
+							RenderingHints.VALUE_ANTIALIAS_ON);
+		/*
+		g.setRenderingHint(	RenderingHints.KEY_FRACTIONALMETRICS,
+							RenderingHints.VALUE_FRACTIONALMETRICS_ON);	 
+		*/
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		
@@ -123,7 +132,7 @@ public class NetgraphView<E> extends JComponent {
 		//debug border
 		g.drawRect(Sizing.BORDER, Sizing.BORDER, pref.width-Sizing.BORDER*2, pref.height-Sizing.BORDER*2);
 
-		g.setStroke(new BasicStroke(3));
+		g.setStroke(new BasicStroke(2));
 		
 		//edges
 		for (int i = 0; i < edges.length; i+=2) {
@@ -136,7 +145,8 @@ public class NetgraphView<E> extends JComponent {
 		for (int i = 0; i < nodes.length; i++) {
 			int nodeX = x[i];
 			int nodeY = y[i];
-			g.drawOval(nodeX - Sizing.NODE_DIAM/2, nodeY - Sizing.NODE_DIAM/2, Sizing.NODE_DIAM, Sizing.NODE_DIAM);
+			
+			drowNodeCyrcle(g, nodeX, nodeY, Color.GRAY, Color.LIGHT_GRAY);
 			
 			List<NodeLabel> labels = treeSource.getLabels(this.nodes[i]);
 			for (int l = 0; l < labels.size(); l++) {
@@ -146,6 +156,15 @@ public class NetgraphView<E> extends JComponent {
 						nodeX, nodeY + 25);
 			}
 		}
+	}
+
+	private static void drowNodeCyrcle(Graphics2D g, int nodeX, int nodeY, Color fill, Color border) {
+		Color back = g.getColor();
+		g.setColor(fill);
+		g.fillOval(nodeX - Sizing.NODE_DIAM/2, nodeY - Sizing.NODE_DIAM/2, Sizing.NODE_DIAM, Sizing.NODE_DIAM);
+		g.setColor(border);
+		g.drawOval(nodeX - Sizing.NODE_DIAM/2, nodeY - Sizing.NODE_DIAM/2, Sizing.NODE_DIAM, Sizing.NODE_DIAM);
+		g.setColor(back);
 	}
 
 }
