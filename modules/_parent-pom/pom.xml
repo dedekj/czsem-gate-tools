@@ -38,6 +38,7 @@
 		<module>../fs-query</module>
 		<module>../czsem-gate-plugin</module>
 		<module>../treex-gate-plugin</module>
+		<module>../netgraph-tree-viewer</module>
 	</modules>
 
 	<build>
