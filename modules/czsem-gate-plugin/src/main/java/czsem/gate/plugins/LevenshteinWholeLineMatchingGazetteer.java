@@ -24,6 +24,7 @@ import gate.gui.MainFrame;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -161,8 +162,11 @@ public class LevenshteinWholeLineMatchingGazetteer extends DefaultGazetteer {
 						FSMState gazFinState = new FSMState(this);
 						Lookup lookup = lookups.get(curNode).get(gazEntry.getEntry());
 						
+						if (lookup.features == null) 
+							lookup.features = new LinkedHashMap<String,Object>(); 
+						
 						Map<String, Object> f = lookup.features;						
-						f.put("distance", distance.diatnce);
+						f.put("distance", distance.distance);
 						f.put("normalizedDistance", distance.normalizeDistance);
 						f.put("matchedText", gazEntryText);
 						/* debug*/
@@ -202,12 +206,12 @@ public class LevenshteinWholeLineMatchingGazetteer extends DefaultGazetteer {
 	}
 	
 	public static class Distance {
-		int diatnce;
+		int distance;
 		double normalizeDistance;
 		String text1, text2;
 
 		public Distance(int diatnce, double normalizeDistance, String text1, String text2) {
-			this.diatnce = diatnce;
+			this.distance = diatnce;
 			this.normalizeDistance = normalizeDistance;
 			this.text1 = text1;
 			this.text2 = text2;
