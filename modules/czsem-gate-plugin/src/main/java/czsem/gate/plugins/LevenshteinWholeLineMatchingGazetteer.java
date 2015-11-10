@@ -57,6 +57,7 @@ public class LevenshteinWholeLineMatchingGazetteer extends DefaultGazetteer {
 	
 	private double maxDistance = 0.2; 
 	private boolean removeAllSpaces = false;
+	private boolean removePunctuation = false;
 	private boolean removeRedundantSpaces = true;
 	private boolean evaluateOnPrefix = false;
 	
@@ -226,7 +227,7 @@ public class LevenshteinWholeLineMatchingGazetteer extends DefaultGazetteer {
 	
 	public static String removeRedundantSpaces(String str)
 	{
-		return str.replaceAll("[\\s\\u00a0]+", " "); 
+		return str.replaceAll("[\\s\\u00a0]+", " ").trim(); 
 	}
 
 	public static String removeAllSpaces(String str)
@@ -234,10 +235,19 @@ public class LevenshteinWholeLineMatchingGazetteer extends DefaultGazetteer {
 		return str.replaceAll("[\\s\\u00a0]", "");
 	}
 	
+	public static String removePunctuation(String str) {
+		return str.replaceAll("\\p{Punct}", "");
+	}
+
 	public Distance countDistanceOptimized(String srcText, String entryText, double minInterstingNormalizedDistance) {
 		
 		//if( Character.isSpaceChar(currentChar) || Character.isWhitespace(currentChar) )
 		
+		if (removePunctuation) {
+			srcText = removePunctuation(srcText);				
+			entryText = removePunctuation(entryText);				
+		}
+
 		if (removeAllSpaces)
 		{
 			srcText = removeAllSpaces(srcText);				
@@ -252,6 +262,7 @@ public class LevenshteinWholeLineMatchingGazetteer extends DefaultGazetteer {
 		if (getEvaluateOnPrefix()) {
 			srcText = shortenToLength(srcText, entryText.length());
 		}
+		
 		
 		int l1 = srcText.length(); int l2 = entryText.length();
 		int lMin, lMax;		
@@ -348,6 +359,16 @@ public class LevenshteinWholeLineMatchingGazetteer extends DefaultGazetteer {
 		pipe.execute();
 		
 		System.err.println(d.getAnnotations());
+	}
+
+	public Boolean getRemovePunctuation() {
+		return removePunctuation;
+	}
+
+	@CreoleParameter(defaultValue="false")
+	@RunTime
+	public void setRemovePunctuation(Boolean removePunctuation) {
+		this.removePunctuation = removePunctuation;
 	}
 
 }
