@@ -9,7 +9,7 @@ public class LevenshteinWholeLineMatchingGazetteerTest {
 	public static void removePunctuation() {
 		Assert.assertEquals(
 				LevenshteinWholeLineMatchingGazetteer.removePunctuation(
-						"-1.2,3:4!5;6(7)8{9}[0]+"), "1234567890");
+						"-1.2,3:4!5;6(7)8{9}[0]+/"), "1234567890");
 	}
 
 	@Test
