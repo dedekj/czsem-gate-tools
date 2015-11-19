@@ -4,6 +4,8 @@ import java.io.Writer;
 
 import org.apache.ws.commons.serialize.CharSetXMLWriter;
 
+import czsem.gate.xmlwriter.InvalidXmlCharacterFilterWriter;
+
 public class FilteringCharSetXMLWriter extends CharSetXMLWriter {
 
 	@Override

@@ -1,4 +1,4 @@
-package czsem.gate.treex.xmlwriter;
+package czsem.gate.xmlwriter;
 
 import java.io.FilterWriter;
 import java.io.IOException;
