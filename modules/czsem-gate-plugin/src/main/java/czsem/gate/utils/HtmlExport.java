@@ -32,6 +32,7 @@ public class HtmlExport {
 	
 	protected String annotationSetName;
 	protected URL outputDirectoryUrl;
+	protected String suffixForDumpFiles = ".html";
 	protected String[] annotationTypes; 
 	protected String[] elementStyles = null;
 	
@@ -41,6 +42,8 @@ public class HtmlExport {
 	protected SerialAnalyserController pipeline;
 	protected Corpus corpus;
 	protected String headerPrefix ="\n\n\n"+"body	{white-space: pre-wrap;}\n";
+
+
 
 
 	public HtmlExport(String annotationSetName, URL outputDirectoryUrl,	String[] annotationTypes) {
@@ -158,7 +161,7 @@ public class HtmlExport {
 				.putFeature("includeFeatures", true)
 				.putFeature("useStandOffXML", false)
 				.putFeature("useSuffixForDumpFiles", true)
-				.putFeature("suffixForDumpFiles", ".html")
+				.putFeature("suffixForDumpFiles", suffixForDumpFiles)
 				.putFeature("outputDirectoryUrl", outputDirectoryUrl)
 				.putFeature("annotationSetName", annotationSetName)
 				.putFeatureList("annotationTypes", annotationTypes)
@@ -233,6 +236,14 @@ public class HtmlExport {
 
 	public void setAddSafeHtmlEnd(boolean addSafeHtmlEnd) {
 		this.addSafeHtmlEnd = addSafeHtmlEnd;
+	}
+
+	public String getSuffixForDumpFiles() {
+		return suffixForDumpFiles;
+	}
+
+	public void setSuffixForDumpFiles(String suffixForDumpFiles) {
+		this.suffixForDumpFiles = suffixForDumpFiles;
 	}
 }
 
