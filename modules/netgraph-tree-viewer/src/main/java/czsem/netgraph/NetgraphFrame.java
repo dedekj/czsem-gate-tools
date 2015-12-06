@@ -14,36 +14,72 @@ public class NetgraphFrame {
 
 		@Override
 		public Integer getRoot() {
-			return 0;
+			return 3;
 		}
 
 		@Override
 		public List<Integer> getChildren(Integer parent) {
 			switch (parent) {
-			case 0:
-				return Arrays.asList(1, 2, 3);
-			case 1:
-				return Arrays.asList(4, 5);
-			case 2:
-				return Arrays.asList(6);
 			case 3:
-				return Arrays.asList(7, 8);
-			case 8:
-				return Arrays.asList(9);
+				return Arrays.asList(1, 5, 7);
+			case 1:
+				return Arrays.asList(2);
+			case 5:
+				return Arrays.asList(4);
+			case 7:
+				return Arrays.asList(6);
 			}
 			
 			return Collections.emptyList();
 		}
+		
+		private static final NodeLabel labels[][] = {
+			null, //0
+			{
+				new StaticLabel("MMMMMMMMManželka"),
+				new StaticLabel("ACT"),
+			}, //1
+			{
+				new StaticLabel("klineta"),
+				new StaticLabel("APP"),
+			}, //2
+			{
+				new StaticLabel("má"),
+				new StaticLabel("PRED"),
+			}, //3
+			{
+				new StaticLabel("nějaký"),
+				new StaticLabel("RSTR"),
+			}, //4
+			{
+				new StaticLabel("úvěr"),
+				new StaticLabel("PAT"),
+			}, //5
+			{
+				new StaticLabel("nejen"),
+				new StaticLabel("FPHR"),
+				new StaticLabel("t_lemma", "=", "nejen"),
+				new StaticLabel("tttt_lemma", "==", "ne"),
+				new StaticLabel("a", ".", "bbbbbbbb3210gpy"),
+			}, //6
+			{
+				new StaticLabel("ČSOB"),
+				new StaticLabel("LOC"),
+			}, //7
+			
+		};
 
 		@Override
 		public List<NodeLabel> getLabels(Integer node) {
-			return Collections.singletonList(new MiddleLabel(node.toString()));
+			//return Collections.singletonList(new MiddleLabel(node.toString()));
+			//return Collections.singletonList(new MiddleLabel(""));
+			return Arrays.asList(labels[node]);
 		}
 
 		@Override
 		public Comparator<Integer> getOrderComparator() {
-			return null;
-			//return Integer::compare;
+			//return null;
+			return Integer::compare;
 		}
 		
 	}

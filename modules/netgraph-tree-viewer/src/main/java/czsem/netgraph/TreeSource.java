@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface TreeSource<E> {
 	
-	public interface NodeLabel {
+	public static interface NodeLabel {
 		String getLeftPart();
 		String getMiddle();
 		String getRightPart();
@@ -16,20 +16,28 @@ public interface TreeSource<E> {
 	public List<NodeLabel> getLabels(E node);
 	public Comparator<E> getOrderComparator();
 	
-	public static class MiddleLabel implements NodeLabel {
+	public static class StaticLabel implements NodeLabel {
 
-		private final String text;
+		private final String l;
+		private final String m;
+		private final String r;
 
-		public MiddleLabel(String text) {
-			this.text = text;
+		public StaticLabel(String l, String m, String r) {
+			this.l = l;
+			this.m = m;
+			this.r = r;
+		}
+
+		public StaticLabel(String m) {
+			this("", m, "");
 		}
 		
 		@Override
-		public String getMiddle() {	return text; }
+		public String getMiddle() {	return m; }
 		@Override
-		public String getLeftPart() { return ""; }
+		public String getLeftPart() { return l; }
 		@Override
-		public String getRightPart() { return ""; }
+		public String getRightPart() { return r; }
 	}
 
 }
