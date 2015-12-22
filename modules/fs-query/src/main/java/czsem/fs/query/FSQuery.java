@@ -155,6 +155,10 @@ public class FSQuery {
 		public void setQueryName(String queryName) {
 			this.queryName = queryName;
 		}
+
+		public QueryNode getRootNode() {
+			return queryNode;
+		}
 		
 	}
 	

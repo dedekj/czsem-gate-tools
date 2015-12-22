@@ -6,6 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import czsem.netgraph.treesource.TreeSource;
+
 public class TreeComputation<E> {
 	private final TreeSource<E> treeSource;
 	private final List<NodeInfo<E>> nodes = new ArrayList<>();

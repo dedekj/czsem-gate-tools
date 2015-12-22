@@ -1,4 +1,4 @@
-package czsem.netgraph;
+package czsem.netgraph.treesource;
 
 import java.util.Comparator;
 import java.util.List;

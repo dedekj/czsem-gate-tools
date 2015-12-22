@@ -8,6 +8,8 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import czsem.netgraph.treesource.TreeSource;
+
 public class NetgraphFrame {
 	
 	public static class TestSource implements TreeSource<Integer> {
