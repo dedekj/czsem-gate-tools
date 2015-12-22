@@ -22,7 +22,21 @@ public class NetgraphView<E> extends JComponent {
 		void drawString(Graphics2D g, String str, int x, int y, int w, int h);
 	}
 	
-	public static final StringDrwer REAL_DRAWER = (g, str, x, y, w, h) -> g.drawString(str, x, y);
+	public static final StringDrwer REAL_DRAWER = new StringDrwer() {
+		@Override
+		public void drawString(Graphics2D g, String str, int x, int y, int w, int h) {
+			/**/
+			g.setColor(new Color(255, 255, 255, 200));
+			g.drawString(str, x-1, y-1);
+			g.drawString(str, x+1, y-1);
+			g.drawString(str, x-1, y+1);
+			g.drawString(str, x+1, y+1);
+
+			g.setColor(Color.BLACK);
+			/**/
+			g.drawString(str, x, y);
+		}
+	};
 	
 	public static class Sizing {
 
@@ -130,7 +144,7 @@ public class NetgraphView<E> extends JComponent {
 
 		g.setStroke(new BasicStroke(2));
 
-		g.setColor(Color.DARK_GRAY);
+		g.setColor(Color.GRAY);
 		
 		//edges
 		for (int i = 0; i < edges.length; i+=2) {
