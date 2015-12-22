@@ -1,5 +1,7 @@
 package czsem.netgraph;
 
+import gate.AnnotationSet;
+
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -79,10 +81,12 @@ public class NetgraphQueryDesigner extends Container  {
         query_tree_view_scroll_pane.setBorder(BorderFactory.createTitledBorder("query tree:"));
         
         attrNames = new JList<>();
+        attrNames.setPreferredSize(new Dimension(70,0));
         attrValues = new JList<>();
         JSplitPane attrsSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, attrNames, attrValues);
         JScrollPane attrsScrollPane = new JScrollPane(attrsSplit);
-        query_tree_view_scroll_pane.setPreferredSize(new Dimension(200,0));
+        query_tree_view_scroll_pane.setPreferredSize(new Dimension(300,100));
+        attrsScrollPane.setPreferredSize(new Dimension(160,100));
         attrsScrollPane.setBorder(BorderFactory.createTitledBorder("attributes:"));
         //attrsPanel.setBorder(BorderFactory.createTitledBorder("attributes:"));
 
@@ -216,13 +220,14 @@ public class NetgraphQueryDesigner extends Container  {
 		trySetQueryString(queryString);
 	}
 
-	/*
 	public void setAs(AnnotationSet annotation_set) {
+		//TODO
+		/*
 		asIndexHelper.setSourceAS(annotation_set);
 		asIndexHelper.initIndex();
 		fillAttrIndexAndNamesList();
+		*/
 	}
-	*/
 	
 	@SuppressWarnings("serial")
 	private static final class ArrayListModel extends AbstractListModel<String> {
@@ -256,15 +261,16 @@ public class NetgraphQueryDesigner extends Container  {
 		public String getElementAt(int index) {	return null;}
 	};
 
-	/*
 	protected void fillAttrIndexAndNamesList() {
+		//TODO
+		/*
 		attrIndex = asIndexHelper.createQueryData().buildAttrIndex();
 		
 		attrIndex.put(NGTreeHead.META_ATTR_NODE_NAME, new TreeSet<String>(Arrays.asList(new String [] {"subject", "predicate", "object"})));
 		attrIndex.put(NGTreeHead.META_ATTR_OPTIONAL, new TreeSet<String>(Arrays.asList(new String [] {NGTreeHead.META_ATTR_OPTIONAL_TRUE, "false"})));
 		
 		attrNames.setModel(new ArrayListModel(attrIndex.keySet()));
+		*/
 	}
-	*/
 
 }
