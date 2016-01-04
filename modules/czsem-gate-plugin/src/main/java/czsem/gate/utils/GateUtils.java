@@ -29,6 +29,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.MalformedURLException;
@@ -273,14 +274,17 @@ public class GateUtils
 	}
 	
 
-	public static void saveGateDocumentToXML(Document doc, String filename) throws IOException
+	public static void saveGateDocumentToXML(Document doc, String filename) throws IOException {
+		saveGateDocumentToXML(doc, new FileOutputStream(filename));
+		logger.debug("saveGateDocumentToXML done: {}", filename);
+	}
+	
+	public static void saveGateDocumentToXML(Document doc, OutputStream stream) throws IOException
 	{
-		Writer out = new OutputStreamWriter(new BufferedOutputStream(
-				new FileOutputStream(filename)), "utf8");
+		Writer out = new OutputStreamWriter(new BufferedOutputStream(stream), "utf8");
 		out.write(doc.toXml());
 		out.close();
 		
-		logger.debug(String.format("saveGateDocumentToXML done: %s", filename));
 	}
 
 	
