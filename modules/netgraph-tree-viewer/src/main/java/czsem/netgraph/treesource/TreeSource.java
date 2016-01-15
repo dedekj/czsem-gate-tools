@@ -1,5 +1,6 @@
 package czsem.netgraph.treesource;
 
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface TreeSource<E> {
 	}
 	
 	public E getRoot();
-	public List<E> getChildren(E parent);
+	public Collection<E> getChildren(E parent);
 	public List<NodeLabel> getLabels(E node);
 	public Comparator<E> getOrderComparator();
 	

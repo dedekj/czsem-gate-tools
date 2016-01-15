@@ -2,6 +2,7 @@ package czsem.netgraph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -73,9 +74,11 @@ public class TreeComputation<E> {
 		nodes.add(info);
 		
 		int descendants = 0;
-		List<E> children = treeSource.getChildren(parent);
-		for (E ch : children) {
-			descendants += 1 + addNodeAndCountDescendants(ch, depth+1, index);
+		Collection<E> children = treeSource.getChildren(parent);
+		if (children != null) {
+			for (E ch : children) {
+				descendants += 1 + addNodeAndCountDescendants(ch, depth+1, index);
+			}
 		}
 		
 		info.numDescendants = descendants;
