@@ -8,7 +8,7 @@ import czsem.fs.query.FSQuery.QueryObject;
 import czsem.fs.query.QueryNode;
 import czsem.fs.query.restrictions.Restrictioin;
 
-public class FSQueryTreeSource implements TreeSource<QueryNode>{
+public class FSQueryTreeSource implements TreeSource<QueryNode> {
 	
 	protected QueryObject queryObject;
 
