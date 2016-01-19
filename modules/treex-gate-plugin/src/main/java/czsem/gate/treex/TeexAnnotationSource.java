@@ -77,7 +77,13 @@ public class TeexAnnotationSource implements AnnotationSource {
 		public boolean annotate(AnnotatorInterface annotator)	throws InvalidOffsetException {
 			Annotation gAnn = annotator.getAnnotation((Integer) parent.get("gateAnnId"));
 			if (gAnn == null) return false;
-			annotator.annotate(this, gAnn.getStartNode().getOffset(), gAnn.getEndNode().getOffset());		
+
+			//Do not annotate the whole sentence
+			//annotator.annotate(this, gAnn.getStartNode().getOffset(), gAnn.getEndNode().getOffset());		
+			
+			//Create zero-length annotation instead 
+			annotator.annotate(this, gAnn.getStartNode().getOffset(), gAnn.getStartNode().getOffset());
+			
 			return true;
 		}
 		
