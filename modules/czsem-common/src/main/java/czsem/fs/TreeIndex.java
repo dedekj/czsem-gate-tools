@@ -54,17 +54,26 @@ public class TreeIndex {
 		childIndex.put(parent, children);
 	}
 	
-	public int findRoot()
-	{
+	public int findRoot() {
 		if (parentIndex.entrySet().isEmpty()) return -1;
 		
-		int root = -1;
-		for (Integer i = parentIndex.entrySet().iterator().next().getValue(); i != null; i = getParent(i))
+		return findRootForNode(parentIndex.entrySet().iterator().next().getValue());
+	};
+	
+	public Integer findRootOrNull() {
+		if (parentIndex.entrySet().isEmpty()) return null;
+		
+		return findRootForNode(parentIndex.entrySet().iterator().next().getValue());
+	};
+	
+	public Integer findRootForNode(Integer nodeParam)
+	{
+		Integer root = nodeParam;
+		for (Integer i = nodeParam; i != null; i = getParent(i))
 		{
 			//System.err.println(i);
 			root = i;
 		}
-		
 		return root;			
 	}
 

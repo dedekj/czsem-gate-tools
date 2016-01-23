@@ -34,12 +34,10 @@ public class NetgraphTreeVisualizeTest {
 		
 		NetgraphTreeVisualize tv = new NetgraphTreeVisualize();
 
+		tv.initComponents();
+
 		tv.setTreeAS(doc, doc.getAnnotations());
 		
-		tv.initComponents();
-		
-		//tv.setForest(attrs, fsTree);
-	
 		fr.add(tv);
 		
 		fr.pack();

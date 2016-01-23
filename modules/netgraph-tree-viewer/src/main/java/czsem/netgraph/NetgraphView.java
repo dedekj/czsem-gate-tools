@@ -209,6 +209,7 @@ public class NetgraphView<E> extends JComponent {
 
 	public void updateData() {
 		computePaintData();
+		repaint();
 	}
 
 	public int selectNode(MouseEvent e) {

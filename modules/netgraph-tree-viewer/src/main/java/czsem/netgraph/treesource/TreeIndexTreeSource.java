@@ -17,16 +17,17 @@ import czsem.netgraph.GateAnnotTableModel;
 
 public class TreeIndexTreeSource implements TreeSource<Integer>, Comparator<Integer> {
 	
-	protected GateAwareTreeIndexWithAnnIdMap index;
+	protected GateAwareTreeIndexWithAnnIdMap index = new GateAwareTreeIndexWithAnnIdMap();
 	protected Document doc;
-	protected int selectedNode;
+	protected Integer selectedNode;
+	protected Integer rootNode = null;
 	
 	protected final LinkedHashSet<Object> selectedAttributes 
 		= new LinkedHashSet<>(Collections.singleton(GateAnnotTableModel.ATTR.STRING));
 
 	@Override
 	public Integer getRoot() {
-		return index.findRoot();
+		return rootNode;
 	}
 
 	@Override
@@ -59,11 +60,17 @@ public class TreeIndexTreeSource implements TreeSource<Integer>, Comparator<Inte
 	}
 
 	public void setTreeAS(Document doc, AnnotationSet annotations) {
+		GateAwareTreeIndexWithAnnIdMap i = new GateAwareTreeIndexWithAnnIdMap();
+		i.setNodesAS(annotations);
+		i.addDependecies(annotations.get(null, Collections.singleton("args")));
+		
+		setIndex(doc, i);
+	}
+
+	public void setIndex(Document doc, GateAwareTreeIndexWithAnnIdMap index) {
 		this.doc = doc;
-		index = new GateAwareTreeIndexWithAnnIdMap();
-		index.setNodesAS(annotations);
-		index.addDependecies(annotations.get(null, Collections.singleton("args")));
-		selectedNode = index.findRoot();
+		this.index = index;
+		rootNode = selectedNode = index.findRootOrNull();
 	}
 
 	public Annotation getSelectedAnnot() {
@@ -76,5 +83,10 @@ public class TreeIndexTreeSource implements TreeSource<Integer>, Comparator<Inte
 
 	public LinkedHashSet<Object> getSelectedAttributes() {
 		return selectedAttributes;
+	}
+
+	public void selectNode(int selectedNodeID) {
+		selectedNode = selectedNodeID;
+		rootNode = index.findRootForNode(selectedNode);
 	}
 }

@@ -43,7 +43,11 @@ public class TreeComputation<E> {
 
 	
 	public void compute() {
-		addNodeAndCountDescendants(treeSource.getRoot(), 0, -1);
+		E root = treeSource.getRoot();
+		
+		if (root == null) return;
+		
+		addNodeAndCountDescendants(root, 0, -1);
 		
 		findNodesByDepth();
 	}
@@ -88,6 +92,8 @@ public class TreeComputation<E> {
 
 
 	public int[] collectEdges() {
+		if (nodes.isEmpty()) return new int[0];
+		
 		int[] ret = new int[(nodes.size()-1)*2];
 		
 		int index = 0;

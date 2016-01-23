@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
 import czsem.fs.query.FSQuery.MatchingNode;
+import czsem.gate.utils.GateAwareTreeIndexWithAnnIdMap;
 import czsem.netgraph.treesource.TreeIndexTreeSource;
 
 public class NetgraphTreeVisualize extends Container {
@@ -29,7 +30,7 @@ public class NetgraphTreeVisualize extends Container {
 
 	protected final TreeIndexTreeSource treeSource = new TreeIndexTreeSource();
 	
-	protected NetgraphView<Integer> forestDisplay;
+	protected final NetgraphView<Integer> forestDisplay = new NetgraphView<>(treeSource);
 
 	private final GateAnnotTableModel dataModel = new GateAnnotTableModel(treeSource);
 
@@ -49,8 +50,7 @@ public class NetgraphTreeVisualize extends Container {
 		pm.add(mi_show_hiddden);
 		pm.add(new JSeparator());
 		pm.add(new JMenuItem("123456789"));
-
-		forestDisplay = new NetgraphView<>(treeSource);
+		
 		setDefaultLook();
 		
 		JScrollPane forestScrollpane = new JScrollPane(forestDisplay);
@@ -129,7 +129,9 @@ public class NetgraphTreeVisualize extends Container {
 
 	
 	public void selectNode(int selectedNodeID) {
-		//forestDisplay.selectNode(selectedNodeID);
+		treeSource.selectNode(selectedNodeID);
+		forestDisplay.updateData();
+		dataModel.fireTableDataChanged();
 	}
 	/*
 	public static class NGTableModel extends AbstractTableModel {
@@ -242,6 +244,11 @@ public class NetgraphTreeVisualize extends Container {
 
 	public void setTreeAS(Document d, AnnotationSet annotations) {
 		treeSource.setTreeAS(d, annotations);
+	}
+
+
+	public void setIndex(Document doc, GateAwareTreeIndexWithAnnIdMap index) {
+		treeSource.setIndex(doc, index);
 	}
 
 
