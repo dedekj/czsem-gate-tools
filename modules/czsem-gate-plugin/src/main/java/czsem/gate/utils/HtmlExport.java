@@ -20,6 +20,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -42,6 +43,9 @@ public class HtmlExport {
 	protected SerialAnalyserController pipeline;
 	protected Corpus corpus;
 	protected String headerPrefix ="\n\n\n"+"body	{white-space: pre-wrap;}\n";
+
+
+	protected String updateAuthor;
 
 
 
@@ -189,12 +193,42 @@ public class HtmlExport {
 		
 		if (addSafeHtmlEnd)
 			addSafeHtmlEnd(doc);
-				
+
+		if (updateAuthor != null)
+			updateAuthor(doc);
+
+		
 		corpus.clear();
 		corpus.add(doc);		
 		pipeline.execute();		
 	}
 
+	protected void updateAuthor(Document doc) {
+		AnnotationSet origAs = doc.getAnnotations(GateConstants.ORIGINAL_MARKUPS_ANNOT_SET_NAME);
+		AnnotationSet markupMetaAs = origAs.get("meta");
+		
+		List<Annotation> updated = new ArrayList<>();
+		for(Annotation a : markupMetaAs) {
+			FeatureMap fm = a.getFeatures();
+			Object metaName = fm.get("name");
+			if ("author".equals(metaName) || "generator".equals(metaName)) {
+				fm.put("name", "author");
+				fm.put("content", updateAuthor);
+				
+				updated.add(a);
+			}
+		}
+
+		if (updated.size() > 1) {
+			Iterator<Annotation> iterator = updated.iterator();
+			iterator.next();
+			
+			for (; iterator.hasNext(); ) {
+				origAs.remove(iterator.next());
+			}
+		}
+	}
+	
 	public void doExport(String fileName) throws ResourceInstantiationException, MalformedURLException, InvalidOffsetException, ExecutionException {
 		
 		
@@ -244,6 +278,10 @@ public class HtmlExport {
 
 	public void setSuffixForDumpFiles(String suffixForDumpFiles) {
 		this.suffixForDumpFiles = suffixForDumpFiles;
+	}
+
+	public void setUpdateAuthor(String author) {
+		this.updateAuthor = 	author;
 	}
 }
 
