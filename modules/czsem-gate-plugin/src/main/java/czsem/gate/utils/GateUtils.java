@@ -520,6 +520,7 @@ public class GateUtils
 
 	public static void registerAllCzsemPrs() throws GateException {
 		registerAllPrsInPackage("czsem.gate.plugins");
+		registerComponentIfNot(NotCheckingParametersSerialController.class);
 	}
 	
 	public static synchronized Object persistenceManagerLoadObjectFromFileSynchronized(File file) throws PersistenceException, ResourceInstantiationException, IOException {
