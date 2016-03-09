@@ -361,10 +361,25 @@ public class GateUtils
 		initGateKeepLog();
 	}
 
+	public static void setGateHome() throws ConfigLoadException
+	{
+		if (Gate.getGateHome() == null)
+			Gate.setGateHome(new File(CzsemConfig.getConfig().getGateHome()));
+	}
+
+	public static ClassLoader getGateClassLoader()  {
+		if (Gate.isInitialised()) {
+			return Gate.getClassLoader();
+		} else {
+			return null;
+		}
+	}
+
+	
 	public static void initGateKeepLog() throws GateException, ConfigLoadException {
 		if (Gate.isInitialised()) return;
 		
-		CzsemConfig.getConfig().setGateHome();
+		setGateHome();
 
 		Gate.init();						
 		
