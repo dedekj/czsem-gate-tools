@@ -24,7 +24,7 @@ import czsem.gate.externalannotator.Annotator.Sentence;
 import czsem.gate.externalannotator.Annotator.SeqAnnotable;
 import czsem.gate.externalannotator.RecursiveEntityAnnotator.SecondaryEntity;
 
-public class TeexAnnotationSource implements AnnotationSource {
+public class TreexAnnotationSource implements AnnotationSource {
 	protected class TreexNode implements Annotable {
 		
 		protected Map<String, Object> node;
@@ -343,7 +343,7 @@ public class TeexAnnotationSource implements AnnotationSource {
 	private Set<String> listAttrs;
 	private Set<String> idAttrs;
 	
-	public TeexAnnotationSource(
+	public TreexAnnotationSource(
 			List<Map<String, Object>> zones, 
 			Map<String, Map<String, Object>> nodeMap, 
 			Set<String> exclude_attrs,

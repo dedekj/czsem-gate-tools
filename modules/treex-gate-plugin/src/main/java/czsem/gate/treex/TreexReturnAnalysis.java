@@ -120,7 +120,7 @@ public class TreexReturnAnalysis {
 		
 		Annotator annotator = new Annotator();
 		annotator.annotate(
-				new TeexAnnotationSource(
+				new TreexAnnotationSource(
 						getZones(),
 						getNodeMap(),
 						getExcludeAttributes(),
