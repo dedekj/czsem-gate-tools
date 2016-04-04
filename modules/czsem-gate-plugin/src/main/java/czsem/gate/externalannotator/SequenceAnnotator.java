@@ -152,6 +152,17 @@ public class SequenceAnnotator
 //							local_index++;
 							continue;
 						}
+						
+						//long hyphen
+						if (
+								(loc_ch == '—') && 
+								(toc_ch == '-'))
+						{
+							if (token_index+1<token.length() && token.charAt(token_index+1)==toc_ch)
+								token_index++;
+							continue;
+						}
+
 
 						//Angle Brackets skipped by TectoMT
 						if (loc_ch == '<')
@@ -181,7 +192,9 @@ public class SequenceAnnotator
 						}
 
 						//quotation correction
-						if ((loc_ch == '"' || loc_ch == '\'')&& (toc_ch == '\'' || toc_ch == '`'))
+						if (
+								(loc_ch == '"' || loc_ch == '\'' || loc_ch == '“' || loc_ch == '”') && 
+								(toc_ch == '\'' || toc_ch == '`'))
 						{
 							if (token_index+1<token.length() && token.charAt(token_index+1)==toc_ch)
 								token_index++;

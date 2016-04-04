@@ -81,6 +81,73 @@ public class SequenceAnnotatorTest
 	}
 
 	@Test
+	public void testNextTokenQuotesBroken()
+	{
+		String s = 	" “today”, you";
+		SequenceAnnotator sa = new SequenceAnnotator(s, 0);
+		sa.nextToken("``");
+		assertEquals(1, sa.lastStart());
+		assertEquals(2, sa.lastEnd());		
+		
+		sa.nextToken("today");
+		assertEquals(2, sa.lastStart());
+		assertEquals(7, sa.lastEnd());		
+
+		sa.nextToken("''");
+		assertEquals(7, sa.lastStart());
+		assertEquals(8, sa.lastEnd());		
+
+		sa.nextToken(",");
+		assertEquals(8, sa.lastStart());
+		assertEquals(9, sa.lastEnd());		
+
+		sa.nextToken("you");
+		assertEquals(10, sa.lastStart());
+		assertEquals(13, sa.lastEnd());		
+	}
+
+	@Test
+	public void testNextTokenLongDash()
+	{
+		String s = 	"—important";
+		SequenceAnnotator sa = new SequenceAnnotator(s, 0);
+		sa.nextToken("--");
+		assertEquals(0, sa.lastStart());
+		assertEquals(1, sa.lastEnd());
+
+		sa.nextToken("important");
+		assertEquals(1, sa.lastStart());
+		assertEquals(10, sa.lastEnd());
+	}
+	
+	
+	@Test
+	public void testNextTokenQuotesOrig()
+	{
+		String s = 	" “today”, you";
+		SequenceAnnotator sa = new SequenceAnnotator(s, 0);
+		sa.nextToken("“");
+		assertEquals(1, sa.lastStart());
+		assertEquals(2, sa.lastEnd());		
+		
+		sa.nextToken("today");
+		assertEquals(2, sa.lastStart());
+		assertEquals(7, sa.lastEnd());		
+
+		sa.nextToken("”");
+		assertEquals(7, sa.lastStart());
+		assertEquals(8, sa.lastEnd());		
+
+		sa.nextToken(",");
+		assertEquals(8, sa.lastStart());
+		assertEquals(9, sa.lastEnd());		
+
+		sa.nextToken("you");
+		assertEquals(10, sa.lastStart());
+		assertEquals(13, sa.lastEnd());		
+	}
+	
+	@Test
 	public void testNextToken4()
 	{
 		String s = 	"The BBC's Bethany Bell in Jerusalem says many people face shortages of food, medicine and fuel. Chancellor Alistair Darling says the new longer-term agreement will guarantee earnings growth for 5.5 million workers and will allow\n"+
