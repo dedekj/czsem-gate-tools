@@ -455,6 +455,7 @@ public class GateUtils
 	    FeatureMap parameterValues = Factory.newFeatureMap();
 	    parameterValues.put(Document.DOCUMENT_URL_PARAMETER_NAME, url);
 	    parameterValues.put(Document.DOCUMENT_MIME_TYPE_PARAMETER_NAME, mimeType);
+	    parameterValues.put(Document.DOCUMENT_ENCODING_PARAMETER_NAME, encoding);
 	    return (Document) Factory.createResource(DocumentImpl.class.getCanonicalName(), parameterValues);
 	}
 	
