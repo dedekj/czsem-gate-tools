@@ -86,4 +86,9 @@ public class TreexRemoteAnalyser extends TreexAnalyserXmlRpc {
 	public URL getTreexServerUrl() {
 		return treexServerUrl;
 	}
+
+	@Override
+	protected void restartTreexIfNeeded() {
+		//do nothing
+	}
 }
