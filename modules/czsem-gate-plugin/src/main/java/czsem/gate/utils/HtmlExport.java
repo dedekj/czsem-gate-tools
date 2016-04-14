@@ -187,7 +187,7 @@ public class HtmlExport {
 	}
 
 	
-	public void doExport(Document doc) throws InvalidOffsetException, ExecutionException {
+	public void prepareDoc(Document doc) throws InvalidOffsetException {
 		if (addHeaderWithStyles)
 			addExportHeader(doc);
 		
@@ -196,8 +196,12 @@ public class HtmlExport {
 
 		if (updateAuthor != null)
 			updateAuthor(doc);
-
 		
+	}
+	
+	public void doExport(Document doc) throws InvalidOffsetException, ExecutionException {
+		prepareDoc(doc);
+
 		corpus.clear();
 		corpus.add(doc);		
 		pipeline.execute();		
