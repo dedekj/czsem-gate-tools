@@ -203,6 +203,8 @@ public class GateUtils
 	{
 		CreoleRegister reg = Gate.getCreoleRegister();
 		
+		if (reg == null) return;
+		
 		for (ProcessingResource i : reg.getPublicPrInstances())
 		{
 			Factory.deleteResource(i);			
