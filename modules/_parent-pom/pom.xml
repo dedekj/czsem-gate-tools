@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>net.sf.czsem</groupId>
 	<artifactId>czsem</artifactId>
-	<version>3.0-SNAPSHOT</version>
+	<version>3.0-alpha1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Czsem Mining Suite</name>
@@ -21,11 +20,20 @@
 	
 	<scm>
 		<url>https://github.com/dedekj/czsem-gate-tools.git</url>
-	</scm>
+		<connection>scm:git:https://github.com/dedekj/czsem-gate-tools.git</connection>
+	  <tag>czsem-3.0</tag>
+  </scm>
  	
 	<issueManagement>
 		<url>http://github.com/dedekj/czsem-gate-tools/issues</url>
 	</issueManagement>
+	
+	<distributionManagement>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>	
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -74,7 +82,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -83,6 +91,20 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<pushChanges>false</pushChanges>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<useReleaseProfile>false</useReleaseProfile>
+					<releaseProfiles>release</releaseProfiles>
+					<goals>deploy</goals>
+				</configuration>
+			</plugin>		
+		</plugins>
 	</build>
 
 	<dependencies>
