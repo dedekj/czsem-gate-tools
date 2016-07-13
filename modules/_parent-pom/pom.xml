@@ -3,7 +3,7 @@
 
 	<groupId>net.sf.czsem</groupId>
 	<artifactId>czsem</artifactId>
-	<version>3.0-alpha1-SNAPSHOT</version>
+	<version>3.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Czsem Mining Suite</name>
@@ -17,12 +17,11 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
-	
+
 	<scm>
 		<url>https://github.com/dedekj/czsem-gate-tools.git</url>
 		<connection>scm:git:https://github.com/dedekj/czsem-gate-tools.git</connection>
-	  <tag>czsem-3.0</tag>
-  </scm>
+	</scm>
  	
 	<issueManagement>
 		<url>http://github.com/dedekj/czsem-gate-tools/issues</url>
