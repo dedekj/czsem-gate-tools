@@ -5,7 +5,7 @@
 		<groupId>net.sf.czsem</groupId>
 		<artifactId>czsem</artifactId>
 		<version>3.0-SNAPSHOT</version>
-		<relativePath>../_parent-pom</relativePath>
+		<relativePath>..</relativePath>
 	</parent>
 
 	<artifactId>czsem-gate-plugin</artifactId>
