@@ -105,12 +105,12 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
 				<configuration>
-					<pomFileName>modules/pom.xml</pomFileName>
 					<pushChanges>false</pushChanges>
 					<localCheckout>true</localCheckout>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 					<useReleaseProfile>false</useReleaseProfile>
 					<goals>deploy</goals>
+					<arguments>-DCZSEM_CONFIG_DIR=${project.base.dir}/configuration</arguments>
 				</configuration>
 			</plugin>
 			<plugin>
