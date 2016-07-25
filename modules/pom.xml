@@ -44,7 +44,23 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<skipGpg>true</skipGpg>
 	</properties>
+  
+	<profiles>
+		<profile>
+			<id>gpg.pass is set</id>
+			<activation>
+				<property>
+					<name>gpg.pass</name>
+				</property>
+			</activation>
+			<properties>
+				<skipGpg>false</skipGpg>
+			</properties>
+		</profile>
+	</profiles>
+  
 
 	<modules>
 		<module>custom-properties-maven-plugin</module>
@@ -152,6 +168,9 @@
 						<goals>
 							<goal>sign</goal>
 						</goals>
+						<configuration>
+              <skip>${skipGpg}</skip>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
