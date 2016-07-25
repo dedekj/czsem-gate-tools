@@ -110,7 +110,7 @@
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 					<useReleaseProfile>false</useReleaseProfile>
 					<goals>deploy</goals>
-					<arguments>-DCZSEM_CONFIG_DIR=${project.base.dir}/configuration</arguments>
+					<arguments>-DCZSEM_CONFIG_DIR=${project.basedir}/configuration</arguments>
 				</configuration>
 			</plugin>
 			<plugin>
