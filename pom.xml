@@ -48,13 +48,13 @@
 	</properties>
   
 	<modules>
-		<module>custom-properties-maven-plugin</module>
+		<module>modules/custom-properties-maven-plugin</module>
 		
-		<module>czsem-common</module>
-		<module>fs-query</module>
-		<module>czsem-gate-plugin</module>
-		<module>treex-gate-plugin</module>
-		<module>netgraph-tree-viewer</module>
+		<module>modules/czsem-common</module>
+		<module>modules/fs-query</module>
+		<module>modules/czsem-gate-plugin</module>
+		<module>modules/treex-gate-plugin</module>
+		<module>modules/netgraph-tree-viewer</module>
 	</modules>
 
 	<build>

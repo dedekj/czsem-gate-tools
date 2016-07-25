@@ -4,7 +4,7 @@
 		<groupId>net.sf.czsem</groupId>
 		<artifactId>czsem</artifactId>
 		<version>3.0-SNAPSHOT</version>
-		<relativePath>..</relativePath>
+		<relativePath>../..</relativePath>
 	</parent>
 
 	<artifactId>netgraph-tree-viewer</artifactId>
