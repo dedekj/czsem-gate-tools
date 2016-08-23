@@ -116,7 +116,7 @@ public class Annotator implements AnnotatorInterface {
 	}
 
 	public static boolean isEndPunctuationChar(char ch) {
-		return Character.CONTROL == Character.getType(ch);
+		return Character.OTHER_PUNCTUATION == Character.getType(ch);
 	}
 	
 	protected void addSplitAnnotation() throws InvalidOffsetException {
