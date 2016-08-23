@@ -19,6 +19,7 @@ public class SequenceAnnotator
 	
 	public long lastStart() {return last_start_index-last_length;}
 	public long lastEnd() {return last_start_index;}
+	public int lastEndInt() {return last_start_index;}
 	
 	public void backup()
 	{
@@ -234,5 +235,10 @@ public class SequenceAnnotator
 		} //local_start_index loop		
 	
 	}//method indexOf	
+	
+	
+	public char charAt(int index) {
+		return string_content.charAt(index);
+	}
 
 }

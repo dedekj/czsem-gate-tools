@@ -177,8 +177,13 @@ public class TreexLocalAnalyserTest {
 		analysis.execute();
 		analysis.cleanup();
 		
-		Assert.assertEquals(doc.getAnnotations().size(), 13);
-		Assert.assertEquals(doc2.getAnnotations().size(), 10);
+		Assert.assertEquals(doc.getAnnotations().size(), 21);
+		Assert.assertEquals(doc.getAnnotations().get("Token").size(), 11);
+		Assert.assertEquals(doc.getAnnotations().get("SpaceToken").size(), 6);
+		Assert.assertEquals(doc.getAnnotations().get("Sentence").size(), 2);
+		Assert.assertEquals(doc.getAnnotations().get("Split").size(), 2);
+		
+		Assert.assertEquals(doc2.getAnnotations().size(), 18);
 		
 		GateUtils.deleteAllPublicGateResources();
 	}

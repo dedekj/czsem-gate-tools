@@ -138,7 +138,7 @@ public class AnnotatorTest {
 		Annotator a = new Annotator();
 		a.annotate(new AnnotationSourceTest(Arrays.asList(ss)), doc, null);
 		
-		List<Annotation> ordered = Utils.inDocumentOrder(doc.getAnnotations());
+		List<Annotation> ordered = Utils.inDocumentOrder(doc.getAnnotations().get("testType"));
 		
 		int toc = 0;
 		long offset= 3;
@@ -195,7 +195,7 @@ public class AnnotatorTest {
 		Annotator a = new Annotator();
 		a.annotate(new AnnotationSourceTest(Arrays.asList(ss)), doc, null);
 		
-		List<Annotation> ordered = Utils.inDocumentOrder(doc.getAnnotations());
+		List<Annotation> ordered = Utils.inDocumentOrder(doc.getAnnotations().get("testSentenceType"));
 		
 		int toc = 0;
 		
@@ -236,6 +236,13 @@ public class AnnotatorTest {
 		a.setSeqAnot(new SequenceAnnotator(doc));
 //		a.safeAnnotateIterableSeq(sa);
 		a.annotateIterableSeq(sa);
+	}
+
+	@Test
+	public static void isEndPunctuationChar() throws Exception {
+		Assert.assertTrue(Annotator.isEndPunctuationChar('.'));
+		Assert.assertTrue(Annotator.isEndPunctuationChar('!'));
+		Assert.assertTrue(Annotator.isEndPunctuationChar('?'));
 	}
 
 	public static void setLogLevelErr() {

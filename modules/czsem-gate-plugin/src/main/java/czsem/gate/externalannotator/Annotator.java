@@ -3,6 +3,7 @@ package czsem.gate.externalannotator;
 import gate.Annotation;
 import gate.AnnotationSet;
 import gate.Document;
+import gate.Factory;
 import gate.FeatureMap;
 import gate.util.InvalidOffsetException;
 
@@ -64,12 +65,16 @@ public class Annotator implements AnnotatorInterface {
 
 	private SequenceAnnotator seq_anot;
 	private AnnotationSet as;
+	private long nextSpaceTokenStart = 0;
+
 	
 	public void setSeqAnot(SequenceAnnotator seq_anot) {
 		this.seq_anot = seq_anot;
 	}
 
 	public void initBefore(Document doc, String outputASName) {
+		nextSpaceTokenStart = 0;
+		
 		seq_anot = new SequenceAnnotator(doc);
 		as = doc.getAnnotations(outputASName);
 		
@@ -96,6 +101,7 @@ public class Annotator implements AnnotatorInterface {
     	if (safeAnnotateSeq(s)) {
     		//search inside the last sentence only
     		seq_anot.restoreToLastStartAndBackupCurrent();
+    		addSplitAnnotation();
     	} else {
     		seq_anot.restorePreviousAndBackupCurrent();
     	}
@@ -107,6 +113,26 @@ public class Annotator implements AnnotatorInterface {
 		//important in cases, when there are no tokens 
 		seq_anot.restorePreviousAndBackupCurrent();
 
+	}
+
+	public static boolean isEndPunctuationChar(char ch) {
+		return Character.CONTROL == Character.getType(ch);
+	}
+	
+	protected void addSplitAnnotation() throws InvalidOffsetException {
+		int end = seq_anot.lastEndInt();
+		
+		if (end > 0) end--;
+		int start = end;
+		
+		if (start > 0 && isEndPunctuationChar(seq_anot.charAt(start-1)))
+			start--;
+		
+		as.add((long) start, (long) end, "Split", Factory.newFeatureMap());
+	}
+	
+	protected void createSpaceTokens(long start, long end) throws InvalidOffsetException {
+		as.add(start, end, "SpaceToken", Factory.newFeatureMap());
 	}
 
 	protected int annotateIterableSeqStep(List<? extends SeqAnnotable> sa, int i) throws InvalidOffsetException {
@@ -133,14 +159,27 @@ public class Annotator implements AnnotatorInterface {
 	}
 
 	protected void safeAnnotateIterableSeq(List<? extends SeqAnnotable> sa) throws InvalidOffsetException {
+		
 		for (int i=0; i<sa.size(); i++)
 		{
+			boolean isOK = false;
 			try {
 				i = annotateIterableSeqStep(sa, i);
+				isOK = true;
 			} catch (CannotAnnotateCharacterSequence e) {
-				safeAnnotateSeq(sa.get(i));
+				isOK = safeAnnotateSeq(sa.get(i));
 			}
+			
+			if (isOK) {
+				if (nextSpaceTokenStart < seq_anot.lastStart())
+					createSpaceTokens(nextSpaceTokenStart, seq_anot.lastStart());
+				
+				nextSpaceTokenStart = seq_anot.lastEnd();
+			}
+
+
 		}
+		
 	}
 
 	protected void annotateIterableSeq(List<SeqAnnotable> sa) throws InvalidOffsetException {

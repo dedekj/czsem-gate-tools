@@ -27,7 +27,7 @@ public class AnnotateWithTreexSourceTest {
 		
 		Iterator<Map<String, Object>> i = zones.iterator();
 		
-		for (Annotation sentence : sents)
+		for (Annotation sentence : gate.Utils.inDocumentOrder(sents))
 		{
 			Map<String, Object> zone = i.next();						
 			Assert.assertEquals(zone.get("sentence"), gate.Utils.stringFor(doc, sentence));			
@@ -60,6 +60,19 @@ public class AnnotateWithTreexSourceTest {
 	}
 	
 	public static void assertDocumentsAreSame(Document actual, Document expected) {
+		
+		/*
+		try {
+			String file = expected.getSourceUrl().getFile();
+			file = FilenameUtils.getName(file);
+			System.err.println(file);
+			GateUtils.saveGateDocumentToXML(actual, file);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		*/
+		
+		
 		//TODO Should be less strict...
 		AnnotationSet asAct = actual.getAnnotations("treex");
 		AnnotationSet asExpect = expected.getAnnotations("treex");
