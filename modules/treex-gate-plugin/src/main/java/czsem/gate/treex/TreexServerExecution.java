@@ -121,6 +121,26 @@ public class TreexServerExecution {
 	protected Process process;
 	protected String handshakeCode = Long.toHexString(new Random().nextLong());
 
+	private String[] cmdArray = {
+			/*
+			"docker",
+			"run",
+			"--rm",
+			"-w=/app/czsem/treex-gate-plugin/treex_online/",
+			"-p",
+			"${port}:${port}",
+			"datlowe/treex",
+			"perl",
+			"treex_online.pl",
+			"${port}",
+			"${handshakeCode}"			
+			/**/
+			"perl", 
+			"${treexOnlineDir}/treex_online.pl",
+			"${port}",
+			"${handshakeCode}"
+			/**/
+	};
 
 	public String getHandshakeCode() {
 		return handshakeCode;
@@ -166,13 +186,7 @@ public class TreexServerExecution {
 	}
 	
 	public void startWithoutHandshake() throws IOException {
-		String[] cmdarray = {
-				"perl", 
-				TreexConfig.getConfig().getTreexOnlineDir()+"/treex_online.pl",
-				Integer.toString(getPortNumber()),
-				handshakeCode};
-		
-		startWithoutHandshake(cmdarray);		
+		startWithoutHandshake(new TreexServerExecutionParams(this).expandCmdArray(getCmdArray()));		
 	}
 
 
@@ -306,5 +320,15 @@ public class TreexServerExecution {
 
 	public void setRedirectionType(RedirectionType redirectionType) {
 		this.redirectionType = redirectionType;
+	}
+
+
+	public String[] getCmdArray() {
+		return cmdArray;
+	}
+
+
+	public void setCmdArray(String[] cmdArray) {
+		this.cmdArray = cmdArray;
 	}
 }
