@@ -20,11 +20,11 @@ public class NetgraphView<E> extends JComponent {
 	private static final long serialVersionUID = 5301240098183332164L;
 	private final TreeSource<E> treeSource;
 	
-	public static interface StringDrwer {
+	public static interface StringDrawer {
 		void drawString(Graphics2D g, String str, int x, int y, int w, int h);
 	}
 	
-	public static final StringDrwer REAL_DRAWER = new StringDrwer() {
+	public static final StringDrawer REAL_DRAWER = new StringDrawer() {
 		@Override
 		public void drawString(Graphics2D g, String str, int x, int y, int w, int h) {
 			/**/
@@ -169,7 +169,7 @@ public class NetgraphView<E> extends JComponent {
 		}
 	}
 
-	protected void drawLabels(int i, Graphics2D g, FontMetrics m, StringDrwer strDrawer) {
+	protected void drawLabels(int i, Graphics2D g, FontMetrics m, StringDrawer strDrawer) {
 		int nodeX = x[i]+x_shift;
 		int nodeY = y[i];
 		int fontSize = m.getHeight();
