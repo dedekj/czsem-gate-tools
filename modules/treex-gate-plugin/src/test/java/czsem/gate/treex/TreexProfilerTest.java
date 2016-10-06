@@ -27,6 +27,7 @@ public class TreexProfilerTest {
 		//tse.setRedirectionType(RedirectionType.INHERIT_IO); //this is much more slower
 		tse.setRedirectionType(RedirectionType.LOG_FILES_REPLACE);
 		tse.setHandshakeCode("profilingTest");
+		tse.setPortNumber(7117);
 		
 		
 		String[] cmdarray = {

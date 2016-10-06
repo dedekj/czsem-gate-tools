@@ -108,9 +108,16 @@ public class AnnotateWithTreexSourceTest {
 		annotateUsingTeexFileTest("demo_en.treex", "demo_en.gate.xml");
 		annotateUsingTeexFileTest("demo_cs.treex", "demo_cs.gate.xml");
 	}
+	
+	public static int i = 2; 
 
 	private void annotateUsingTeexFileTest(String treexFileName, String gateXmlResourceName) throws Exception {
 		TreexServerExecution tse = new TreexServerExecution();
+		//docker treex doesn't see our local files...
+		if ("docker".equals(tse.getCmdArray()[0]))
+			return;
+		
+		tse.setPortNumber(7999 - ++i);
 		tse.start();
 		
 		TreexServerConnectionXmlRpc tsConn = tse.getConnection();

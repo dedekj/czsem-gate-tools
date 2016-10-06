@@ -26,6 +26,7 @@ public class TreexAnalysisTest {
 	@Test()
 	public void isScenarioInitializedTest() throws Exception {
 		TreexServerExecution tse = new TreexServerExecution();
+		tse.setPortNumber(7171);
 		tse.start();
 
 		TreexServerConnectionXmlRpc conn = tse.getConnection();
@@ -71,6 +72,7 @@ public class TreexAnalysisTest {
 	@Test
 	public void segmentAndTokenizeTest() throws Exception {
 		TreexServerExecution tse = new TreexServerExecution();
+		tse.setPortNumber(1717);
 		tse.start();
 				
 		TreexServerConnectionXmlRpc conn = tse.getConnection();
