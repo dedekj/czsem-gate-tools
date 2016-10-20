@@ -66,7 +66,7 @@ public class DataStoreWrapper {
 	}
 	
 	
-	private static final String LR_PERSISTENCE_ID_SUFFIX = "___" + "0" + "___" + ".ser";
+	public static final String LR_PERSISTENCE_ID_SUFFIX = "___" + "0" + "___" + ".ser";
 	
 	public static String lrNameToLRPersistenceId(String lrName) {
 		//return lrName + "___" + new Date().getTime() + "___" + random();
