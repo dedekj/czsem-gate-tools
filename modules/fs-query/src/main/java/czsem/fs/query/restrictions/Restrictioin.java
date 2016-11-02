@@ -9,8 +9,9 @@ public abstract class Restrictioin {
 		public static final String NEQ = "!="; 
 		public static final String REG_EXP = "~="; 
 		public static final String IN_LIST = "@="; 
+		public static final String SUBCLASS = "<<"; 
 	}
-
+	
 	public abstract boolean evaluate(QueryData data, int nodeID);
 
 	public abstract String getComparator();
@@ -26,6 +27,8 @@ public abstract class Restrictioin {
 			return new NotEqualRestrictioin(arg1, arg2);
 		if (comparartor.equals(CMP.IN_LIST))
 			return new InListRestrictioin(arg1, arg2);
+		if (comparartor.equals(CMP.SUBCLASS))
+			return new SubclassRestrictioin(arg1, arg2);
 		
 		throw new RuntimeException(String.format("Restricition not supported: %s", comparartor));
 	}
@@ -74,6 +77,29 @@ public abstract class Restrictioin {
 
 		@Override
 		public String getComparator() { return CMP.EQ; }
+
+	}
+
+	public static class SubclassRestrictioin extends AttrRestrictioin {
+
+		public SubclassRestrictioin(String attr, String value) {
+			super(attr, value);
+		}
+
+		@Override
+		public boolean evaluate(Object dataValue) {
+			throw new UnsupportedOperationException("Use evaluate with QueryData instead");
+		}
+
+		@Override
+		public String getComparator() { return CMP.SUBCLASS; }
+
+		@Override
+		public boolean evaluate(QueryData data, int nodeID) {
+			Object dataValue = data.getNodeAttributes().getValue(nodeID, attr);
+			
+			return data.getNodeAttributes().isSubClassOf(dataValue, getValueString());
+		}
 
 	}
 

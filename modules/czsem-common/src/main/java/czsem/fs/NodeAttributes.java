@@ -27,7 +27,8 @@ public interface NodeAttributes
 
 		@Override
 		public boolean isSubClassOf(Object dataValue, String restricitonString) {
-			return restricitonString.equals(dataValue);
+			int resId = Integer.parseInt(restricitonString);
+			return ((Integer) dataValue) <= resId;
 		}
 	}
 

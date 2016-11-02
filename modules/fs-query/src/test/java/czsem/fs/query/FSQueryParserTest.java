@@ -313,4 +313,12 @@ public class FSQueryParserTest {
 				});		
 	}
 
+	@Test
+	public static void testSubclassOperator() throws SyntaxError {
+		evalQuery("[_name=root]([id<<2])", new int [] {
+				0, 1,
+				0, 2,
+				});		
+	}
+
 }
