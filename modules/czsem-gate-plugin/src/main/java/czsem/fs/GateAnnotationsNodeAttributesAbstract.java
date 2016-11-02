@@ -39,4 +39,9 @@ public abstract class GateAnnotationsNodeAttributesAbstract implements NodeAttri
 		return getAnnotation(node_id).getFeatures().get(attrName);
 	}
 
+	@Override
+	public boolean isSubClassOf(Object dataValue, String restricitonString) {
+		return restricitonString.equals(dataValue);
+	}
+
 }

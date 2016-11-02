@@ -24,6 +24,14 @@ public interface NodeAttributes
 			ret.add(new AbstractMap.SimpleEntry<String, Object>("id", node_id));
 			return ret;
 		}
+
+		@Override
+		public boolean isSubClassOf(Object dataValue, String restricitonString) {
+			return restricitonString.equals(dataValue);
+		}
 	}
+
+
+	boolean isSubClassOf(Object dataValue, String restricitonString);
 
 }
