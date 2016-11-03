@@ -12,6 +12,7 @@ import czsem.fs.query.restrictions.PrintableRestriction;
 import czsem.fs.query.restrictions.ReferencingRestriction;
 import czsem.fs.query.restrictions.Restrictions;
 import czsem.fs.query.restrictions.eval.ChildrenEvaluator;
+import czsem.fs.query.restrictions.eval.ReferencingRestrictionsResultsIteratorFilter;
 
 public class QueryNode  {
 	
@@ -34,6 +35,12 @@ public class QueryNode  {
 		this.evaluator = evaluator;
 	}
 
+	
+
+	public Iterable<QueryMatch> getFinalResultsFor(QueryData data, int nodeId) {
+		return ReferencingRestrictionsResultsIteratorFilter.filter(getResultsFor(data, nodeId));
+	}
+	
 	public Iterable<QueryMatch> getResultsFor(QueryData data, int nodeId) {
 		return evaluator.getResultsFor(data, this, nodeId);
 	}

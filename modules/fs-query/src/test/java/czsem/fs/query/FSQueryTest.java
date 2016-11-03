@@ -18,26 +18,26 @@ public class FSQueryTest {
 		QueryData data = buidQueryObject();
 		
 		QueryNode qn = new QueryNode();
-		Iterable<QueryMatch> res = qn.getResultsFor(data, 0);
+		Iterable<QueryMatch> res = qn.getFinalResultsFor(data, 0);
 		Assert.assertNotEquals(res, null);
 		Assert.assertTrue(res.iterator().hasNext());
 
 		qn.addRestriction("=", "id", "xxx");
 		
-		res = qn.getResultsFor(data, 0);
+		res = qn.getFinalResultsFor(data, 0);
 		Assert.assertEquals(res, null);
 
 		QueryNode qn1 = new QueryNode();
 		QueryNode qn2 = new QueryNode();
 		qn1.addChild(qn2);
 
-		res = qn1.getResultsFor(data, 0);
+		res = qn1.getFinalResultsFor(data, 0);
 		Assert.assertNotEquals(res, null);
 		Assert.assertTrue(res.iterator().hasNext());
 
 		qn2.addRestriction("=", "id", "xxx");
 
-		res = qn1.getResultsFor(data, 0);
+		res = qn1.getFinalResultsFor(data, 0);
 		Assert.assertEquals(res, null);
 	}
 
@@ -48,7 +48,7 @@ public class FSQueryTest {
 		QueryNode qn = new QueryNode();
 		qn.setEvaluator(new IterateSubtreeEvaluator(100));
 		
-		Iterable<QueryMatch> res = qn.getResultsFor(data, 3);
+		Iterable<QueryMatch> res = qn.getFinalResultsFor(data, 3);
 		
 		debugPrintResults(res);
 		
@@ -70,7 +70,7 @@ public class FSQueryTest {
 		QueryNode qn = new QueryNode();
 		qn.setEvaluator(new IterateSubtreeEvaluator(2));
 		
-		Iterable<QueryMatch> res = qn.getResultsFor(data, 1);
+		Iterable<QueryMatch> res = qn.getFinalResultsFor(data, 1);
 		
 		
 		debugPrintResults(res);
@@ -115,7 +115,7 @@ public class FSQueryTest {
 		QueryNode qn3 = new QueryNode();
 		qn2.addChild(qn3);
 
-		Iterable<QueryMatch> res = qn1.getResultsFor(data, 0);
+		Iterable<QueryMatch> res = qn1.getFinalResultsFor(data, 0);
 		Assert.assertNotEquals(res, null);
 		Assert.assertTrue(res.iterator().hasNext());
 		
@@ -164,7 +164,7 @@ public class FSQueryTest {
 
 	public static void evaluateQuery(QueryData data, QueryNode queryNode, int dataNodeId, int[] results) {
 		queryNode.reset();
-		Iterable<QueryMatch> res = queryNode.getResultsFor(data, dataNodeId);
+		Iterable<QueryMatch> res = queryNode.getFinalResultsFor(data, dataNodeId);
 		int i = 0;
 		int finishedNodeMatches = 0;
 		if (res != null) {

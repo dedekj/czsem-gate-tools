@@ -97,6 +97,11 @@ public class FSQuery {
 		private List<NodeMatch> matchingNodes;		
 		public QueryMatch( List<NodeMatch> matchingNodes ) {this.matchingNodes = matchingNodes; }
 		public List<NodeMatch> getMatchingNodes() {return matchingNodes; }
+
+		public boolean evalReferencingRestrictions() {
+			//TODO
+			return true;
+		}
 	}
 	
 	public static abstract class AbstractEvaluator {
@@ -124,7 +129,7 @@ public class FSQuery {
 				int id = sortedNodes.remove();
 
 				queryNode.reset();
-				Iterable<QueryMatch> i = queryNode.getResultsFor(data, id);
+				Iterable<QueryMatch> i = queryNode.getFinalResultsFor(data, id);
 				if (i != null) res.add(i);
 			}
 			
@@ -136,13 +141,13 @@ public class FSQuery {
 
 		public boolean isNodeMatching(Integer nodeId, QueryData data) {
 			queryNode.reset();
-			Iterable<QueryMatch> i = queryNode.getResultsFor(data, nodeId);
+			Iterable<QueryMatch> i = queryNode.getFinalResultsFor(data, nodeId);
 			return (i != null && i.iterator().hasNext());
 		}
 
 		public QueryMatch getFirstMatch(Integer nodeId, QueryData data) {
 			queryNode.reset();
-			Iterable<QueryMatch> i = queryNode.getResultsFor(data, nodeId);
+			Iterable<QueryMatch> i = queryNode.getFinalResultsFor(data, nodeId);
 			if (i == null || ! i.iterator().hasNext()) return null;
 			
 			return i.iterator().next();
