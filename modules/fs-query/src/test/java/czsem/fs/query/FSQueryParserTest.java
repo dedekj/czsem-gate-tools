@@ -372,5 +372,10 @@ public class FSQueryParserTest {
 				0, 7, 7,});
 
 	}
+	
+	@Test(expectedExceptions={IllegalStateException.class})
+	public void testDuplicateName() throws SyntaxError {
+		evalQuery("[_name=a]([_name=a])", null);
+	}
 
 }

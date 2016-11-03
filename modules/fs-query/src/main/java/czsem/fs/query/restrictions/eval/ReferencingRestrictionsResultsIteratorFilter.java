@@ -51,16 +51,24 @@ public class ReferencingRestrictionsResultsIteratorFilter implements Iterator<Qu
 		return ret;
 	}
 
-	protected boolean evalReferencingRestrictions(QueryMatch queryMatch) {
-		Map<String, Integer> dataBindings = 
-		
-			queryMatch.getMatchingNodes().stream()
-				.filter(n -> n.getQueryNode().getName() != null)
-				.collect(Collectors.toMap(
-						n -> n.getQueryNode().getName(), 
-						NodeMatch::getNodeId)) 
+	public static Map<String, Integer>  createDataBindings(QueryMatch queryMatch) {
+		return queryMatch.getMatchingNodes().stream()
+				
+			.filter(n -> n.getQueryNode().getName() != null)
+			.collect(Collectors.toMap(
+					n -> n.getQueryNode().getName(), 
+					NodeMatch::getNodeId)) 
 		;
-
+	}
+	
+	protected boolean evalReferencingRestrictions(QueryMatch queryMatch) {
+		Map<String, Integer> dataBindings;
+		
+		try {
+			dataBindings = createDataBindings(queryMatch);
+		} catch (IllegalStateException e) {
+			throw new IllegalStateException("Failed to collect dataBindings, check for duplicated node name: "+ queryMatch.getMatchingNodes());
+		}
 		
 		for (NodeMatch nodeMatch : queryMatch.getMatchingNodes()) {
 			if (!evalReferencingRestrictions(nodeMatch, dataBindings))
