@@ -41,9 +41,11 @@ public class FSQueryParserTest {
 		evalQuery("[]( [id=1] , [id=2] )", new int [] {0, 1, 2});		
 		evalQuery("[]( [id=1] , [id =2] )", new int [] {0, 1, 2});		
 		evalQuery("[]( [id=1] , [ id =2] )", new int [] {0, 1, 2});		
-		evalQuery("[]( [id=1] , [ id = 2] )", new int [] {});		
-		evalQuery("[]( [id=1] , [ id =2 ] )", new int [] {});		
-		evalQuery("[]( [id=1] , [ id = 2 ] )", new int [] {});		
+		
+		//because id is Number:
+		evalQuery("[]( [id=1] , [ id = 2] )", new int [] {0, 1, 2});		
+		evalQuery("[]( [id=1] , [ id =2 ] )", new int [] {0, 1, 2});		
+		evalQuery("[]( [id=1] , [ id = 2 ] )", new int [] {0, 1, 2});		
 	}
 	
 	@Test

@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import czsem.fs.query.FSQuery.QueryObject;
 import czsem.fs.query.QueryNode;
-import czsem.fs.query.restrictions.Restrictioin;
+import czsem.fs.query.restrictions.PrintableRestriction;
 
 public class FSQueryTreeSource implements TreeSource<QueryNode> {
 	
@@ -32,15 +32,15 @@ public class FSQueryTreeSource implements TreeSource<QueryNode> {
 	
 	public static class RestricitonLabel implements NodeLabel {
 
-		protected final Restrictioin r;
+		protected final PrintableRestriction r;
 
-		public RestricitonLabel(Restrictioin r) {
+		public RestricitonLabel(PrintableRestriction r) {
 			this.r = r;
 		}
 
 		@Override
 		public String getLeftPart() {
-			return r.getAttrName();
+			return r.getLeftArg();
 		}
 
 		@Override
@@ -50,14 +50,14 @@ public class FSQueryTreeSource implements TreeSource<QueryNode> {
 
 		@Override
 		public String getRightPart() {
-			return r.getValueString();
+			return r.getRightArg();
 		} 
 		
 	}
 
 	@Override
 	public List<NodeLabel> getLabels(QueryNode node) {
-		return node.getRestricitions().stream()
+		return node.getAllRestricitions().stream()
 				.map(r -> new RestricitonLabel(r))
 			.collect(Collectors.toList());
 	}

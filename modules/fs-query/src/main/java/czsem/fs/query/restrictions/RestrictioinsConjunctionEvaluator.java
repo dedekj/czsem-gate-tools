@@ -15,7 +15,7 @@ public class RestrictioinsConjunctionEvaluator extends AbstractEvaluator {
 	
 	public static boolean evalRestricitons(QueryData data, QueryNode queryNode, int dataNodeId)
 	{
-		for (Restrictioin r : queryNode.getRestricitions())
+		for (DirectAttrRestriction r : queryNode.getDirectRestrictions())
 		{
 			if (! r.evaluate(data, dataNodeId)) return false;
 		}
