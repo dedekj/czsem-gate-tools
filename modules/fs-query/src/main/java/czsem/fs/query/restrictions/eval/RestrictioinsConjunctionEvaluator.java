@@ -1,4 +1,4 @@
-package czsem.fs.query.restrictions;
+package czsem.fs.query.restrictions.eval;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,6 +7,7 @@ import czsem.fs.query.FSQuery.AbstractEvaluator;
 import czsem.fs.query.FSQuery.NodeMatch;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
+import czsem.fs.query.restrictions.DirectAttrRestriction;
 import czsem.fs.query.QueryNode;
 
 public class RestrictioinsConjunctionEvaluator extends AbstractEvaluator {

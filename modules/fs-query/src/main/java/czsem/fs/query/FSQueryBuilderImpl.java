@@ -6,10 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import czsem.fs.query.constants.MetaAttribute;
-import czsem.fs.query.restrictions.ChildrenEvaluator;
-import czsem.fs.query.restrictions.IterateSubtreeEvaluator;
-import czsem.fs.query.restrictions.OptionalEvaluator;
-import czsem.fs.query.restrictions.RestrictioinsConjunctionEvaluator;
+import czsem.fs.query.restrictions.eval.ChildrenEvaluator;
+import czsem.fs.query.restrictions.eval.IterateSubtreeEvaluator;
+import czsem.fs.query.restrictions.eval.OptionalEvaluator;
+import czsem.fs.query.restrictions.eval.RestrictioinsConjunctionEvaluator;
 
 public class FSQueryBuilderImpl implements FSQueryBuilder {
 	private static final Logger logger = LoggerFactory.getLogger(FSQueryBuilderImpl.class);

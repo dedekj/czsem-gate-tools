@@ -10,7 +10,7 @@ import czsem.fs.TreeIndex;
 import czsem.fs.query.FSQuery.NodeMatch;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
-import czsem.fs.query.restrictions.IterateSubtreeEvaluator;
+import czsem.fs.query.restrictions.eval.IterateSubtreeEvaluator;
 
 public class FSQueryTest {
 	@Test

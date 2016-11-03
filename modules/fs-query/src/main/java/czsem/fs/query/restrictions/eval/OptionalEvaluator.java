@@ -1,4 +1,4 @@
-package czsem.fs.query.restrictions;
+package czsem.fs.query.restrictions.eval;
 
 import java.util.ArrayList;
 import java.util.Arrays;
