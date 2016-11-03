@@ -10,15 +10,17 @@ import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import czsem.gate.utils.GateUtils;
 
 public class TreexPreprocessingTest {
 	
-	private TreexServerConnectionXmlRpc tsConn;
+	private static TreexServerConnectionXmlRpc tsConn;
 
-	public TreexPreprocessingTest() throws Exception
+	@BeforeClass
+	public static void startTreex() throws Exception
 	{
 		//TODO
 		//GateUtils.loggerSetup(Level.ALL);
