@@ -1,4 +1,4 @@
-package czsem.fs.query;
+package czsem.fs.query.restrictions.eval;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,6 +8,8 @@ import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 import czsem.Utils;
+import czsem.fs.query.FSQuery;
+import czsem.fs.query.QueryNode;
 import czsem.fs.query.FSQuery.NodeMatch;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;

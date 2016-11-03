@@ -29,11 +29,9 @@ public class RestrictioinsConjunctionEvaluator extends AbstractEvaluator {
 			return null;
 		
 		List<NodeMatch> matchingNodes = Arrays.asList(
-				new NodeMatch[] {new NodeMatch(dataNodeId, queryNode)} );
+				new NodeMatch(dataNodeId, queryNode));
 		
-		return Arrays.asList(
-				new QueryMatch [] {
-						new QueryMatch(matchingNodes)}); 
+		return Arrays.asList(new QueryMatch(matchingNodes)); 
 	}
 
 
