@@ -3,7 +3,9 @@
  ******************************************************************************/
 package czsem.fs.query.restrictions;
 
-public abstract class DirectAttrRestriction extends AttrRestriction implements PrintableRestriction {
+import czsem.fs.query.FSQuery.QueryData;
+
+public abstract class DirectAttrRestriction extends AttrRestriction {
 
 	protected String value;
 	
@@ -17,14 +19,17 @@ public abstract class DirectAttrRestriction extends AttrRestriction implements P
 	}
 	
 	@Override
-	public String getLeftArg() {
-		return getAttrName();
-	}
-
-	@Override
 	public String getRightArg() {
 		return getValueString();
 	}
+
+	public boolean evaluate(QueryData data, int nodeID) {
+		Object dataValue = data.getNodeAttributes().getValue(nodeID, attr);
+		return evaluate(dataValue);
+	}
+
+	public abstract boolean evaluate(Object dataValue);
+	
 	
 	
 	public static class DirectAttrRestrictionDecorator extends DirectAttrRestriction {

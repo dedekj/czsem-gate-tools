@@ -288,7 +288,7 @@ public class FSQueryParserTest {
 
 	@Test
 	public static void testIterateSubtree() throws SyntaxError {
-		evalQuery("[_name=root]([id=1,_name=one]([_name=subtree,_subtree_eval_depth=20]))", new int [] {
+		evalQuery("[_name=root]([id=1,_name=one]([_subtree_eval_depth=20]))", new int [] {
 				0, 1,
 				0, 1, 4, 
 				0, 1, 3, 
@@ -321,6 +321,56 @@ public class FSQueryParserTest {
 				0, 1,
 				0, 2,
 				});		
+	}
+
+	@Test
+	public static void testOrderOperator() throws SyntaxError {
+		/*
+		evalQuery("[]([],[])", new int [] {
+				0, 1, 1,
+				0, 1, 2,
+				0, 1, 7,
+				0, 2, 1,
+				0, 2, 2,
+				0, 2, 7,
+				0, 7, 1,
+				0, 7, 2,
+				0, 7, 7,});
+		*/
+
+		evalQuery("[]([],[id>5])", new int [] {
+				0, 1, 7,
+				0, 2, 7,
+				0, 7, 7,});
+
+	}
+
+	@Test
+	public static void testRefSetr() throws SyntaxError {
+		/*
+		evalQuery("[]([],[])", new int [] {
+				0, 1, 1,
+				0, 1, 2,
+				0, 1, 7,
+				0, 2, 1,
+				0, 2, 2,
+				0, 2, 7,
+				0, 7, 1,
+				0, 7, 2,
+				0, 7, 7,});
+		*/
+
+		evalQuery("[]([_name=a],[id>{a.id}])", new int [] {
+				0, 1, 2,
+				0, 1, 7,
+				0, 2, 7,
+				});
+		
+		evalQuery("[]([_name=a],[id={a.id}])", new int [] {
+				0, 1, 1,
+				0, 2, 2,
+				0, 7, 7,});
+
 	}
 
 }

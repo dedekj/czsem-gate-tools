@@ -50,11 +50,14 @@ public abstract class Restrictions {
 		BasicRestriction r = comparartor2restrictioin.get(comparartor);
 		if (r == null)
 			throw new RuntimeException(String.format("Restricition not supported: %s", comparartor));
-
-		queryNode.addDirectRestriction(
-			new DirectAttrRestrictionDecorator(r, arg2, arg2));
 		
-		//TODO addReferencingRestriction
+		if (ReferencingRestriction.tryParseRefString(arg2) != null) {
+			queryNode.addReferencingRestriction(
+					new ReferencingRestriction(r, arg1, arg2));
+		} else {
+			queryNode.addDirectRestriction(
+					new DirectAttrRestrictionDecorator(r, arg1, arg2));
+		}
 	}
 	
 	

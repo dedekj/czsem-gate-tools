@@ -71,7 +71,7 @@ public class ReferencingRestrictionsResultsIteratorFilter implements Iterator<Qu
 
 	protected boolean evalReferencingRestrictions(NodeMatch nodeMatch, Map<String, Integer>  dataBindings) {
 		for (ReferencingRestriction r : nodeMatch.getQueryNode().getReferencingRestrictions()) {
-			if (! r.evaluate(data, nodeMatch.getNodeId(), dataBindings));
+			if (! r.evaluate(data, nodeMatch.getNodeId(), dataBindings))
 				return false;
 		}
 		
