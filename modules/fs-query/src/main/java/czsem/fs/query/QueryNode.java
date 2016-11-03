@@ -38,7 +38,7 @@ public class QueryNode  {
 	
 
 	public Iterable<QueryMatch> getFinalResultsFor(QueryData data, int nodeId) {
-		return ReferencingRestrictionsResultsIteratorFilter.filter(getResultsFor(data, nodeId));
+		return ReferencingRestrictionsResultsIteratorFilter.filter(getResultsFor(data, nodeId), data);
 	}
 	
 	public Iterable<QueryMatch> getResultsFor(QueryData data, int nodeId) {

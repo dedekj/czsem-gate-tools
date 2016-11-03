@@ -4,16 +4,23 @@
 package czsem.fs.query.restrictions.eval;
 
 import java.util.Iterator;
+import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
+import czsem.fs.query.FSQuery.NodeMatch;
+import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
+import czsem.fs.query.restrictions.ReferencingRestriction;
 
 public class ReferencingRestrictionsResultsIteratorFilter implements Iterator<QueryMatch>{
 	
 	protected final Iterator<QueryMatch> parent;
+	protected final QueryData data;
 
-	public ReferencingRestrictionsResultsIteratorFilter(Iterator<QueryMatch> parent) {
+	public ReferencingRestrictionsResultsIteratorFilter(Iterator<QueryMatch> parent, QueryData data) {
 		this.parent = parent;
+		this.data = data;
 	}
 	
 	protected QueryMatch cachedValue = null; 
@@ -26,7 +33,7 @@ public class ReferencingRestrictionsResultsIteratorFilter implements Iterator<Qu
 			
 			cachedValue = parent.next();
 
-			if (! cachedValue.evalReferencingRestrictions()) {
+			if (! evalReferencingRestrictions(cachedValue)) {
 				cachedValue = null;
 			}
 		}
@@ -44,13 +51,40 @@ public class ReferencingRestrictionsResultsIteratorFilter implements Iterator<Qu
 		return ret;
 	}
 
-	public static Iterable<QueryMatch> filter(Iterable<QueryMatch> resultsFor) {
+	protected boolean evalReferencingRestrictions(QueryMatch queryMatch) {
+		Map<String, Integer> dataBindings = 
+		
+			queryMatch.getMatchingNodes().stream()
+				.filter(n -> n.getQueryNode().getName() != null)
+				.collect(Collectors.toMap(
+						n -> n.getQueryNode().getName(), 
+						NodeMatch::getNodeId)) 
+		;
+
+		
+		for (NodeMatch nodeMatch : queryMatch.getMatchingNodes()) {
+			if (!evalReferencingRestrictions(nodeMatch, dataBindings))
+				return false;
+		}
+		return true;
+	}
+
+	protected boolean evalReferencingRestrictions(NodeMatch nodeMatch, Map<String, Integer>  dataBindings) {
+		for (ReferencingRestriction r : nodeMatch.getQueryNode().getReferencingRestrictions()) {
+			if (! r.evaluate(data, nodeMatch.getNodeId(), dataBindings));
+				return false;
+		}
+		
+		return true;
+	}
+
+	public static Iterable<QueryMatch> filter(Iterable<QueryMatch> resultsFor, QueryData data) {
 		if (resultsFor == null) return null;
 		
 		return new Iterable<QueryMatch>() {
 			@Override
 			public Iterator<QueryMatch> iterator() {
-				return new ReferencingRestrictionsResultsIteratorFilter(resultsFor.iterator());
+				return new ReferencingRestrictionsResultsIteratorFilter(resultsFor.iterator(), data);
 			}
 		};
 	} 

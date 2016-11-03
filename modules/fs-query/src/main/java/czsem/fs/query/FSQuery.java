@@ -97,11 +97,6 @@ public class FSQuery {
 		private List<NodeMatch> matchingNodes;		
 		public QueryMatch( List<NodeMatch> matchingNodes ) {this.matchingNodes = matchingNodes; }
 		public List<NodeMatch> getMatchingNodes() {return matchingNodes; }
-
-		public boolean evalReferencingRestrictions() {
-			//TODO
-			return true;
-		}
 	}
 	
 	public static abstract class AbstractEvaluator {
