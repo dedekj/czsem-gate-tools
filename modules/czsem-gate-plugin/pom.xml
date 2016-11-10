@@ -37,7 +37,7 @@
 						</goals>
 						<configuration>
 							<finalName>prepared</finalName>
-							<attach>false</attach>
+							<attach>true</attach>
 							<descriptors>
 								<descriptor>src/main/assembly/gate-plugin-dir.xml</descriptor>
 							</descriptors>
