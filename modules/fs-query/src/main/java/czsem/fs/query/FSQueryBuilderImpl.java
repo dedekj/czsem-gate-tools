@@ -1,15 +1,14 @@
 package czsem.fs.query;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import czsem.fs.query.constants.MetaAttribute;
-import czsem.fs.query.restrictions.eval.ChildrenEvaluator;
 import czsem.fs.query.restrictions.eval.IterateSubtreeEvaluator;
-import czsem.fs.query.restrictions.eval.OptionalEvaluator;
-import czsem.fs.query.restrictions.eval.RestrictioinsConjunctionEvaluator;
 
 public class FSQueryBuilderImpl implements FSQueryBuilder {
 	private static final Logger logger = LoggerFactory.getLogger(FSQueryBuilderImpl.class);
@@ -23,12 +22,13 @@ public class FSQueryBuilderImpl implements FSQueryBuilder {
 	
 	protected QueryNode curentParent; 
 	protected QueryNode curentNode;
+	protected List<QueryNode> optionalNodes = new ArrayList<>();
 
 	@Override
 	public void addNode() {
 		logger.debug("addNode");
 
-		curentNode = new QueryNode(RestrictioinsConjunctionEvaluator.restrictioinsConjunctionEvaluatorInstance);
+		curentNode = new QueryNode();
 		curentParent.addChild(curentNode);		
 	}
 
@@ -36,7 +36,7 @@ public class FSQueryBuilderImpl implements FSQueryBuilder {
 	public void beginChildren() {
 		logger.debug("beginChildren");
 		
-		curentNode.setEvaluator(ChildrenEvaluator.childrenEvaluatorInstance);
+		//curentNode.setEvaluator(ChildrenEvaluator.childrenEvaluatorInstance);
 		
 		nodeStack.push(curentParent);
 		curentParent = curentNode;		
@@ -56,13 +56,15 @@ public class FSQueryBuilderImpl implements FSQueryBuilder {
 		if (MetaAttribute.NODE_NAME.equals(arg1))
 			curentNode.setName(arg2);
 		else if (MetaAttribute.OPTIONAL.equals(arg1)){ 
-			if (MetaAttribute.TRUE.equals(arg2))
-				curentNode.setEvaluator(new OptionalEvaluator());
+			if (MetaAttribute.TRUE.equals(arg2)) {
+				curentNode.setOptional(true);
+				optionalNodes.add(curentNode);
+			}
 		}
 		else if (IterateSubtreeEvaluator.META_ATTR_SUBTREE_DEPTH.equals(arg1))
 		{
-			int depth = Integer.parseInt(arg2); 
-			curentNode.setEvaluator(new IterateSubtreeEvaluator(depth));
+			int depth = Integer.parseInt(arg2);
+			curentNode.setSubtreeDepth(depth);
 		}
 		else
 		{
@@ -71,7 +73,9 @@ public class FSQueryBuilderImpl implements FSQueryBuilder {
 	}
 
 	public QueryNode getRootNode() {
-		return curentParent.children.iterator().next();
+		QueryNode ret = curentParent.children.iterator().next();
+		ret.setPrent(null);
+		return ret;
 	}
 
 }

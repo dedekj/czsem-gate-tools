@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import czsem.fs.NodeAttributes;
 import czsem.fs.TreeIndex;
 import czsem.fs.query.FSQuery.QueryData;
+import czsem.fs.query.FSQuery.QueryMatch;
+import czsem.fs.query.FSQuery.QueryObject;
 import czsem.fs.query.FSQueryParser.SyntaxError;
 import czsem.fs.query.restrictions.eval.OptionalEvaluator;
 
@@ -201,7 +203,7 @@ public class FSQueryParserTest {
 		FSQueryParser p = new FSQueryParser(b);
 		p.parse("[id=1, _optional=true]");
 		
-		Assert.assertTrue(b.getRootNode().evaluator instanceof OptionalEvaluator, "OptionalEvaluator should be used");
+		Assert.assertTrue(b.getRootNode().isOptional(), "Optionalnot detected");
 
 
 		evalQuery("[]([id=2,_optional=true])", new int [] {0, 2});
@@ -376,6 +378,26 @@ public class FSQueryParserTest {
 	@Test(expectedExceptions={IllegalStateException.class})
 	public void testDuplicateName() throws SyntaxError {
 		evalQuery("[_name=a]([_name=a])", null);
+	}
+
+	@Test
+	public void testTwoOptionals() throws SyntaxError {
+		String queryString = "[]([id=7],[]([id=3]),[id=1,_optional=true]([id=777,_optional=true]))";
+
+		QueryObject obj = FSQuery.buildQuery(queryString);
+		QueryData data = FSQueryTest.buidQueryObject();
+		Iterable<QueryMatch> res = obj.evaluate(data);
+		
+		for (QueryMatch queryMatch : res) {
+			System.err.println(queryMatch.getMatchingNodes());
+		}
+
+		
+		evalQuery(queryString, new int [] {
+				0, 7, 1, 3, 1
+				});
+		
+		
 	}
 
 }

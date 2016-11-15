@@ -4,25 +4,29 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import czsem.fs.query.FSQuery.AbstractEvaluator;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.restrictions.DirectAttrRestriction;
 import czsem.fs.query.restrictions.PrintableRestriction;
 import czsem.fs.query.restrictions.ReferencingRestriction;
 import czsem.fs.query.restrictions.Restrictions;
-import czsem.fs.query.restrictions.eval.ChildrenEvaluator;
-import czsem.fs.query.restrictions.eval.ReferencingRestrictionsResultsIteratorFilter;
+import czsem.fs.query.restrictions.eval.FsEvaluator;
 
 public class QueryNode  {
 	
 	protected final List<PrintableRestriction> restrictions = new ArrayList<>();
 	protected final List<DirectAttrRestriction> directRestrictions = new ArrayList<>();
 	protected final List<ReferencingRestriction> referencingRestrictions = new ArrayList<>();
-	protected List<QueryNode> children = new ArrayList<QueryNode>();
-	protected AbstractEvaluator evaluator;
-	protected String name;
 	
+	protected List<QueryNode> children = new ArrayList<QueryNode>();
+	private QueryNode prent; 
+	
+	//protected AbstractEvaluator evaluator;
+	protected String name;
+	protected boolean optional = false;
+	protected int subtreeDepth = -1;
+	
+	/*
 	public QueryNode(AbstractEvaluator evaluator) {
 		this.evaluator = evaluator;
 	}
@@ -44,9 +48,11 @@ public class QueryNode  {
 	public Iterable<QueryMatch> getResultsFor(QueryData data, int nodeId) {
 		return evaluator.getResultsFor(data, this, nodeId);
 	}
+	*/
 
 	public void addChild(QueryNode queryNode) {
-		children.add(queryNode);			
+		children.add(queryNode);
+		queryNode.setPrent(this);
 	}
 
 	public void addRestriction(String comparartor, String arg1,	String arg2) {
@@ -81,6 +87,8 @@ public class QueryNode  {
 		return name;
 	}
 	
+	/*
+	
 	public void reset() {
 		evaluator.reset();
 		for (QueryNode ch : getChildren())
@@ -88,6 +96,7 @@ public class QueryNode  {
 			ch.reset();
 		}
 	}
+	*/
 
 	public List<DirectAttrRestriction> getDirectRestrictions() {
 		return directRestrictions;
@@ -99,6 +108,35 @@ public class QueryNode  {
 
 	public Collection<PrintableRestriction> getAllRestricitions() {
 		return restrictions;
+	}
+
+	public QueryNode getPrent() {
+		return prent;
+	}
+
+	public void setPrent(QueryNode prent) {
+		this.prent = prent;
+	}
+
+	public void setOptional(boolean optional) {
+		this.optional = optional;
+	}
+
+	public boolean isOptional() {
+		return optional;
+	}
+
+	public int getSubtreeDepth() {
+		return subtreeDepth;
+	}
+
+	public void setSubtreeDepth(int subtreeDepth) {
+		this.subtreeDepth = subtreeDepth;
+	}
+
+	@Deprecated
+	public Iterable<QueryMatch> getFinalResultsFor(QueryData data, int dataNodeId) {
+		return new FsEvaluator(this, data).getFinalResultsFor(dataNodeId);
 	}
 	
 }

@@ -74,11 +74,13 @@ public class ParentQueryNodeIterator implements Iterator<QueryMatch> {
 
 
 	private Iterator<QueryMatch> findNewResultIterator(int i) {
+		/*
 		while (dataNodesIterators[i].hasNext())
 		{
 			Iterable<QueryMatch> res = queryNodes.get(i).getResultsFor(queryData, dataNodesIterators[i].next());			
 			if (res != null) return res.iterator();
 		}
+		*/
 		
 		return null;
 	}

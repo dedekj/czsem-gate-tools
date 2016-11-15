@@ -1,19 +1,19 @@
 package czsem.fs.query;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.PriorityQueue;
 import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import com.google.common.collect.Iterables;
-
 import czsem.fs.NodeAttributes;
 import czsem.fs.TreeIndex;
+import czsem.fs.query.FSQuery.QueryData;
+import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.FSQueryParser.SyntaxError;
+import czsem.fs.query.restrictions.eval.FsEvaluator;
 
 public class FSQuery {
 	
@@ -96,6 +96,7 @@ public class FSQuery {
 	public static class QueryMatch {
 		private List<NodeMatch> matchingNodes;		
 		public QueryMatch( List<NodeMatch> matchingNodes ) {this.matchingNodes = matchingNodes; }
+		public QueryMatch( NodeMatch onlyMatchingNode ) { this.matchingNodes = Collections.singletonList(onlyMatchingNode); }
 		public List<NodeMatch> getMatchingNodes() {return matchingNodes; }
 	}
 	
@@ -115,6 +116,9 @@ public class FSQuery {
 		}
 		
 		public Iterable<QueryMatch> evaluate(QueryData data) {
+			return new FsEvaluator(queryNode, data).evaluate();
+			
+			/*
 			List<Iterable<QueryMatch>> res = new ArrayList<Iterable<QueryMatch>>();
 			
 			PriorityQueue<Integer> sortedNodes = new PriorityQueue<Integer>(data.getIndex().getAllNodes()) ;
@@ -132,7 +136,10 @@ public class FSQuery {
 			Iterable<QueryMatch>[] gt = (Iterable<QueryMatch>[]) new Iterable[0];
 			
 			return Iterables.concat(res.toArray(gt));
+			*/
 		}
+		
+		/*
 
 		public boolean isNodeMatching(Integer nodeId, QueryData data) {
 			queryNode.reset();
@@ -147,6 +154,7 @@ public class FSQuery {
 			
 			return i.iterator().next();
 		}
+		*/
 
 		public String getQueryName() {
 			return queryName;
@@ -158,6 +166,16 @@ public class FSQuery {
 
 		public QueryNode getRootNode() {
 			return queryNode;
+		}
+
+		@Deprecated
+		public QueryMatch getFirstMatch(Integer dataNodeId, QueryData qd) {
+			return new FsEvaluator(queryNode, qd).getFinalResultsFor(dataNodeId).iterator().next();
+		}
+
+		@Deprecated
+		public boolean isNodeMatching(Integer dataNodeId, QueryData qd) {
+			return new FsEvaluator(queryNode, qd).getFinalResultsFor(dataNodeId).iterator().hasNext();
 		}
 		
 	}

@@ -46,7 +46,7 @@ public class FSQueryTest {
 		QueryData data = buidQueryObject();
 		
 		QueryNode qn = new QueryNode();
-		qn.setEvaluator(new IterateSubtreeEvaluator(100));
+		qn.setSubtreeDepth(100);
 		
 		Iterable<QueryMatch> res = qn.getFinalResultsFor(data, 3);
 		
@@ -68,7 +68,7 @@ public class FSQueryTest {
 		QueryData data = buidQueryObject();
 		
 		QueryNode qn = new QueryNode();
-		qn.setEvaluator(new IterateSubtreeEvaluator(2));
+		qn.setSubtreeDepth(2);
 		
 		Iterable<QueryMatch> res = qn.getFinalResultsFor(data, 1);
 		
@@ -163,7 +163,7 @@ public class FSQueryTest {
 	}
 
 	public static void evaluateQuery(QueryData data, QueryNode queryNode, int dataNodeId, int[] results) {
-		queryNode.reset();
+		//queryNode.reset();
 		Iterable<QueryMatch> res = queryNode.getFinalResultsFor(data, dataNodeId);
 		int i = 0;
 		int finishedNodeMatches = 0;
