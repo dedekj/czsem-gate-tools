@@ -7,11 +7,11 @@ import java.util.StringJoiner;
 
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
+import czsem.fs.query.eval.FsEvaluator;
 import czsem.fs.query.restrictions.DirectAttrRestriction;
 import czsem.fs.query.restrictions.PrintableRestriction;
 import czsem.fs.query.restrictions.ReferencingRestriction;
 import czsem.fs.query.restrictions.Restrictions;
-import czsem.fs.query.restrictions.eval.FsEvaluator;
 import czsem.fs.query.utils.CloneableIterator;
 
 public class QueryNode  {

@@ -1,4 +1,4 @@
-package czsem.fs.query.restrictions.eval;
+package czsem.fs.query.eval;
 
 import java.util.HashMap;
 import java.util.Iterator;

@@ -11,7 +11,7 @@ import java.util.TreeSet;
 import czsem.fs.NodeAttributes;
 import czsem.fs.TreeIndex;
 import czsem.fs.query.FSQueryParser.SyntaxError;
-import czsem.fs.query.restrictions.eval.FsEvaluator;
+import czsem.fs.query.eval.FsEvaluator;
 
 public class FSQuery {
 	

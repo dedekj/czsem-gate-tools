@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Copyright (c) 2016 Datlowe and/or its affiliates. All rights reserved.
  ******************************************************************************/
-package czsem.fs.query.restrictions.eval;
+package czsem.fs.query.eval;
 
 import java.util.Map;
 import java.util.NoSuchElementException;

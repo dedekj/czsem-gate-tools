@@ -12,7 +12,7 @@ import czsem.fs.query.FSQuery.NodeMatch;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.FSQuery.QueryObject;
-import czsem.fs.query.restrictions.eval.FsEvaluator;
+import czsem.fs.query.eval.FsEvaluator;
 import czsem.fs.query.utils.CloneableIterator;
 
 public class FSQueryTest {

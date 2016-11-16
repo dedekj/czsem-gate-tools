@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import czsem.fs.query.constants.MetaAttribute;
-import czsem.fs.query.restrictions.eval.IterateSubtreeEvaluator;
+import czsem.fs.query.eval.IterateSubtreeEvaluator;
 
 public class FSQueryBuilderImpl implements FSQueryBuilder {
 	private static final Logger logger = LoggerFactory.getLogger(FSQueryBuilderImpl.class);
