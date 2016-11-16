@@ -11,6 +11,7 @@ import czsem.fs.query.restrictions.PrintableRestriction;
 import czsem.fs.query.restrictions.ReferencingRestriction;
 import czsem.fs.query.restrictions.Restrictions;
 import czsem.fs.query.restrictions.eval.FsEvaluator;
+import czsem.fs.query.utils.CloneableIterator;
 
 public class QueryNode  {
 	
@@ -136,7 +137,9 @@ public class QueryNode  {
 
 	@Deprecated
 	public Iterable<QueryMatch> getFinalResultsFor(QueryData data, int dataNodeId) {
-		return new FsEvaluator(this, data).getFinalResultsFor(dataNodeId);
+		CloneableIterator<QueryMatch> i = new FsEvaluator(this, data).getFinalResultsFor(dataNodeId);
+		if (i == null) return null;
+		return i.toIterable();
 	}
 	
 }

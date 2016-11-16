@@ -9,7 +9,6 @@ import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.FSQuery.QueryObject;
 import czsem.fs.query.FSQueryParser.SyntaxError;
-import czsem.fs.query.restrictions.eval.OptionalEvaluator;
 
 public class FSQueryParserTest {
 	

@@ -10,7 +10,8 @@ import czsem.fs.TreeIndex;
 import czsem.fs.query.FSQuery.NodeMatch;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
-import czsem.fs.query.restrictions.eval.IterateSubtreeEvaluator;
+import czsem.fs.query.restrictions.eval.FsEvaluator;
+import czsem.fs.query.utils.CloneableIterator;
 
 public class FSQueryTest {
 	@Test
@@ -18,26 +19,26 @@ public class FSQueryTest {
 		QueryData data = buidQueryObject();
 		
 		QueryNode qn = new QueryNode();
-		Iterable<QueryMatch> res = qn.getFinalResultsFor(data, 0);
+		Iterable<QueryMatch> res = getFinalResultsFor(qn, data, 0);
 		Assert.assertNotEquals(res, null);
 		Assert.assertTrue(res.iterator().hasNext());
 
 		qn.addRestriction("=", "id", "xxx");
 		
-		res = qn.getFinalResultsFor(data, 0);
+		res = getFinalResultsFor(qn, data, 0);
 		Assert.assertEquals(res, null);
 
 		QueryNode qn1 = new QueryNode();
 		QueryNode qn2 = new QueryNode();
 		qn1.addChild(qn2);
 
-		res = qn1.getFinalResultsFor(data, 0);
+		res = getFinalResultsFor(qn1, data, 0);
 		Assert.assertNotEquals(res, null);
 		Assert.assertTrue(res.iterator().hasNext());
 
 		qn2.addRestriction("=", "id", "xxx");
 
-		res = qn1.getFinalResultsFor(data, 0);
+		res = getFinalResultsFor(qn1, data, 0);
 		Assert.assertEquals(res, null);
 	}
 
@@ -48,7 +49,7 @@ public class FSQueryTest {
 		QueryNode qn = new QueryNode();
 		qn.setSubtreeDepth(100);
 		
-		Iterable<QueryMatch> res = qn.getFinalResultsFor(data, 3);
+		Iterable<QueryMatch> res = getFinalResultsFor(qn, data, 3);
 		
 		debugPrintResults(res);
 		
@@ -70,7 +71,7 @@ public class FSQueryTest {
 		QueryNode qn = new QueryNode();
 		qn.setSubtreeDepth(2);
 		
-		Iterable<QueryMatch> res = qn.getFinalResultsFor(data, 1);
+		Iterable<QueryMatch> res = getFinalResultsFor(qn, data, 1);
 		
 		
 		debugPrintResults(res);
@@ -96,13 +97,7 @@ public class FSQueryTest {
 
 	public static int getNextNodeId(Iterator<QueryMatch> i, int matchIndex)
 	{
-		NodeMatch n = null;
-		Iterator<NodeMatch> next = i.next().getMatchingNodes().iterator();
-		
-		for (int a=0; a<matchIndex; a++)
-			n= next.next();
-		
-		return n.getNodeId();		
+		return i.next().getMatchingNodes().get(matchIndex).getNodeId();		
 	}
 
 	@Test
@@ -115,20 +110,28 @@ public class FSQueryTest {
 		QueryNode qn3 = new QueryNode();
 		qn2.addChild(qn3);
 
-		Iterable<QueryMatch> res = qn1.getFinalResultsFor(data, 0);
+		Iterable<QueryMatch> res = getFinalResultsFor(qn1, data, 0);
 		Assert.assertNotEquals(res, null);
-		Assert.assertTrue(res.iterator().hasNext());
+		Iterator<QueryMatch> i = res.iterator();
+		Assert.assertTrue(i.hasNext());
+		Assert.assertTrue(i.hasNext());
+		Assert.assertTrue(i.hasNext());
+		
+		for (QueryMatch queryMatch : res) {
+			System.err.println(queryMatch.getMatchingNodes());
+		}
+		
 		
 		Iterator<QueryMatch> i1 = res.iterator();
 		Iterator<QueryMatch> i2 = res.iterator();
 		
 		
-		Assert.assertEquals(getNextNodeId(i1,3), 3);
-		Assert.assertEquals(getNextNodeId(i1,3), 4);
-		Assert.assertEquals(getNextNodeId(i2,3), 3);
-		Assert.assertEquals(getNextNodeId(i1,3), 5);
-		Assert.assertEquals(getNextNodeId(i2,3), 4);
-		Assert.assertEquals(getNextNodeId(i2,3), 5);
+		Assert.assertEquals(getNextNodeId(i1,2), 3);
+		Assert.assertEquals(getNextNodeId(i1,2), 4);
+		Assert.assertEquals(getNextNodeId(i2,2), 3);
+		Assert.assertEquals(getNextNodeId(i1,2), 5);
+		Assert.assertEquals(getNextNodeId(i2,2), 4);
+		Assert.assertEquals(getNextNodeId(i2,2), 5);
 	}
 
 	
@@ -164,7 +167,7 @@ public class FSQueryTest {
 
 	public static void evaluateQuery(QueryData data, QueryNode queryNode, int dataNodeId, int[] results) {
 		//queryNode.reset();
-		Iterable<QueryMatch> res = queryNode.getFinalResultsFor(data, dataNodeId);
+		Iterable<QueryMatch> res = getFinalResultsFor(queryNode, data, dataNodeId);
 		int i = 0;
 		int finishedNodeMatches = 0;
 		if (res != null) {
@@ -194,5 +197,11 @@ public class FSQueryTest {
 		index.addDependency(0,7);
 
 		return new FSQuery.QueryData(index, new NodeAttributes.IdNodeAttributes());
+	}
+	
+	public static Iterable<QueryMatch> getFinalResultsFor(QueryNode queryNode, QueryData data, int dataNodeId) {
+		CloneableIterator<QueryMatch> i = new FsEvaluator(queryNode, data).getFinalResultsFor(dataNodeId);
+		if (i == null) return null;
+		return i.toIterable();
 	}
 }

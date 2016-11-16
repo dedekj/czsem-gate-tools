@@ -3,7 +3,6 @@
  ******************************************************************************/
 package czsem.fs.query.restrictions.eval;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -12,13 +11,14 @@ import czsem.fs.query.FSQuery.NodeMatch;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.restrictions.ReferencingRestriction;
+import czsem.fs.query.utils.CloneableIterator;
 
-public class ReferencingRestrictionsResultsIteratorFilter implements Iterator<QueryMatch>{
+public class ReferencingRestrictionsResultsIteratorFilter implements CloneableIterator<QueryMatch>{
 	
-	protected final Iterator<QueryMatch> parent;
+	protected final CloneableIterator<QueryMatch> parent;
 	protected final QueryData data;
 
-	public ReferencingRestrictionsResultsIteratorFilter(Iterator<QueryMatch> parent, QueryData data) {
+	public ReferencingRestrictionsResultsIteratorFilter(CloneableIterator<QueryMatch> parent, QueryData data) {
 		this.parent = parent;
 		this.data = data;
 	}
@@ -86,15 +86,16 @@ public class ReferencingRestrictionsResultsIteratorFilter implements Iterator<Qu
 		return true;
 	}
 
-	public static Iterable<QueryMatch> filter(Iterable<QueryMatch> resultsFor, QueryData data) {
+	public static CloneableIterator<QueryMatch> filter(CloneableIterator<QueryMatch> resultsFor, QueryData data) {
 		if (resultsFor == null) return null;
 		
-		return new Iterable<QueryMatch>() {
-			@Override
-			public Iterator<QueryMatch> iterator() {
-				return new ReferencingRestrictionsResultsIteratorFilter(resultsFor.iterator(), data);
-			}
-		};
+		return new ReferencingRestrictionsResultsIteratorFilter(resultsFor, data);
+	}
+
+	@Override
+	public ReferencingRestrictionsResultsIteratorFilter cloneInitial() {
+		return new ReferencingRestrictionsResultsIteratorFilter(
+				parent.cloneInitial(), data);	
 	} 
 		
 }

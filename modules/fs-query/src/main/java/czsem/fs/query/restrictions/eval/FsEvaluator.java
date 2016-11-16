@@ -34,8 +34,8 @@ public class FsEvaluator {
 		{
 			int dataNodeId = sortedDataNodes.remove();
 			
-			Iterable<QueryMatch> r = getFinalResultsFor(dataNodeId);
-			if (r != null) iterables.add(r);
+			CloneableIterator<QueryMatch> r = getFinalResultsFor(dataNodeId);
+			if (r != null) iterables.add(r.toIterable());
 
 		}
 
@@ -45,9 +45,9 @@ public class FsEvaluator {
 		return Iterables.concat(iterables.toArray(array));
 	}
 
-	public Iterable<QueryMatch> getFinalResultsFor(int dataNodeId) {
+	public CloneableIterator<QueryMatch> getFinalResultsFor(int dataNodeId) {
 		return ReferencingRestrictionsResultsIteratorFilter.filter(
-				getDirectResultsFor(rootNode, dataNodeId).toIterable(), 
+				getDirectResultsFor(rootNode, dataNodeId), 
 				data);
 	}
 

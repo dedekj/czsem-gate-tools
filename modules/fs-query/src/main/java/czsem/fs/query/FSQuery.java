@@ -10,8 +10,6 @@ import java.util.TreeSet;
 
 import czsem.fs.NodeAttributes;
 import czsem.fs.TreeIndex;
-import czsem.fs.query.FSQuery.QueryData;
-import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.FSQueryParser.SyntaxError;
 import czsem.fs.query.restrictions.eval.FsEvaluator;
 
@@ -170,12 +168,12 @@ public class FSQuery {
 
 		@Deprecated
 		public QueryMatch getFirstMatch(Integer dataNodeId, QueryData qd) {
-			return new FsEvaluator(queryNode, qd).getFinalResultsFor(dataNodeId).iterator().next();
+			return new FsEvaluator(queryNode, qd).getFinalResultsFor(dataNodeId).next();
 		}
 
 		@Deprecated
 		public boolean isNodeMatching(Integer dataNodeId, QueryData qd) {
-			return new FsEvaluator(queryNode, qd).getFinalResultsFor(dataNodeId).iterator().hasNext();
+			return new FsEvaluator(queryNode, qd).getFinalResultsFor(dataNodeId).hasNext();
 		}
 		
 	}
