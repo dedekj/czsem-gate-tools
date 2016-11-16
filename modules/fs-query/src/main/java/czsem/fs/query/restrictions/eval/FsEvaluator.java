@@ -1,7 +1,6 @@
 package czsem.fs.query.restrictions.eval;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Set;
@@ -13,6 +12,8 @@ import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.QueryNode;
 import czsem.fs.query.restrictions.DirectAttrRestriction;
+import czsem.fs.query.utils.CloneableIterator;
+import czsem.fs.query.utils.SingletonIterator;
 
 public class FsEvaluator {
 	
@@ -46,18 +47,18 @@ public class FsEvaluator {
 
 	public Iterable<QueryMatch> getFinalResultsFor(int dataNodeId) {
 		return ReferencingRestrictionsResultsIteratorFilter.filter(
-				getDirectResultsFor(rootNode, dataNodeId), 
+				getDirectResultsFor(rootNode, dataNodeId).toIterable(), 
 				data);
 	}
 
-	protected Iterable<QueryMatch> getDirectResultsFor(QueryNode queryNode, int dataNodeId) {
+	protected CloneableIterator<QueryMatch> getDirectResultsFor(QueryNode queryNode, int dataNodeId) {
 		if (! evalDirectRestricitons(queryNode, dataNodeId))
 			return null;
 		
 		NodeMatch thisMatch = new NodeMatch(dataNodeId, queryNode);
 				
 		if (queryNode.getChildren().isEmpty())
-			return Collections.singleton(new QueryMatch(thisMatch));
+			return new SingletonIterator<>(new QueryMatch(thisMatch));
 			
 		List<QueryNode> chQueryNodes = queryNode.getChildren();
 		Set<Integer> chDataNodes = data.getIndex().getChildren(dataNodeId);
@@ -69,7 +70,7 @@ public class FsEvaluator {
 		if (childrenMatches == null || ! childrenMatches.hasNext())
 			return null;
 		
-		return childrenMatches::cloneInitial;
+		return childrenMatches;
 	}
 	
 	public boolean evalDirectRestricitons(QueryNode queryNode, int dataNodeId)

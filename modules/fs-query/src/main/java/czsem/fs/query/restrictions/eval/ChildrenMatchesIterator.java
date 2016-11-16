@@ -8,9 +8,10 @@ import java.util.Set;
 
 import czsem.fs.query.FSQuery.NodeMatch;
 import czsem.fs.query.FSQuery.QueryMatch;
+import czsem.fs.query.utils.CloneableIterator;
 import czsem.fs.query.QueryNode;
 
-public class ChildrenMatchesIterator implements Iterator<QueryMatch> {
+public class ChildrenMatchesIterator implements CloneableIterator<QueryMatch> {
 	
 	protected static class QueryNodeState {
 		final protected QueryNode queryNode;
@@ -38,6 +39,7 @@ public class ChildrenMatchesIterator implements Iterator<QueryMatch> {
 	protected boolean foundNext = true;
 
 	
+	//private constructor
 	private ChildrenMatchesIterator ( 
 			NodeMatch parentNodeMatch, 
 			List<QueryNode> queryNodes, 
@@ -51,6 +53,7 @@ public class ChildrenMatchesIterator implements Iterator<QueryMatch> {
 		this.queryNodeState = new QueryNodeState[queryNodes.size()];
 	}
 	
+	//public factory method
 	public static ChildrenMatchesIterator getNonEmpty (			
 			NodeMatch parentNodeMatch, 
 			List<QueryNode> queryNodes, 
@@ -135,14 +138,11 @@ public class ChildrenMatchesIterator implements Iterator<QueryMatch> {
 	protected Iterator<QueryMatch> getResultsFor(QueryNodeState state) {
 		while (state.dataBindingIterator.hasNext())
 		{
-			Iterable<QueryMatch> res = 
+			CloneableIterator<QueryMatch> iterator = 
 					evaluator.getDirectResultsFor(state.queryNode, state.dataBindingIterator.next());
 			
-			if (res != null ) {
-				Iterator<QueryMatch> iterator = res.iterator();
-				if (iterator.hasNext())
-					return iterator;
-			}
+			if (iterator != null && iterator.hasNext())
+				return iterator;
 		}
 		return null;
 	}
@@ -165,6 +165,7 @@ public class ChildrenMatchesIterator implements Iterator<QueryMatch> {
 		return new QueryMatch(matchingNodes);
 	}
 	
+	@Override
 	public ChildrenMatchesIterator cloneInitial() {
 		return getNonEmpty(parentNodeMatch, queryNodes, dataNodes, evaluator);
 	}
