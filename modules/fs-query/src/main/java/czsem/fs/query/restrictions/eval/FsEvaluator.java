@@ -52,7 +52,7 @@ public class FsEvaluator {
 		if (res != null || optionalNodes.isEmpty()) return res;
 		
 		OptionalNodesRemoval onr = new OptionalNodesRemoval(rootNode, optionalNodes);
-		for (QueryNode queryNode : onr.iterateModifiedqueries()) {
+		for (QueryNode queryNode : onr.iterateModifiedQueries()) {
 			res = getFilteredResultsFor(queryNode, dataNodeId);
 			if (res != null) return res;
 		}
