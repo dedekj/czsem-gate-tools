@@ -1,20 +1,10 @@
 package czsem.fs.query.eval;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import czsem.fs.query.FSQuery.AbstractEvaluator;
-import czsem.fs.query.FSQuery.QueryData;
-import czsem.fs.query.FSQuery.QueryMatch;
-import czsem.fs.query.QueryNode;
-import czsem.fs.query.SubtreeQueryNodeIterator;
 
 
-public class IterateSubtreeEvaluator extends AbstractEvaluator {
-	
+public class IterateSubtreeEvaluator /*extends AbstractEvaluator*/ {
 	public static final String META_ATTR_SUBTREE_DEPTH = "_subtree_eval_depth";
-	
+	/*
 	protected Map<Integer,Integer> parentIdsAlreadyEvaluatedOnChild = new HashMap<Integer,Integer>();
 
 	protected int depth = Integer.MAX_VALUE;
@@ -55,5 +45,5 @@ public class IterateSubtreeEvaluator extends AbstractEvaluator {
 			
 		};		
 	}
-	
+	*/
 }

@@ -1,19 +1,10 @@
 package czsem.fs.query.eval;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-import czsem.fs.query.FSQuery.NodeMatch;
-import czsem.fs.query.FSQuery.QueryData;
-import czsem.fs.query.FSQuery.QueryMatch;
-import czsem.fs.query.QueryNode;
 
 /** Optional node always returns success, but only one time for the same parent and children nodes must succeed.
  *  If there is not corresponding matching node in data, the result does contain any optional node counterpart.  **/
 public class OptionalEvaluator extends ChildrenEvaluator {
-	
+	/*
 	protected Map<Integer, Integer> lastNodeOmmitedResultsWasForParentIds = new HashMap<Integer, Integer>();
 	
 	@Override
@@ -71,5 +62,5 @@ public class OptionalEvaluator extends ChildrenEvaluator {
 		
 	}
 
-
+	*/
 }

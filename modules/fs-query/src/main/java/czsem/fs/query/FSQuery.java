@@ -98,11 +98,13 @@ public class FSQuery {
 		public List<NodeMatch> getMatchingNodes() {return matchingNodes; }
 	}
 	
+	/*
 	public static abstract class AbstractEvaluator {
 		public abstract Iterable<QueryMatch> getResultsFor(QueryData data, QueryNode queryNode, int dataNodeId);
 
 		public void reset() {}
 	}
+	*/
 	
 
 	public static class QueryObject {

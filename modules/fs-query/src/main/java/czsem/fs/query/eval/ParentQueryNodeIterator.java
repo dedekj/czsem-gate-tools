@@ -1,22 +1,9 @@
 package czsem.fs.query.eval;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.NoSuchElementException;
 
-import czsem.Utils;
-import czsem.fs.query.FSQuery;
-import czsem.fs.query.QueryNode;
-import czsem.fs.query.FSQuery.NodeMatch;
-import czsem.fs.query.FSQuery.QueryData;
-import czsem.fs.query.FSQuery.QueryMatch;
-
-public class ParentQueryNodeIterator implements Iterator<QueryMatch> {
-
-	/* immutable properties */
+public class ParentQueryNodeIterator /*implements Iterator<QueryMatch>*/ {
+/*
+	/* immutable properties 
 	protected final List<QueryNode> queryNodes;
 	protected final List<Integer> dataNodes;
 	protected QueryMatch[] lastMatches;
@@ -24,7 +11,7 @@ public class ParentQueryNodeIterator implements Iterator<QueryMatch> {
 	protected boolean empty = false;
 	protected boolean foundNext = false;
 
-	/* mutable properties */
+	/* mutable properties 
 	protected ListIterator<Integer>[] dataNodesIterators;
 	protected Iterator<QueryMatch>[] resultsIterators;
 	protected QueryData queryData;
@@ -35,7 +22,7 @@ public class ParentQueryNodeIterator implements Iterator<QueryMatch> {
 	 * @param queryNodes
 	 * @param dataNodes
 	 * @param data
-	 */
+	 
 	public ParentQueryNodeIterator(NodeMatch parentNodeMatch, List<QueryNode> queryNodes, Collection<Integer> dataNodes, QueryData data) {
 		this.queryNodes = queryNodes;
 		this.parentNodeMatch = parentNodeMatch;
@@ -81,6 +68,7 @@ public class ParentQueryNodeIterator implements Iterator<QueryMatch> {
 			if (res != null) return res.iterator();
 		}
 		*/
+	/*
 		
 		return null;
 	}
@@ -164,5 +152,5 @@ public class ParentQueryNodeIterator implements Iterator<QueryMatch> {
 	public ParentQueryNodeIterator createCopyOfInitialIteratorState() {
 		return new ParentQueryNodeIterator(parentNodeMatch, queryNodes, dataNodes, queryData);
 	}
-
+*/
 }
