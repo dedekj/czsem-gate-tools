@@ -49,11 +49,12 @@ public class FsEvaluator {
 
 	public CloneableIterator<QueryMatch> getFinalResultsFor(int dataNodeId) {
 		CloneableIterator<QueryMatch> res = getFilteredResultsFor(rootNode, dataNodeId);
-		if (res != null || optionalNodes.isEmpty()) return res;
+		if ((res != null && res.hasNext()) || optionalNodes.isEmpty()) return res;
 		
 		for (QueryNode queryNode : OptionalNodesRemoval.iterateModifiedQueries(rootNode, optionalNodes)) {
+			//System.err.println(queryNode.toStringDeep());
 			res = getFilteredResultsFor(queryNode, dataNodeId);
-			if (res != null) return res;
+			if (res != null && res.hasNext()) return res;
 		}
 		
 		return null;

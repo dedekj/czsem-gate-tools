@@ -3,6 +3,7 @@ package czsem.fs.query;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.StringJoiner;
 
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
@@ -157,5 +158,18 @@ public class QueryNode  {
 
 	public QueryNodeData getData() {
 		return data;
+	}
+
+	public String toStringDeep() {
+		String ret = "["+toString()+"]";
+		if (children.isEmpty()) return ret;
+		
+		StringJoiner j = new StringJoiner(",", "(", ")");
+		for (QueryNode queryNode : children) {
+			j.add(queryNode.toStringDeep());
+		}
+		
+		
+		return ret+j.toString();
 	}
 }

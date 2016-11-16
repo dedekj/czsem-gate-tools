@@ -215,6 +215,10 @@ public class FSQueryParserTest {
 				});
 
 		evalQuery("[]([_optional=true,_name=opt1]([id=xxx]))", new int [] {});
+		
+		//the right combination
+		evalQuery("[]([_optional=true,id=x]([_optional=true,id=1]([_optional=true,id=x]([_optional=true,id=3]([_optional=true,id=x]([_optional=true,id=6]))))))", 
+				new int [] {0, 1, 3, 6});
 
 		evalQuery("[]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id=7])))", new int [] {0, 7});
 
@@ -349,6 +353,29 @@ public class FSQueryParserTest {
 				0, 2, 7,
 				0, 7, 7,});
 
+	}
+
+	@Test
+	public static void testRefSetrAndOptional() throws SyntaxError {
+		evalQuery("[]([_name=a],[_optional=true]([id={a.id}]))", new int [] {
+				0, 1, 1,
+				0, 2, 2, 
+				0, 7, 7, 
+				});
+		
+		evalQuery("[]([]([_name=a]),[_optional=true]([_optional=true]([_name=b,id<{a.id}])))", new int [] {
+				0, 1, 4, 1, 3,
+				0, 2, 5, 1, 3,
+				0, 2, 5, 1, 4,
+				});
+	}
+		
+	@Test
+	public static void testRefSetrAndOptionalComplex() throws SyntaxError {
+		evalQuery("[]([]([_name=a,id<4]),[_optional=true]([_optional=true]([_name=b,id<{a.id}])))", new int [] {
+				0, 1, 3, 1, 
+				0, 1, 3, 2, 
+				});
 	}
 
 	@Test
