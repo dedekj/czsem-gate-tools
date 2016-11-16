@@ -15,17 +15,30 @@ import czsem.fs.query.utils.CloneableIterator;
 
 public class QueryNode  {
 	
-	protected final List<PrintableRestriction> restrictions = new ArrayList<>();
-	protected final List<DirectAttrRestriction> directRestrictions = new ArrayList<>();
-	protected final List<ReferencingRestriction> referencingRestrictions = new ArrayList<>();
+	public static class QueryNodeData {  
+		protected final List<PrintableRestriction> restrictions = new ArrayList<>();
+		protected final List<DirectAttrRestriction> directRestrictions = new ArrayList<>();
+		protected final List<ReferencingRestriction> referencingRestrictions = new ArrayList<>();
+		
+		protected String name;
+		protected boolean optional = false;
+		protected int subtreeDepth = -1;
+	}
 	
+	protected final QueryNodeData data; 
+
 	protected List<QueryNode> children = new ArrayList<QueryNode>();
-	private QueryNode prent; 
+	private QueryNode prent;
+	
+	public QueryNode() {
+		data = new QueryNodeData();
+	}
+
+	public QueryNode(QueryNodeData data) {
+		this.data = data;
+	}
 	
 	//protected AbstractEvaluator evaluator;
-	protected String name;
-	protected boolean optional = false;
-	protected int subtreeDepth = -1;
 	
 	/*
 	public QueryNode(AbstractEvaluator evaluator) {
@@ -61,13 +74,13 @@ public class QueryNode  {
 	}
 	
 	public void addDirectRestriction(DirectAttrRestriction restriction) {
-		restrictions.add(restriction);
-		directRestrictions.add(restriction);			
+		data.restrictions.add(restriction);
+		data.directRestrictions.add(restriction);			
 	}
 
 	public void addReferencingRestriction(ReferencingRestriction restriction) {
-		restrictions.add(restriction);
-		referencingRestrictions.add(restriction);			
+		data.restrictions.add(restriction);
+		data.referencingRestrictions.add(restriction);			
 	}
 
 	@Override
@@ -81,11 +94,11 @@ public class QueryNode  {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		data.name = name;
 	}
 	
 	public String getName() {
-		return name;
+		return data.name;
 	}
 	
 	/*
@@ -100,15 +113,15 @@ public class QueryNode  {
 	*/
 
 	public List<DirectAttrRestriction> getDirectRestrictions() {
-		return directRestrictions;
+		return data.directRestrictions;
 	}
 
 	public List<ReferencingRestriction> getReferencingRestrictions() {
-		return referencingRestrictions;
+		return data.referencingRestrictions;
 	}
 
 	public Collection<PrintableRestriction> getAllRestricitions() {
-		return restrictions;
+		return data.restrictions;
 	}
 
 	public QueryNode getPrent() {
@@ -120,19 +133,19 @@ public class QueryNode  {
 	}
 
 	public void setOptional(boolean optional) {
-		this.optional = optional;
+		data.optional = optional;
 	}
 
 	public boolean isOptional() {
-		return optional;
+		return data.optional;
 	}
 
 	public int getSubtreeDepth() {
-		return subtreeDepth;
+		return data.subtreeDepth;
 	}
 
 	public void setSubtreeDepth(int subtreeDepth) {
-		this.subtreeDepth = subtreeDepth;
+		data.subtreeDepth = subtreeDepth;
 	}
 
 	@Deprecated
@@ -141,5 +154,8 @@ public class QueryNode  {
 		if (i == null) return null;
 		return i.toIterable();
 	}
-	
+
+	public QueryNodeData getData() {
+		return data;
+	}
 }

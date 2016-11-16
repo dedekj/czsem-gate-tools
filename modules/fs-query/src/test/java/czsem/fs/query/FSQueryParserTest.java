@@ -91,11 +91,9 @@ public class FSQueryParserTest {
 	}
 
 	public static void evalQuery(QueryData data, String queryString, int[] res) throws SyntaxError {
-		FSQueryBuilderImpl b = new FSQueryBuilderImpl();
-		FSQueryParser p = new FSQueryParser(b);
-		
-		p.parse(queryString);
-		FSQueryTest.evaluateQuery(data, b.getRootNode(), res);				
+		QueryObject qo = FSQuery.buildQuery(queryString);
+
+		FSQueryTest.evaluateQuery(data, qo, res);				
 	}
 
 
@@ -226,7 +224,14 @@ public class FSQueryParserTest {
 		
 		evalQuery("[]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id~=\\[165\\]])))", new int [] {
 				0, 1, 3, 6,
+				//0, 2, 5, //only the largest match is considered
+				});
+		
+		evalQuery("[]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id~=\\[345\\]])))", new int [] {
+				0, 1, 3,
+				0, 1, 4,
 				0, 2, 5,
+				//0, 2, 5,
 				});
 		
 		evalQuery("[]([id=1]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id~=\\[346\\]]))))", new int [] {

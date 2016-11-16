@@ -51,8 +51,7 @@ public class FsEvaluator {
 		CloneableIterator<QueryMatch> res = getFilteredResultsFor(rootNode, dataNodeId);
 		if (res != null || optionalNodes.isEmpty()) return res;
 		
-		OptionalNodesRemoval onr = new OptionalNodesRemoval(rootNode, optionalNodes);
-		for (QueryNode queryNode : onr.iterateModifiedQueries()) {
+		for (QueryNode queryNode : OptionalNodesRemoval.iterateModifiedQueries(rootNode, optionalNodes)) {
 			res = getFilteredResultsFor(queryNode, dataNodeId);
 			if (res != null) return res;
 		}

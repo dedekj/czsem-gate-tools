@@ -11,6 +11,7 @@ import czsem.fs.TreeIndex;
 import czsem.fs.query.FSQuery.NodeMatch;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
+import czsem.fs.query.FSQuery.QueryObject;
 import czsem.fs.query.restrictions.eval.FsEvaluator;
 import czsem.fs.query.utils.CloneableIterator;
 
@@ -166,18 +167,32 @@ public class FSQueryTest {
 		evaluateQuery(data, queryNode, 0, results);
 	}
 
+	public static void evaluateQuery(QueryData data, QueryObject qo, int[] results) {
+		//Iterable<QueryMatch> res = qo.evaluate(data);
+		CloneableIterator<QueryMatch> res = 
+				new FsEvaluator(qo.queryNode, qo.optionalNodes, data)
+					.getFinalResultsFor(0);
+		
+		checkResults(res == null? null : res.toIterable(), results);
+	}
+
 	public static void evaluateQuery(QueryData data, QueryNode queryNode, int dataNodeId, int[] results) {
-		//queryNode.reset();
 		Iterable<QueryMatch> res = getFinalResultsFor(queryNode, data, dataNodeId);
+		checkResults(res, results);
+	}
+
+	public static void checkResults(Iterable<QueryMatch> res, int[] results) {
 		int i = 0;
 		int finishedNodeMatches = 0;
 		if (res != null) {
 			for (QueryMatch queryMatch : res) {
 				
-				//System.err.println(queryMatch.getMatchingNodes());
+				System.err.println(queryMatch.getMatchingNodes());
 				
 				for (NodeMatch nodeMatch : queryMatch.getMatchingNodes()) {
-					Assert.assertEquals(nodeMatch.nodeId, results[i++]);
+					Assert.assertTrue(results.length > i, results.length +" - expected results are smaller - "+ i);
+					Assert.assertEquals(nodeMatch.nodeId, results[i]);
+					i++;
 					finishedNodeMatches++;
 				}
 			}
