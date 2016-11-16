@@ -1,6 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2016 Datlowe and/or its affiliates. All rights reserved.
- ******************************************************************************/
 package czsem.fs.query.utils;
 
 import java.util.NoSuchElementException;
