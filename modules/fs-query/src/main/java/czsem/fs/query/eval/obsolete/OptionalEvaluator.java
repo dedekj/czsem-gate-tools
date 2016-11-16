@@ -1,4 +1,5 @@
-package czsem.fs.query.eval;
+package czsem.fs.query.eval.obsolete;
+
 
 
 /** Optional node always returns success, but only one time for the same parent and children nodes must succeed.
