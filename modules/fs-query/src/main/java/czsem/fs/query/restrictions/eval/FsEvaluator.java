@@ -18,10 +18,12 @@ import czsem.fs.query.utils.SingletonIterator;
 public class FsEvaluator {
 	
 	protected QueryNode rootNode;
+	protected List<QueryNode> optionalNodes;
 	protected QueryData data;
 
-	public FsEvaluator(QueryNode rootNode, QueryData data) {
+	public FsEvaluator(QueryNode rootNode, List<QueryNode> optionalNodes, QueryData data) {
 		this.rootNode = rootNode;
+		this.optionalNodes = optionalNodes;
 		this.data = data;
 	}
 
@@ -46,8 +48,22 @@ public class FsEvaluator {
 	}
 
 	public CloneableIterator<QueryMatch> getFinalResultsFor(int dataNodeId) {
+		CloneableIterator<QueryMatch> res = getFilteredResultsFor(rootNode, dataNodeId);
+		if (res != null || optionalNodes.isEmpty()) return res;
+		
+		OptionalNodesRemoval onr = new OptionalNodesRemoval(rootNode, optionalNodes);
+		for (QueryNode queryNode : onr.iterateModifiedqueries()) {
+			res = getFilteredResultsFor(queryNode, dataNodeId);
+			if (res != null) return res;
+		}
+		
+		return null;
+		
+	}
+
+	public CloneableIterator<QueryMatch> getFilteredResultsFor(QueryNode queryNode, int dataNodeId) {
 		return ReferencingRestrictionsResultsIteratorFilter.filter(
-				getDirectResultsFor(rootNode, dataNodeId), 
+				getDirectResultsFor(queryNode, dataNodeId), 
 				data);
 	}
 

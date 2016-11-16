@@ -136,8 +136,8 @@ public class QueryNode  {
 	}
 
 	@Deprecated
-	public Iterable<QueryMatch> getFinalResultsFor(QueryData data, int dataNodeId) {
-		CloneableIterator<QueryMatch> i = new FsEvaluator(this, data).getFinalResultsFor(dataNodeId);
+	public Iterable<QueryMatch> getFinalResultsFor(QueryData data, List<QueryNode> optionalNodes, int dataNodeId) {
+		CloneableIterator<QueryMatch> i = new FsEvaluator(this, optionalNodes, data).getFinalResultsFor(dataNodeId);
 		if (i == null) return null;
 		return i.toIterable();
 	}

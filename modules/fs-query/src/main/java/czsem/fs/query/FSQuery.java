@@ -107,14 +107,16 @@ public class FSQuery {
 
 	public static class QueryObject {
 		protected QueryNode queryNode;
-		protected String queryName = null; 
+		protected String queryName = null;
+		protected List<QueryNode> optionalNodes; 
 
-		public QueryObject(QueryNode queryNode) {
+		public QueryObject(QueryNode queryNode, List<QueryNode> optionalNodes) {
 			this.queryNode = queryNode;
+			this.optionalNodes = optionalNodes;
 		}
 		
 		public Iterable<QueryMatch> evaluate(QueryData data) {
-			return new FsEvaluator(queryNode, data).evaluate();
+			return new FsEvaluator(queryNode, optionalNodes, data).evaluate();
 			
 			/*
 			List<Iterable<QueryMatch>> res = new ArrayList<Iterable<QueryMatch>>();
@@ -168,12 +170,12 @@ public class FSQuery {
 
 		@Deprecated
 		public QueryMatch getFirstMatch(Integer dataNodeId, QueryData qd) {
-			return new FsEvaluator(queryNode, qd).getFinalResultsFor(dataNodeId).next();
+			return new FsEvaluator(queryNode, optionalNodes, qd).getFinalResultsFor(dataNodeId).next();
 		}
 
 		@Deprecated
 		public boolean isNodeMatching(Integer dataNodeId, QueryData qd) {
-			return new FsEvaluator(queryNode, qd).getFinalResultsFor(dataNodeId).hasNext();
+			return new FsEvaluator(queryNode, optionalNodes, qd).getFinalResultsFor(dataNodeId).hasNext();
 		}
 		
 	}
@@ -183,7 +185,7 @@ public class FSQuery {
 		FSQueryParser p = new FSQueryParser(b);
 		p.parse(queryString);
 		
-		QueryObject qo = new QueryObject(b.getRootNode());
+		QueryObject qo = new QueryObject(b.getRootNode(), b.getOptionalNodes());
 		qo.setQueryName(queryString);
 		return qo;		
 	}

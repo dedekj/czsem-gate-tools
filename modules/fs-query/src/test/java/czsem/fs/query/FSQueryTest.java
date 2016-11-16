@@ -1,5 +1,6 @@
 package czsem.fs.query;
 
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.testng.Assert;
@@ -200,7 +201,7 @@ public class FSQueryTest {
 	}
 	
 	public static Iterable<QueryMatch> getFinalResultsFor(QueryNode queryNode, QueryData data, int dataNodeId) {
-		CloneableIterator<QueryMatch> i = new FsEvaluator(queryNode, data).getFinalResultsFor(dataNodeId);
+		CloneableIterator<QueryMatch> i = new FsEvaluator(queryNode, Collections.emptyList(), data).getFinalResultsFor(dataNodeId);
 		if (i == null) return null;
 		return i.toIterable();
 	}

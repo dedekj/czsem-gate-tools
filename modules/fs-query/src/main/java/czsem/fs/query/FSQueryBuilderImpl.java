@@ -58,7 +58,7 @@ public class FSQueryBuilderImpl implements FSQueryBuilder {
 		else if (MetaAttribute.OPTIONAL.equals(arg1)){ 
 			if (MetaAttribute.TRUE.equals(arg2)) {
 				curentNode.setOptional(true);
-				optionalNodes.add(curentNode);
+				getOptionalNodes().add(curentNode);
 			}
 		}
 		else if (IterateSubtreeEvaluator.META_ATTR_SUBTREE_DEPTH.equals(arg1))
@@ -76,6 +76,14 @@ public class FSQueryBuilderImpl implements FSQueryBuilder {
 		QueryNode ret = curentParent.children.iterator().next();
 		ret.setPrent(null);
 		return ret;
+	}
+
+	public List<QueryNode> getOptionalNodes() {
+		return optionalNodes;
+	}
+
+	public void setOptionalNodes(List<QueryNode> optionalNodes) {
+		this.optionalNodes = optionalNodes;
 	}
 
 }
