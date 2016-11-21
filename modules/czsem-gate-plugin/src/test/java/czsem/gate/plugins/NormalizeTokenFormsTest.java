@@ -20,5 +20,7 @@ public class NormalizeTokenFormsTest {
 		Assert.assertEquals(NormalizeTokenForms.truncateLemma("den_^(jednotka_času)"), "den");
 		Assert.assertEquals(NormalizeTokenForms.truncateLemma("že-1"), "že");
 		Assert.assertEquals(NormalizeTokenForms.truncateLemma("-1"), "-1");
+		
+		Assert.assertEquals(NormalizeTokenForms.truncateLemma("U-50488"), "U-50488");
 	}
 }
