@@ -73,7 +73,7 @@ public class NormalizeTokenForms extends AbstractLanguageAnalyser {
 	 */
 	public static String truncateLemma(String origLemma) { 
 		String treex_res = origLemma.replaceFirst("((?:(`|_;|_:|_,|_\\^|))+)(`|_;|_:|_,|_\\^).+$", "$1");
-		return treex_res.replaceFirst("^([^A-Z]+)-\\d+$", "$1");
+		return treex_res.replaceFirst("^(.+)-\\d+$", "$1");
 	}
 	
 	protected String cleanTokenLemma(FeatureMap fm, Annotation a) {
@@ -120,7 +120,12 @@ public class NormalizeTokenForms extends AbstractLanguageAnalyser {
 		}
 		*/
 		
-		String clean_lemma = truncateLemma(lemma);
+		String clean_lemma;
+		if (lemma.equalsIgnoreCase(form))
+			//form EQ lemma => no lemma found => don't do truncateLemma()  
+			clean_lemma = lemma;
+		else
+			clean_lemma = truncateLemma(lemma);
 		
 		clean_lemma = clean_lemma.replace('|', '_');
 
