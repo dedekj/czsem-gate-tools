@@ -5,5 +5,23 @@
    <string>treexDir</string>
    <string>/software/Treex/treex_git</string>
   </void>
+  
+  <void method="put">
+   <string>treexCloudFactoryCmds</string>
+     <array class="java.lang.String" length="11">
+      <void index="0"><string>docker</string></void>
+      <void index="1"><string>run</string></void>
+      <void index="2"><string>--rm</string></void>
+      <void index="3"><string>-w=/app/czsem/treex-gate-plugin/treex_online/</string></void>
+      <void index="4"><string>-p</string></void>
+      <void index="5"><string>${port}:${port}</string></void>
+      <void index="6"><string>datlowe/treex</string></void>
+      <void index="7"><string>perl</string></void>
+      <void index="8"><string>treex_online.pl</string></void>
+      <void index="9"><string>${port}</string></void>
+      <void index="10"><string>${handshakeCode}</string></void>
+     </array>
+  </void>
+    
  </object>
 </java>

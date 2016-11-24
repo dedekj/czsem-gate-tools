@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import czsem.Utils;
+import czsem.gate.treex.factory.TreexLocalAnalyserFactory;
 import czsem.utils.AbstractConfig;
 
 public class TreexConfig extends AbstractConfig {
@@ -38,8 +39,9 @@ public class TreexConfig extends AbstractConfig {
 
 	@Override
 	protected void updateDefaults() {
-		setDefaultVal("treexConfigDir", 	null);
-		setDefaultVal("treexDir", 			null);
+		setDefaultVal("treexConfigDir", 		null);
+		setDefaultVal("treexDir", 				null);
+		setDefaultVal("treexCloudFactoryCmds", 	null);
 		
 		//call only if not found
 		setDefaultFun("treexOnlineDir", 	this::findTreexOnlineDir);
@@ -105,5 +107,35 @@ public class TreexConfig extends AbstractConfig {
 		}
 
 		return super.getDefaultLoc();
+	}
+
+	public String [] getTreexCloudFactoryCommands() {
+		return (String []) getObj("treexCloudFactoryCmds");
+	}
+
+	public void setTreexCloudFactoryCommands(String [] cmds) {
+		set("treexCloudFactoryCmds", cmds);
+	}
+	
+	public static void main(String[] args) throws IOException {
+		TreexConfig cfg = getConfig();
+		TreexLocalAnalyserFactory f = new TreexLocalAnalyserFactory();
+		String[] cmdArray = {
+				"docker",
+				"run",
+				"--rm",
+				"-w=/app/czsem/treex-gate-plugin/treex_online/",
+				"-p",
+				"${port}:${port}",
+				"datlowe/treex",
+				"perl",
+				"treex_online.pl",
+				"${port}",
+				"${handshakeCode}"			
+		};
+
+		f.setCmdArray(cmdArray);
+		cfg.setTreexCloudFactoryCommands(cmdArray);
+		saveToFile("target/"+cfg.getConfigKey()+".xml", cfg.getMap());
 	}
 }

@@ -34,6 +34,27 @@ public class TreexLocalAnalyser extends TreexAnalyserXmlRpc {
 
 	private TreexServerExecution treexExec;
 
+	private String[] cmdArray = {
+			/*
+			"docker",
+			"run",
+			"--rm",
+			"-w=/app/czsem/treex-gate-plugin/treex_online/",
+			"-p",
+			"${port}:${port}",
+			"datlowe/treex",
+			"perl",
+			"treex_online.pl",
+			"${port}",
+			"${handshakeCode}"			
+			/**/
+			"perl", 
+			"${treexOnlineDir}/treex_online.pl",
+			"${port}",
+			"${handshakeCode}"
+			/**/
+	};
+
 	
 	
 	@Override
@@ -61,6 +82,7 @@ public class TreexLocalAnalyser extends TreexAnalyserXmlRpc {
 		treexExec = new TreexServerExecution();
 		treexExec.setRedirectionType(getLogRedirectionType());
 		treexExec.setPortNumber(getServerPortNumber());
+		treexExec.setCmdArray(getCmdArray());
 		
 		setServerConnection(treexExec.getConnection());
 		
@@ -161,6 +183,14 @@ public class TreexLocalAnalyser extends TreexAnalyserXmlRpc {
 	@CreoleParameter(defaultValue="LOG_FILES_REPLACE")
 	public void setLogRedirectionType(RedirectionType logRedirectionType) {
 		this.logRedirectionType = logRedirectionType;
+	}
+
+	public String[] getCmdArray() {
+		return cmdArray;
+	}
+
+	public void setCmdArray(String[] cmdArray) {
+		this.cmdArray = cmdArray;
 	}
 	
 	

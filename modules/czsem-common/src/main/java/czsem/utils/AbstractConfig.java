@@ -4,9 +4,11 @@
 package czsem.utils;
 
 import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,6 +79,15 @@ public abstract class AbstractConfig {
 		decoder.close();
 		os.close();
 		return map;
+	}
+
+	public static void saveToFile(String filename, Map<String, Object> map) throws IOException
+	{
+		FileOutputStream os = new FileOutputStream(filename);
+		XMLEncoder encoder = new XMLEncoder(os);
+		encoder.writeObject(map);
+		encoder.close();
+		os.close();
 	}
 	
 	public void loadConfig(String filename, ClassLoader classLoader) throws IOException
