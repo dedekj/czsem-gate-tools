@@ -25,8 +25,8 @@ public class MainMojo extends AbstractMojo {
 			Artifact artifact = (Artifact) objArtifact;
 
 			String key = String.format("dependency.%s.%s.version", artifact.getGroupId(), artifact.getArtifactId());
-			props.put(key, artifact.getVersion());
-			getLog().info(String.format("setting artifact version '%s' to property: %s", artifact.getBaseVersion(), key));
+			props.put(key, artifact.getBaseVersion());
+			getLog().info(String.format("setting artifact version '%s' to property: %s", props.get(key), key));
 		}
 	}
 }
