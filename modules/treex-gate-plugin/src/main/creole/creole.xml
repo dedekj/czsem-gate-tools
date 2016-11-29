@@ -7,5 +7,9 @@
       
   <JAR SCAN="false">lib/commons-lang3-${dependency.org.apache.commons.commons-lang3.version}.jar</JAR>
   
-  <IVY/>
+  <!-- <IVY/>  -->
+  <JAR SCAN="false">lib/xmlrpc-client-${dependency.org.apache.xmlrpc.xmlrpc-client.version}.jar</JAR>
+  <JAR SCAN="false">lib/xmlrpc-common-${dependency.org.apache.xmlrpc.xmlrpc-common.version}.jar</JAR>
+  <JAR SCAN="false">lib/ws-commons-util-${dependency.org.apache.ws.commons.util.ws-commons-util.version}.jar</JAR>
+  <JAR SCAN="false">lib/xml-apis-${dependency.xml-apis.xml-apis.version}.jar</JAR>
 </CREOLE-DIRECTORY> 

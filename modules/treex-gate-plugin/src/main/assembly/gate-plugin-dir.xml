@@ -17,7 +17,8 @@
       <excludes>
       	<exclude>uk.ac.gate:*</exclude>
       	<exclude>junit:*</exclude>     
-      	<exclude>org.reflections:*</exclude>     
+      	<exclude>org.reflections:*</exclude>   
+      	<exclude>org.apache.tika:*</exclude>  
       </excludes>
     </dependencySet>
   </dependencySets>
