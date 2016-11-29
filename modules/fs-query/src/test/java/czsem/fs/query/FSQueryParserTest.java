@@ -228,7 +228,7 @@ public class FSQueryParserTest {
 		
 		evalQuery("[id=0]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id~=\\[165\\]])))", new int [] {
 				0, 1, 3, 6,
-				//0, 2, 5, //only the largest match is considered
+				//0, 2, 5, //only the largest match is considered, "all possibilities" evaluation mode - TODO
 				});
 		
 		evalQuery("[id=0]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id~=\\[345\\]])))", new int [] {
@@ -248,6 +248,14 @@ public class FSQueryParserTest {
 
 		evalQuery("[id=0]([]([id=3]),[id=x,_optional=true]([]([id@=3;6])))", new int [] {
 				0, 1, 3, 1, 3,
+				});
+
+		//two possibilities
+		evalQuery("[id=0]([]([_optional=true]([id@=5;6])))", new int [] {
+				0, 1, 3, 6, 
+				
+				//this should match in "all possibilities" evaluation mode - TODO 
+				//0, 2, 5, 				
 				});
 
 		
