@@ -242,6 +242,14 @@ public class FSQueryParserTest {
 				0, 1, 3, 6,
 				});
 
+		evalQuery("[id=0]([]([id=3]),[id=1,_optional=true]([]([id@=3;6])))", new int [] {
+				0, 1, 3, 1, 3, 6,
+				});
+
+		evalQuery("[id=0]([]([id=3]),[id=x,_optional=true]([]([id@=3;6])))", new int [] {
+				0, 1, 3, 1, 3,
+				});
+
 		
 		QueryData data = FSQueryTest.buidQueryObject();
 		data.getIndex().addDependency(4, 8);
