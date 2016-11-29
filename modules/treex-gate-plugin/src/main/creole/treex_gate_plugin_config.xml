@@ -7,7 +7,7 @@
   </void>
   
   <void method="put">
-   <string>treexCloudFactoryCmds</string>
+   <string>deactivated_treexCloudFactoryCmds</string>
      <array class="java.lang.String" length="11">
       <void index="0"><string>docker</string></void>
       <void index="1"><string>run</string></void>

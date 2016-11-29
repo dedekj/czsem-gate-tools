@@ -1,10 +1,14 @@
 package czsem.gate.treex.factory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import czsem.gate.treex.TreexConfig;
 import czsem.utils.AbstractConfig.ConfigLoadException;
 
 
 public class TreexCloudFactory {
+	private static final Logger logger = LoggerFactory.getLogger(TreexCloudFactory.class);
 	
 	private static volatile TreexCloudFactoryInterface instance;
 
@@ -17,6 +21,8 @@ public class TreexCloudFactory {
 					f.setCmdArray(cmds);
 						
 				instance = f;
+				
+				logger.info("TreexCloudFactory loaded with cmd array {}", (Object) f.getCmdArray());
 			} catch (ConfigLoadException e) {
 				throw new RuntimeException(e);
 			}
