@@ -43,6 +43,9 @@ public class FsEvaluator {
 			int dataNodeId = sortedDataNodes.remove();
 			CloneableIterator<QueryMatch> r = null;
 			
+			//tODO debug only
+			//System.err.format("------- %d -------\n", dataNodeId);
+			
 			for (FsEvaluator evaluator : evaluators) {
 				r = evaluator.getFinalResultsFor(dataNodeId);
 				if (r != null && r.hasNext())
@@ -104,7 +107,9 @@ public class FsEvaluator {
 		
 		
 		for (QueryNode queryNode : OptionalNodesRemoval.iterateModifiedQueries(rootNode, optionalNodes, getOptionalEval())) {
-			System.err.println(queryNode.toStringDeep());
+			
+			//tODO debug only
+			//System.err.println(queryNode.toStringDeep());
 
 			res = getFilteredResultsFor(queryNode, dataNodeId);
 			

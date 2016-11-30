@@ -50,6 +50,9 @@ public class OptionalNodesRemoval implements Iterator<QueryNode> {
 		
 		int removalSize = combinator.getGroupSize();
 		int[] removalIndcies = combinator.getStack();
+
+		//tODO debug only
+		//System.err.println(Arrays.toString(Arrays.copyOfRange(removalIndcies, 0, removalSize)));
 		
 		Set<QueryNode> toRemove = new HashSet<>();
 		for (int i = 0; i < removalSize; i++) {
@@ -59,10 +62,14 @@ public class OptionalNodesRemoval implements Iterator<QueryNode> {
 		QueryNodeDuplicator dup = new QueryNodeDuplicator(toRemove);
 		QueryNode dupNode = dup.duplicate(rootNode);
 		
+		//System.err.println("DUP: " + dupNode.toStringDeep());
+		
+		
 		for (QueryNode toRemoveNode : dup.getToRemoveDup()) {
 			dupNode = removeNode(dupNode, toRemoveNode);
+			//System.err.println("REM("+toRemoveNode+"):  " + dupNode.toStringDeep());
 		}
-		
+
 		return dupNode;
 	}
 
@@ -75,8 +82,12 @@ public class OptionalNodesRemoval implements Iterator<QueryNode> {
 				throw new IllegalArgumentException("Root node cannot be marked as _optional_subtree.");
 			else if (children.size() != 1)
 				throw new IllegalArgumentException("Optional root node has to have exactly one child, but found: " + toRemove.getChildren());
-			else
-				return children.get(0);
+			else {
+				QueryNode onlyChild = children.get(0);
+				onlyChild.setPrent(null);
+				return onlyChild; 
+			}
+				
 		}
 		
 		parent.getChildren().remove(toRemove);

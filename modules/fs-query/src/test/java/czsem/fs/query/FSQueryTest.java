@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import czsem.fs.NodeAttributes;
 import czsem.fs.TreeIndex;
 import czsem.fs.query.FSQuery.NodeMatch;
+import czsem.fs.query.FSQuery.OptionalEval;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.FSQuery.QueryObject;
@@ -164,7 +165,7 @@ public class FSQueryTest {
 	public static void evaluatePatternPriorityListOptionals() throws SyntaxError {
 		
 		QueryObject qo1 = FSQuery.buildQuery("[id=1,_name=r1]");
-		QueryObject qo2 = FSQuery.buildQuery("[_optional=true,_name=o1]([_optional=true,_name=o2]([_optional=true,_name=o3]([id=6,_name=o4])))");
+		QueryObject qo2 = FSQuery.buildQuery("[_optional=true,_name=o0]([_optional=true,_name=o1]([_optional=true,_name=o2]([id=6,_name=o3])))");
 		
 		QueryData data = FSQueryTest.buidQueryData();		
 		
