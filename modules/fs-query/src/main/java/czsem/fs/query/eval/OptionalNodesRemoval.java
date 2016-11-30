@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import czsem.fs.query.FSQuery.OptionalEval;
 import czsem.fs.query.QueryNode;
 import czsem.fs.query.utils.Combinator;
 import czsem.fs.query.utils.QueryNodeDuplicator;
@@ -19,14 +20,20 @@ public class OptionalNodesRemoval implements Iterator<QueryNode> {
 	protected Combinator combinator;
 	protected boolean loaded = false;
 	
-	public OptionalNodesRemoval(QueryNode rootNode, List<QueryNode> optionalNodes) {
+	public OptionalNodesRemoval(QueryNode rootNode, List<QueryNode> optionalNodes, Combinator combinator) {
 		this.rootNode = rootNode;
 		this.optionalNodes = optionalNodes;
-		this.combinator = new Combinator(optionalNodes.size());
+		this.combinator = combinator;
+		//this.combinator = new Combinator(optionalNodes.size());
 	}
 
-	public static Iterable<QueryNode> iterateModifiedQueries(QueryNode rootNode, List<QueryNode> optionalNodes) {
-		return () -> new OptionalNodesRemoval(rootNode, optionalNodes);
+	public static Iterable<QueryNode> iterateModifiedQueries(QueryNode rootNode, List<QueryNode> optionalNodes, OptionalEval optionalEval) {
+		Combinator combinator = 
+				OptionalEval.MINIMAL.equals(optionalEval) ?
+						new ReverseCombinator(optionalNodes.size()) :
+						new Combinator(optionalNodes.size());
+		
+		return () -> new OptionalNodesRemoval(rootNode, optionalNodes, combinator);
 	}
 	
 	@Override

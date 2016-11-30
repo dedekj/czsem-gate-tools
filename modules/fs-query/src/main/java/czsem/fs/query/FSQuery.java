@@ -106,11 +106,13 @@ public class FSQuery {
 	}
 	*/
 	
+	public static enum OptionalEval { ALL, MAXIMAL, MINIMAL  }; 
 
 	public static class QueryObject {
 		protected QueryNode queryNode;
 		protected String queryName = null;
-		protected List<QueryNode> optionalNodes; 
+		protected List<QueryNode> optionalNodes;
+		protected OptionalEval optionalEval = OptionalEval.MAXIMAL; 
 
 		public QueryObject(QueryNode queryNode, List<QueryNode> optionalNodes) {
 			this.queryNode = queryNode;
@@ -118,7 +120,9 @@ public class FSQuery {
 		}
 		
 		public Iterable<QueryMatch> evaluate(QueryData data) {
-			return new FsEvaluator(queryNode, optionalNodes, data).evaluate();
+			FsEvaluator eval = new FsEvaluator(queryNode, optionalNodes, data);
+			eval.setOptionalEval(getOptionalEval());
+			return eval.evaluate();
 			
 			/*
 			List<Iterable<QueryMatch>> res = new ArrayList<Iterable<QueryMatch>>();
@@ -178,6 +182,14 @@ public class FSQuery {
 		@Deprecated
 		public boolean isNodeMatching(Integer dataNodeId, QueryData qd) {
 			return new FsEvaluator(queryNode, optionalNodes, qd).getFinalResultsFor(dataNodeId).hasNext();
+		}
+
+		public OptionalEval getOptionalEval() {
+			return optionalEval;
+		}
+
+		public void setOptionalEval(OptionalEval optionalEval) {
+			this.optionalEval = optionalEval;
 		}
 		
 	}

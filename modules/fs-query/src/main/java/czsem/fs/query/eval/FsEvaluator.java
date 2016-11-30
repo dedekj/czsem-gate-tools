@@ -8,11 +8,13 @@ import java.util.Set;
 import com.google.common.collect.Iterables;
 
 import czsem.fs.query.FSQuery.NodeMatch;
+import czsem.fs.query.FSQuery.OptionalEval;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.QueryNode;
 import czsem.fs.query.restrictions.DirectAttrRestriction;
 import czsem.fs.query.utils.CloneableIterator;
+import czsem.fs.query.utils.CloneableIteratorList;
 import czsem.fs.query.utils.SingletonIterator;
 
 public class FsEvaluator {
@@ -20,6 +22,8 @@ public class FsEvaluator {
 	protected QueryNode rootNode;
 	protected List<QueryNode> optionalNodes;
 	protected QueryData data;
+	protected OptionalEval optionalEval = OptionalEval.MAXIMAL; 
+	
 
 	public FsEvaluator(QueryNode rootNode, List<QueryNode> optionalNodes, QueryData data) {
 		this.rootNode = rootNode;
@@ -51,14 +55,29 @@ public class FsEvaluator {
 		CloneableIterator<QueryMatch> res = getFilteredResultsFor(rootNode, dataNodeId);
 		if ((res != null && res.hasNext()) || optionalNodes.isEmpty()) return res;
 		
-		for (QueryNode queryNode : OptionalNodesRemoval.iterateModifiedQueries(rootNode, optionalNodes)) {
+		List<CloneableIterator<QueryMatch>> list = new ArrayList<>();
+		
+		for (QueryNode queryNode : OptionalNodesRemoval.iterateModifiedQueries(rootNode, optionalNodes, getOptionalEval())) {
 			//System.err.println(queryNode.toStringDeep());
+
 			res = getFilteredResultsFor(queryNode, dataNodeId);
-			if (res != null && res.hasNext()) return res;
+			
+			if (res != null && res.hasNext()) {
+				
+				if (OptionalEval.ALL.equals(getOptionalEval())) {
+					
+					//collect all matches
+					list.add(res);
+					
+				} else {
+					
+					//return the first match found
+					return res;
+				}
+			}
 		}
 		
-		return null;
-		
+		return new CloneableIteratorList<>(list);		
 	}
 
 	public CloneableIterator<QueryMatch> getFilteredResultsFor(QueryNode queryNode, int dataNodeId) {
@@ -96,6 +115,14 @@ public class FsEvaluator {
 			if (! r.evaluate(data, dataNodeId)) return false;
 		}
 		return true;
+	}
+
+	public OptionalEval getOptionalEval() {
+		return optionalEval;
+	}
+
+	public void setOptionalEval(OptionalEval optionalEval) {
+		this.optionalEval = optionalEval;
 	}
 
 
