@@ -52,10 +52,27 @@ public class FsEvaluator {
 	}
 
 	public CloneableIterator<QueryMatch> getFinalResultsFor(int dataNodeId) {
-		CloneableIterator<QueryMatch> res = getFilteredResultsFor(rootNode, dataNodeId);
-		if ((res != null && res.hasNext()) || optionalNodes.isEmpty()) return res;
-		
 		List<CloneableIterator<QueryMatch>> list = new ArrayList<>();
+		CloneableIterator<QueryMatch> res; 
+		
+		if (! OptionalEval.MINIMAL.equals(getOptionalEval())) {
+
+			res = getFilteredResultsFor(rootNode, dataNodeId);
+			
+			if ((res != null && res.hasNext()) || optionalNodes.isEmpty()) {
+				
+				if (OptionalEval.ALL.equals(getOptionalEval())) {
+					
+					//collect all matches
+					list.add(res);
+				
+				} else {
+					//return the first match found
+					return res;
+				}
+			}
+		}
+		
 		
 		for (QueryNode queryNode : OptionalNodesRemoval.iterateModifiedQueries(rootNode, optionalNodes, getOptionalEval())) {
 			//System.err.println(queryNode.toStringDeep());
@@ -74,6 +91,14 @@ public class FsEvaluator {
 					//return the first match found
 					return res;
 				}
+			}
+		}
+		
+		if (list.isEmpty()) {
+			if (OptionalEval.MINIMAL.equals(getOptionalEval())) {
+				return getFilteredResultsFor(rootNode, dataNodeId);
+			} else {
+				return null; 
 			}
 		}
 		

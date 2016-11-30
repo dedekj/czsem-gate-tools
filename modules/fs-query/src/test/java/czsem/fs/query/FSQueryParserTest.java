@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import czsem.fs.NodeAttributes;
 import czsem.fs.TreeIndex;
+import czsem.fs.query.FSQuery.OptionalEval;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.FSQuery.QueryObject;
@@ -91,15 +92,23 @@ public class FSQueryParserTest {
 	}
 
 	public static void evalQuery(QueryData data, String queryString, int[] res) throws SyntaxError {
+		evalQuery(data, queryString, OptionalEval.MAXIMAL, res);
+	}
+	
+	public static void evalQuery(QueryData data, String queryString, OptionalEval optionalEval, int[] res) throws SyntaxError {
 		QueryObject qo = FSQuery.buildQuery(queryString);
+		qo.setOptionalEval(optionalEval);
 
 		FSQueryTest.evaluateQuery(data, qo, res);				
 	}
 
-
 	public static void evalQuery(String queryString, int[] res) throws SyntaxError {
-		QueryData data = FSQueryTest.buidQueryObject();		
-		evalQuery(data, queryString, res);
+		evalQuery(OptionalEval.MAXIMAL, queryString, res);
+	}
+
+	public static void evalQuery(OptionalEval optionalEval, String queryString, int[] res) throws SyntaxError {
+		QueryData data = FSQueryTest.buidQueryData();		
+		evalQuery(data, queryString, optionalEval, res);
 	}
 	
 	@Test
@@ -129,7 +138,7 @@ public class FSQueryParserTest {
 
 	@Test
 	public static void testThreeBrothers1() throws SyntaxError {
-		QueryData data = FSQueryTest.buidQueryObject();		
+		QueryData data = FSQueryTest.buidQueryData();		
 		TreeIndex i = data.getIndex();
 		i.addDependency(1, 12);
 		evalQuery(data, "[]([]([id=12],[id=3],[]))", new int [] {	
@@ -145,7 +154,7 @@ public class FSQueryParserTest {
 
 	@Test
 	public static void testThreeBrothers2() throws SyntaxError {
-		QueryData data = FSQueryTest.buidQueryObject();		
+		QueryData data = FSQueryTest.buidQueryData();		
 		TreeIndex i = data.getIndex();
 		i.addDependency(0, 8);
 		i.addDependency(8, 9);
@@ -195,6 +204,26 @@ public class FSQueryParserTest {
 	}
 
 	@Test
+	public static void testOptionalEval() throws SyntaxError {
+		//two possibilities
+		evalQuery(OptionalEval.ALL, "[id=0]([]([_optional=true]([id@=5;6])))", new int [] {
+				0, 1, 3, 6, 
+				
+				//this should match in "all possibilities" evaluation mode 
+				0, 2, 5, 				
+				});
+
+		//minimal without removing
+		evalQuery(OptionalEval.MINIMAL, "[id=0]([_optional=true]([_optional=true]([id=6])))", new int [] {
+				0, 1, 3, 6, 
+				});
+		
+		//minimal empty
+		evalQuery(OptionalEval.MINIMAL, "[id=0]([_optional=true]([_optional=true]([id=x])))", new int [] {
+				});
+	}
+
+	@Test
 	public static void testOptional() throws SyntaxError {
 		FSQueryBuilderImpl b = new FSQueryBuilderImpl();
 		FSQueryParser p = new FSQueryParser(b);
@@ -225,10 +254,30 @@ public class FSQueryParserTest {
 		evalQuery("[id=0]([_optional=true,_name=opt1]([id~=\\[124\\]]))", new int [] {
 				0, 1, 4,
 				});
+
+		//two possibilities
+		evalQuery(OptionalEval.ALL, "[id=0]([]([_optional=true]([id@=5;6])))", new int [] {
+				0, 1, 3, 6, 
+				
+				//this should match in "all possibilities" evaluation mode 
+				0, 2, 5, 				
+				});
+
 		
-		evalQuery("[id=0]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id~=\\[165\\]])))", new int [] {
+		evalQuery(OptionalEval.MAXIMAL, "[id=0]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id~=\\[165\\]])))", new int [] {
 				0, 1, 3, 6,
-				//0, 2, 5, //only the largest match is considered, "all possibilities" evaluation mode - TODO
+				//0, 2, 5, //only the largest match is considered, evaluation mode: OptionalEval.MAXIMAL
+				});
+
+		evalQuery(OptionalEval.ALL, "[id=0]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id~=\\[165\\]])))", new int [] {
+				0, 1, 3, 6,
+				0, 2, 5, //"all possibilities" evaluation mode: OptionalEval.ALL
+				0, 2, 5,
+				0, 1,
+				});
+		
+		evalQuery(OptionalEval.MINIMAL, "[id=0]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id~=\\[165\\]])))", new int [] {
+				0, 1,
 				});
 		
 		evalQuery("[id=0]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id~=\\[345\\]])))", new int [] {
@@ -250,16 +299,8 @@ public class FSQueryParserTest {
 				0, 1, 3, 1, 3,
 				});
 
-		//two possibilities
-		evalQuery("[id=0]([]([_optional=true]([id@=5;6])))", new int [] {
-				0, 1, 3, 6, 
-				
-				//this should match in "all possibilities" evaluation mode - TODO 
-				//0, 2, 5, 				
-				});
-
 		
-		QueryData data = FSQueryTest.buidQueryObject();
+		QueryData data = FSQueryTest.buidQueryData();
 		data.getIndex().addDependency(4, 8);
 		evalQuery(data, "[]([id=1]([_optional=true,_name=opt1]([_optional=true,_name=opt2]([id~=\\[3468\\]]))))", new int [] {
 				0, 1, 3, 6,
@@ -435,7 +476,7 @@ public class FSQueryParserTest {
 		String queryString = "[]([id=7],[]([id=3]),[id=1,_optional=true]([id=777,_optional=true]))";
 
 		QueryObject obj = FSQuery.buildQuery(queryString);
-		QueryData data = FSQueryTest.buidQueryObject();
+		QueryData data = FSQueryTest.buidQueryData();
 		Iterable<QueryMatch> res = obj.evaluate(data);
 		
 		for (QueryMatch queryMatch : res) {

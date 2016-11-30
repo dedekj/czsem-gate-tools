@@ -18,7 +18,7 @@ import czsem.fs.query.utils.CloneableIterator;
 public class FSQueryTest {
 	@Test
 	public static void getResultsFor() {
-		QueryData data = buidQueryObject();
+		QueryData data = buidQueryData();
 		
 		QueryNode qn = new QueryNode();
 		Iterable<QueryMatch> res = getFinalResultsFor(qn, data, 0);
@@ -107,7 +107,7 @@ public class FSQueryTest {
 
 	@Test
 	public static void getResultsForConcurentIterators() {		 
-		QueryData data = buidQueryObject();
+		QueryData data = buidQueryData();
 		
 		QueryNode qn1 = new QueryNode();
 		QueryNode qn2 = new QueryNode();
@@ -162,7 +162,7 @@ public class FSQueryTest {
 	}
 
 	public static void evaluateQuery(QueryNode queryNode, int[] results) {
-		 QueryData data = buidQueryObject();
+		 QueryData data = buidQueryData();
 		 evaluateQuery(data, queryNode, results);
 	}
 
@@ -208,7 +208,7 @@ public class FSQueryTest {
 		Assert.assertEquals(finishedNodeMatches, results.length);
 	}
 
-	public static QueryData buidQueryObject() {
+	public static QueryData buidQueryData() {
 		TreeIndex index = new TreeIndex();
 		
 		index.addDependency(0,1);
