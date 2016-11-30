@@ -1,7 +1,9 @@
 package czsem.fs.query;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -12,6 +14,7 @@ import czsem.fs.query.FSQuery.NodeMatch;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.FSQuery.QueryObject;
+import czsem.fs.query.FSQueryParser.SyntaxError;
 import czsem.fs.query.eval.FsEvaluator;
 import czsem.fs.query.utils.CloneableIterator;
 
@@ -139,6 +142,42 @@ public class FSQueryTest {
 		Assert.assertEquals(getNextNodeId(i2,2), 5);
 	}
 
+	@Test
+	public static void evaluatePatternPriorityList() throws SyntaxError {
+		
+		QueryObject qo1 = FSQuery.buildQuery("[]([id=7])");
+		QueryObject qo2 = FSQuery.buildQuery("[]([id=5])");
+		QueryObject qo3 = FSQuery.buildQuery("[id=6]");
+		
+		QueryData data = FSQueryTest.buidQueryData();		
+		
+		List<QueryObject> objs = Arrays.asList(qo1, qo2, qo3);
+		Iterable<QueryMatch> res = QueryObject.evaluatePatternPriorityList(objs, data);
+		
+		checkResults(res, new int[] {
+				0, 7,
+				2, 5,
+				6});
+	}
+	
+	@Test
+	public static void evaluatePatternPriorityListOptionals() throws SyntaxError {
+		
+		QueryObject qo1 = FSQuery.buildQuery("[id=1,_name=r1]");
+		QueryObject qo2 = FSQuery.buildQuery("[_optional=true,_name=o1]([_optional=true,_name=o2]([_optional=true,_name=o3]([id=6,_name=o4])))");
+		
+		QueryData data = FSQueryTest.buidQueryData();		
+		
+		List<QueryObject> objs = Arrays.asList(qo1, qo2);
+		Iterable<QueryMatch> res = QueryObject.evaluatePatternPriorityList(objs, data);
+		
+		checkResults(res, new int[] {
+				0, 1, 3, 6,
+				1, //3, 6,
+				3, 6,
+				6,
+				});
+	}
 	
 	@Test
 	public static void testQuery() {

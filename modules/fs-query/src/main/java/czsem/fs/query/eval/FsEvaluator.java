@@ -31,6 +31,35 @@ public class FsEvaluator {
 		this.data = data;
 	}
 
+	public static Iterable<QueryMatch> evaluatePatternPriorityList(
+			List<FsEvaluator> evaluators, QueryData data) {
+		
+		PriorityQueue<Integer> sortedDataNodes = new PriorityQueue<>(data.getIndex().getAllNodes());
+		List<Iterable<QueryMatch>> iterables = new ArrayList<>();
+
+		
+		while (! sortedDataNodes.isEmpty())
+		{
+			int dataNodeId = sortedDataNodes.remove();
+			CloneableIterator<QueryMatch> r = null;
+			
+			for (FsEvaluator evaluator : evaluators) {
+				r = evaluator.getFinalResultsFor(dataNodeId);
+				if (r != null && r.hasNext())
+					break; //return matches from the first evaluator  
+			}
+			
+			if (r != null && r.hasNext()) 
+				iterables.add(r.toIterable());
+
+		}
+
+		@SuppressWarnings("unchecked")
+		Iterable<QueryMatch>[] array = new Iterable[iterables.size()];
+		
+		return Iterables.concat(iterables.toArray(array));
+	}
+	
 	public Iterable<QueryMatch> evaluate() {
 		PriorityQueue<Integer> sortedDataNodes = new PriorityQueue<>(data.getIndex().getAllNodes());
 		List<Iterable<QueryMatch>> iterables = new ArrayList<>();
@@ -75,7 +104,7 @@ public class FsEvaluator {
 		
 		
 		for (QueryNode queryNode : OptionalNodesRemoval.iterateModifiedQueries(rootNode, optionalNodes, getOptionalEval())) {
-			//System.err.println(queryNode.toStringDeep());
+			System.err.println(queryNode.toStringDeep());
 
 			res = getFilteredResultsFor(queryNode, dataNodeId);
 			
@@ -118,7 +147,7 @@ public class FsEvaluator {
 		NodeMatch thisMatch = new NodeMatch(dataNodeId, queryNode);
 				
 		if (queryNode.getChildren().isEmpty())
-			return new SingletonIterator<>(new QueryMatch(thisMatch));
+			return new SingletonIterator<>(new QueryMatch(thisMatch, queryNode));
 			
 		List<QueryNode> chQueryNodes = queryNode.getChildren();
 		Set<Integer> chDataNodes = data.getIndex().getChildren(dataNodeId);
