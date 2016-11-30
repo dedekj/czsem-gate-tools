@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import czsem.fs.NodeAttributes;
 import czsem.fs.TreeIndex;
 import czsem.fs.query.FSQuery.NodeMatch;
-import czsem.fs.query.FSQuery.OptionalEval;
 import czsem.fs.query.FSQuery.QueryData;
 import czsem.fs.query.FSQuery.QueryMatch;
 import czsem.fs.query.FSQuery.QueryObject;
@@ -159,6 +158,12 @@ public class FSQueryTest {
 				0, 7,
 				2, 5,
 				6});
+		
+		//test pattern index
+		Iterator<Integer> expectedPattInices = Arrays.asList(0,1,2).iterator();
+		for (QueryMatch queryMatch : res) {
+			Assert.assertEquals(queryMatch.getPatternIndex(), (int) expectedPattInices.next());
+		}
 	}
 	
 	@Test
@@ -178,6 +183,12 @@ public class FSQueryTest {
 				3, 6,
 				6,
 				});
+		
+		//test pattern index
+		Iterator<Integer> expectedPattInices = Arrays.asList(1,0,1,1).iterator();
+		for (QueryMatch queryMatch : res) {
+			Assert.assertEquals(queryMatch.getPatternIndex(), (int) expectedPattInices.next());
+		}
 	}
 	
 	@Test

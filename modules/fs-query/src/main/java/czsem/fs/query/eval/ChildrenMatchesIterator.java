@@ -162,7 +162,7 @@ public class ChildrenMatchesIterator implements CloneableIterator<QueryMatch> {
 			
 		}
 		
-		return new QueryMatch(matchingNodes, parentNodeMatch.getQueryNode());
+		return new QueryMatch(matchingNodes);
 	}
 	
 	@Override

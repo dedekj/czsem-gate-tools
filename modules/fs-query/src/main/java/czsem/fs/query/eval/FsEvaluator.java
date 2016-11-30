@@ -22,8 +22,8 @@ public class FsEvaluator {
 	protected QueryNode rootNode;
 	protected List<QueryNode> optionalNodes;
 	protected QueryData data;
-	protected OptionalEval optionalEval = OptionalEval.MAXIMAL; 
-	
+	protected OptionalEval optionalEval = OptionalEval.MAXIMAL;
+	protected int patternIndex = 0;
 
 	public FsEvaluator(QueryNode rootNode, List<QueryNode> optionalNodes, QueryData data) {
 		this.rootNode = rootNode;
@@ -142,7 +142,7 @@ public class FsEvaluator {
 	public CloneableIterator<QueryMatch> getFilteredResultsFor(QueryNode queryNode, int dataNodeId) {
 		return ReferencingRestrictionsResultsIteratorFilter.filter(
 				getDirectResultsFor(queryNode, dataNodeId), 
-				data);
+				data, getPatternIndex());
 	}
 
 	protected CloneableIterator<QueryMatch> getDirectResultsFor(QueryNode queryNode, int dataNodeId) {
@@ -152,7 +152,7 @@ public class FsEvaluator {
 		NodeMatch thisMatch = new NodeMatch(dataNodeId, queryNode);
 				
 		if (queryNode.getChildren().isEmpty())
-			return new SingletonIterator<>(new QueryMatch(thisMatch, queryNode));
+			return new SingletonIterator<>(new QueryMatch(thisMatch));
 			
 		List<QueryNode> chQueryNodes = queryNode.getChildren();
 		Set<Integer> chDataNodes = data.getIndex().getChildren(dataNodeId);
@@ -182,6 +182,14 @@ public class FsEvaluator {
 
 	public void setOptionalEval(OptionalEval optionalEval) {
 		this.optionalEval = optionalEval;
+	}
+
+	public int getPatternIndex() {
+		return patternIndex;
+	}
+
+	public void setPatternIndex(int patternIndex) {
+		this.patternIndex = patternIndex;
 	}
 
 

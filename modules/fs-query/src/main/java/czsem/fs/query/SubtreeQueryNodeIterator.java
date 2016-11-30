@@ -41,7 +41,7 @@ public class SubtreeQueryNodeIterator implements Iterator<QueryMatch> {
 
 		@Override
 		public QueryMatch next() {
-			return new QueryMatch(new ArrayList<FSQuery.NodeMatch>(0), queryNode);
+			return new QueryMatch(new ArrayList<FSQuery.NodeMatch>(0));
 		}
 	}
 
@@ -64,7 +64,7 @@ public class SubtreeQueryNodeIterator implements Iterator<QueryMatch> {
 			
 			finish = ! tryMove(childrenIterators.length-1);
 			
-			return new QueryMatch(ret, queryNode);
+			return new QueryMatch(ret);
 		}
 	}
 	

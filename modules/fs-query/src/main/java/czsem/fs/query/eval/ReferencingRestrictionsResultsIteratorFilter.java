@@ -17,10 +17,13 @@ public class ReferencingRestrictionsResultsIteratorFilter implements CloneableIt
 	
 	protected final CloneableIterator<QueryMatch> parent;
 	protected final QueryData data;
+	protected final int patternIndex;
 
-	public ReferencingRestrictionsResultsIteratorFilter(CloneableIterator<QueryMatch> parent, QueryData data) {
+
+	public ReferencingRestrictionsResultsIteratorFilter(CloneableIterator<QueryMatch> parent, QueryData data, int patternIndex) {
 		this.parent = parent;
 		this.data = data;
+		this.patternIndex = patternIndex;
 	}
 	
 	protected QueryMatch cachedValue = null; 
@@ -48,6 +51,7 @@ public class ReferencingRestrictionsResultsIteratorFilter implements CloneableIt
 		
 		QueryMatch ret = cachedValue;
 		cachedValue = null;
+		ret.setPatternIndex(patternIndex);
 		return ret;
 	}
 
@@ -86,16 +90,16 @@ public class ReferencingRestrictionsResultsIteratorFilter implements CloneableIt
 		return true;
 	}
 
-	public static CloneableIterator<QueryMatch> filter(CloneableIterator<QueryMatch> resultsFor, QueryData data) {
+	public static CloneableIterator<QueryMatch> filter(CloneableIterator<QueryMatch> resultsFor, QueryData data, int patternIndex) {
 		if (resultsFor == null) return null;
 		
-		return new ReferencingRestrictionsResultsIteratorFilter(resultsFor, data);
+		return new ReferencingRestrictionsResultsIteratorFilter(resultsFor, data, patternIndex);
 	}
 
 	@Override
 	public ReferencingRestrictionsResultsIteratorFilter cloneInitial() {
 		return new ReferencingRestrictionsResultsIteratorFilter(
-				parent.cloneInitial(), data);	
+				parent.cloneInitial(), data, patternIndex);	
 	} 
 		
 }

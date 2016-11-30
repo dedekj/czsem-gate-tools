@@ -1,9 +1,9 @@
 package czsem.fs.query;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
@@ -94,17 +94,16 @@ public class FSQuery {
 
 	public static class QueryMatch {
 		private final List<NodeMatch> matchingNodes;
-		private final QueryNode query;
-		public QueryMatch( List<NodeMatch> matchingNodes, QueryNode query ) {
+		private int patternIndex = 0;
+		public QueryMatch( List<NodeMatch> matchingNodes) {
 			this.matchingNodes = matchingNodes; 
-			this.query = query;
 		}
-		public QueryMatch( NodeMatch onlyMatchingNode, QueryNode query) { 
+		public QueryMatch( NodeMatch onlyMatchingNode) { 
 			this.matchingNodes = Collections.singletonList(onlyMatchingNode); 
-			this.query = query;
 		}
 		public List<NodeMatch> getMatchingNodes() {return matchingNodes; }
-		public QueryNode getQuery() { return query;}
+		public int getPatternIndex() {return patternIndex; }
+		public void setPatternIndex(int patternIndex) {this.patternIndex = patternIndex; }
 	}
 	
 	/*
@@ -131,9 +130,14 @@ public class FSQuery {
 		public static Iterable<QueryMatch> evaluatePatternPriorityList(
 				List<QueryObject> objs,  QueryData data) {
 			
-			List<FsEvaluator> evaluators = objs.stream()
-				.map(obj -> new FsEvaluator(obj.queryNode, obj.optionalNodes, data))
-				.collect(Collectors.toList());
+			List<FsEvaluator> evaluators = new ArrayList<>(objs.size());
+			
+			int i = 0;
+			for (QueryObject obj : objs) {
+				FsEvaluator eval = new FsEvaluator(obj.queryNode, obj.optionalNodes, data);
+				eval.setPatternIndex(i++);
+				evaluators.add(eval);
+			}
 			
 			return FsEvaluator.evaluatePatternPriorityList(evaluators, data);
 		}
