@@ -9,7 +9,11 @@ public class Combinator {
 	public Combinator(int size) {
 		this.size = size;
 		stack = new int[size+1];
-		initGroup(1);
+		init();
+	}
+
+	protected void init() {
+		initGroup(1);		
 	}
 
 	public boolean tryMove() {

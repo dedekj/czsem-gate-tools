@@ -10,6 +10,7 @@ import java.util.Set;
 import czsem.fs.query.QueryNode;
 import czsem.fs.query.utils.Combinator;
 import czsem.fs.query.utils.QueryNodeDuplicator;
+import czsem.fs.query.utils.ReverseCombinator;
 
 public class OptionalNodesRemoval implements Iterator<QueryNode> {
 
@@ -79,7 +80,7 @@ public class OptionalNodesRemoval implements Iterator<QueryNode> {
 	}
 
 	public static void main(String[] args) {
-		Combinator c = new Combinator(5);
+		Combinator c = new ReverseCombinator(5);
 		
 		while (c.tryMove()) {
 			int gs = c.getGroupSize();
