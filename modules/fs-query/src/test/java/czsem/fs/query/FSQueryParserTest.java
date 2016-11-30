@@ -222,6 +222,37 @@ public class FSQueryParserTest {
 		evalQuery(OptionalEval.MINIMAL, "[id=0]([_optional=true]([_optional=true]([id=x])))", new int [] {
 				});
 	}
+	
+	@Test
+	public static void testOptionalSubtree() throws SyntaxError {
+		
+		//unreachable child x 
+		evalQuery(OptionalEval.MAXIMAL, "[id=0,_name=root]([_name=a]([_optional_subtree=true,_name=sub]([id=x,_name=x])))", new int [] {
+				0, 1,
+				0, 2,
+				0, 7,
+				});
+
+		//max
+		evalQuery(OptionalEval.MAXIMAL, "[id=0]([]([_optional_subtree=true]([id@=5;6])))", new int [] {
+				0, 1, 3, 6, 
+				});
+
+		//min
+		evalQuery(OptionalEval.MINIMAL, "[id=0]([]([_optional_subtree=true]([id@=5;6])))", new int [] {
+				0, 1, 
+				0, 2, 
+				0, 7, 
+				});
+		
+		//all
+		evalQuery(OptionalEval.ALL, "[id=0]([]([_optional_subtree=true]([id@=5;6])))", new int [] {
+				0, 1, 3, 6, 
+				0, 1, 
+				0, 2, 
+				0, 7, 
+				});
+	}
 
 	@Test
 	public static void testOptional() throws SyntaxError {

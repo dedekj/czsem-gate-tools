@@ -71,7 +71,9 @@ public class OptionalNodesRemoval implements Iterator<QueryNode> {
 		List<QueryNode> children = toRemove.getChildren();
 		
 		if (parent == null) {
-			if (children.size() != 1)
+			if (toRemove.isOptionalSubtree())
+				throw new IllegalArgumentException("Root node cannot be marked as _optional_subtree.");
+			else if (children.size() != 1)
 				throw new IllegalArgumentException("Optional root node has to have exactly one child, but found: " + toRemove.getChildren());
 			else
 				return children.get(0);
@@ -79,8 +81,10 @@ public class OptionalNodesRemoval implements Iterator<QueryNode> {
 		
 		parent.getChildren().remove(toRemove);
 		
-		for (QueryNode ch : children) {
-			parent.addChild(ch);
+		if (! toRemove.isOptionalSubtree()) {
+			for (QueryNode ch : children) {
+				parent.addChild(ch);
+			}
 		}
 			
 		return rootNode;

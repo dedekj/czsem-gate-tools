@@ -23,6 +23,7 @@ public class QueryNode  {
 		
 		protected String name;
 		protected boolean optional = false;
+		protected boolean optionalSubtree = false;
 		protected int subtreeDepth = -1;
 	}
 	
@@ -139,6 +140,13 @@ public class QueryNode  {
 
 	public boolean isOptional() {
 		return data.optional;
+	}
+
+	public void setOptionalSubtree(boolean optionalSubtree) {
+		this.data.optionalSubtree = optionalSubtree;
+	}
+	public boolean isOptionalSubtree() {
+		return data.optionalSubtree;
 	}
 
 	public int getSubtreeDepth() {

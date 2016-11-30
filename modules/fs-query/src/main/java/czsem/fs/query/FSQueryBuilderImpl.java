@@ -61,6 +61,12 @@ public class FSQueryBuilderImpl implements FSQueryBuilder {
 				getOptionalNodes().add(curentNode);
 			}
 		}
+		else if (MetaAttribute.OPTIONAL_SUBTREE.equals(arg1)){ 
+			if (MetaAttribute.TRUE.equals(arg2)) {
+				curentNode.setOptionalSubtree(true);
+				getOptionalNodes().add(curentNode);
+			}
+		}
 		else if (IterateSubtreeEvaluator.META_ATTR_SUBTREE_DEPTH.equals(arg1))
 		{
 			int depth = Integer.parseInt(arg2);
