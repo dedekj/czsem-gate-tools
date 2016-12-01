@@ -12,4 +12,7 @@
   <JAR SCAN="false">lib/xmlrpc-common-${dependency.org.apache.xmlrpc.xmlrpc-common.version}.jar</JAR>
   <JAR SCAN="false">lib/ws-commons-util-${dependency.org.apache.ws.commons.util.ws-commons-util.version}.jar</JAR>
   <JAR SCAN="false">lib/xml-apis-${dependency.xml-apis.xml-apis.version}.jar</JAR>
+  
+  <JAR SCAN="false">lib/slf4j-api-${dependency.org.slf4j.slf4j-api.version}.jar</JAR>
+  <JAR SCAN="false">lib/slf4j-log4j12-${dependency.org.slf4j.slf4j-log4j12.version}.jar</JAR>
 </CREOLE-DIRECTORY> 

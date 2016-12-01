@@ -10,6 +10,7 @@
   <dependencySets>
     <dependencySet>
       <outputDirectory>${artifactId}/lib</outputDirectory>
+      <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}</outputFileNameMapping>
       <useProjectArtifact>true</useProjectArtifact>
       <useTransitiveFiltering>true</useTransitiveFiltering>
       <unpack>false</unpack>
