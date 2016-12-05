@@ -1,3 +1,6 @@
+developpment moved to: http://github.com/datlowe/czsem-gate-tools
+
+
 # czsem-gate-tools
 
 Utility functions for text processing.
