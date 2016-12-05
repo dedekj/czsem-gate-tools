@@ -1,5 +1,7 @@
 ```diff
-- developpment moved to: http://github.com/datlowe/czsem-gate-tools
+developpment moved!
+- from http://github.com/dedekj/czsem-gate-tools
++ to: http://github.com/datlowe/czsem-gate-tools
 ```
 
 # czsem-gate-tools
